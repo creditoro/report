@@ -1,43 +1,44 @@
-# Foreløbig titel og dato
-**Foreløbig titel:** creditoro
-**Afleveringsdato:** 29-05-2020 kl. 12.00
+# Creditoro og dato 29-05-2020 kl. 12.00
 
 # Uddannelse
 Softwareteknologi
 
 # Projegruppe og vejleder
 **Gruppenummer:** 06
-**Kontaktoplysninger:** Findes i [gruppekontrakten](gruppekontrakt.md)
+**Kontaktoplysninger:** Findes i [gruppekontrakten](https://github.com/creditoro/report/blob/master/gruppekontrakt.md)
 
 # Problemstilling
 ![system drawing](https://cdn.discordapp.com/attachments/673822129946361859/674706669921632256/TV2-Credits-Management.png)  
 
 
-Systemet afspejler det system TV2 har lagt op til i projekt-casen. Der er tale om et system, hvor man kan se - og redigere krediteringstekster for programmer.  
-Systemet indeholder forskellige brugerroller:
+Systemet afspejler det system TV2 har lagt op til i projekt-casen. Der er tale om et system, hvor man kan se - og redigere krediteringstekster for programmer.   
+Systemet indeholder forskellige brugerroller:  
+ 
 - Administrator
-  * Kan redigere, oprette - samt slette krediteringstekster.
-- Bruger
-  * Kan redigere samt oprette krediteringstekster.
+  - Kan redigere, oprette - samt slette krediteringstekster.
+- Bruger  
+  - Kan redigere samt oprette krediteringstekster.
 - Gæst (ikke autentificeret)
-  * Kan se krediteringstekster for programmer.
-
-Systemet består af forskellige programmer:
-- EPG Poller (should have)
-  * Henter data fra Electronic Program Guide (EPG) og indsætter nye programmer i vores database via REST API'et, der gør at brugere ikke skal oprette programmet, men blot tilføje krediteringstekster.
-- Desktop Client (must have)
-  * Brugergrænseflade, der gør det let at se, søge, redigere samt slette krediteringstekster for programmer.
-- Rest API (must have)
-  * Api'et binder alle andre programmer sammen, ved at udbyde endpoints, der muliggører at foretage alle aktioner beskrevet i systemets andre programmer.
-- Website (nice to have)
-  * Brugergrænseflade som beskrevet i *Desktop Client* men som website, da det vil afspejle den løsning TV2 nok vil bruge i sidste ende.
+  - Kan se krediteringstekster for programmer.
   
-Dette er implementeret via et REST API, som er den applikation der styrer vores business logic. For at gøre systemet brugervenligt, laves en dekstop client (GUI). 
+  
+Systemet består af forskellige programmer:   
+
+- EPG Poller (should have)
+  - Henter data fra Electronic Program Guide (EPG) og indsætter nye programmer i vores database via REST API'et, der gør at brugere ikke skal oprette programmet, men blot tilføje krediteringstekster.
+- Desktop Client (must have)
+  - Brugergrænseflade, der gør det let at se, søge, redigere samt slette krediteringstekster for programmer.
+- Rest API (must have)
+  - Api'et binder alle andre programmer sammen, ved at udbyde endpoints, der muliggører at foretage alle aktioner beskrevet i systemets andre programmer.
+- Website (nice to have)
+  - Brugergrænseflade som beskrevet i *Desktop Client* men som website, da det vil afspejle den løsning TV2 nok vil bruge i sidste ende.
+  
+Dette er implementeret via et REST API, som er den applikation der styrer vores business logic. For at gøre systemet brugervenligt, laves en dekstop client (GUI).   
 
 
 
 # Faglig og personlig motivation
-Motivation er at Vi vil ikke bare lave minimus kravet, da der er en støre personlig interesse for at lave et større system, der afspejler det system som projekt casen har lagt op til
+Motivation er at vi ikke bare vil lave minimus kravet, da der er en støre personlig interesse for at lave et større system, der afspejler det system som projekt casen har lagt op til
 og kunne være en interesse for TV2.
 hvad kan vi få ud af det
 fx. farveligt
@@ -46,16 +47,17 @@ fx. farveligt
 
 # Nuværende viden
 TV2 efterspørger en løsning der gør at de kan cutte rulleteksterne der kommer efter en film eller lign. og derved få ekstra 30 sekunders visning af reklamer. 
-Systemet kan indeholde.  
+Systemet kan indeholde:  
 Bruger adgang:  
+
 - Administrator 	(se/redigere/oprette og slette bruger)  
 - TV2 brugere 		(se/redigere)  
 - Gæster 			(se)  
 
-TV2 skal kunne exportere til fx. XML og CSV.
-Systemet må ikke have personlig data offtentlig.
-TV2 finder muligheden intergration for andre systemer interessant. 
-Notifikationer, så hvis krediteringer bliver opdateret, notifikeres de andre systemer. 
+TV2 skal kunne exportere til fx. XML og CSV.  
+Systemet må ikke have personlig data offtentlig.  
+TV2 finder muligheden intergration for andre systemer interessant.   
+Notifikationer, så hvis krediteringer bliver opdateret, notifikeres de andre systemer.   
 
 
 ### Software Engineering og Modellering til CPS 
@@ -86,8 +88,8 @@ Notifikationer, så hvis krediteringer bliver opdateret, notifikeres de andre sy
 
 
 ### Hvad ved vi ikke endnu:
-Krediterings regler for TV2
-Vi ved ikke noget om intergraring af systemet til TV2 
+Krediterings regler for TV2  
+Vi ved ikke noget om integrering af systemet til TV2 
 
 
 
@@ -96,10 +98,10 @@ Vi ved ikke noget om intergraring af systemet til TV2
 [Egen tidsplan](https://app.zenhub.com/workspaces/creditoro-5e4bb6f86a062ec95338879d/board)
 
 # Gruppeværktøjer
-**Gruppeværktøjer:** Se [Gruppekontrakt](gruppekontrakt.md) under afsnittet Værktøjer
+**Gruppeværktøjer:** Se [Gruppekontrakt](https://github.com/creditoro/report/blob/master/gruppekontrakt.md) under afsnittet Værktøjer
 
 # Gruppekontrakt
-[Gruppekontrakt](gruppekontrakt.md)
+[Gruppekontrakt](https://github.com/creditoro/report/blob/master/gruppekontrakt.md)
 
 # Vejlederkontrakt
-[Vejlederkontrakt](Vejlederkontrakt.md)
+[Vejlederkontrakt](https://github.com/creditoro/report/blob/master/Vejlederkontrakt.md)
