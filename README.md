@@ -4,6 +4,7 @@
 ## [Gruppe Kontrakt](gruppekontrakt.md)
 ## [Projekt forslag](projektforslag.md)
 ## [Spørgsmål til TV2](spørgsmål_til_tv2.md)
+## [Inspection Dokument](https://docs.google.com/document/d/1hKcmrbhYUQcl8JjDfKK_jDg8p20JXafGjX7guZYceAM/edit#)
 
 ## Åben Raporten
  bla bla bla
