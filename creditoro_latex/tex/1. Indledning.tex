@@ -1,0 +1,111 @@
+\section{Indledning}
+Når et program bliver broadcasted på en TV station, skal krediteringer vises. Dette gøres i slutningen af programmet, i maksimalt 30 sekunder. Det betyder, at der ikke altid er tid til at vise det hele af krediteringer, og derfor prioriteres de før de vises. \\
+
+\noindent
+Hvis disse 30 sekunder for hvert program kunne frigøres, kunne danske TV stationer bruge tiden på at vise noget andet, såsom nogle reklamer. Derved kunne TV 2 øge deres årlige indtægter med op til 60 millioner kroner. \\
+
+\noindent
+TV 2 har brug for et system, der kan administrere krediteringer for programmer produceret i Danmark. Hertil skal der kunne tilføjes nye Krediteringer i systemet for nye produktioner, samt det skal være muligt at kunne søge efter eksisterende krediteringer. Det skal være muligt at kunne se hvilken rolle en given person har haft i en produktion, da denne person kan have haft flere forskellige roller på flere forskellige produktioner.
+
+\subsection{Projektrammer}
+Denne sektion har til formål at opridse rammerne for projektet, samt hvilket område projektgruppen arbejder indenfor.
+
+\subsubsection{Krav til projektet}
+Systemet skal så vidt muligt skrives i programmeringssproget Java. \\
+Krediterings-data skal lagres i en database. I dette projekt skal den brugte database være SQL baseret. Der skal bruges PostgreSQL.\\
+Systemet forventes ikke at være et færdigt system, men en række forslag til løsninger der opfylder system behovet. Forslagene skal inkludere:
+
+\begin{itemize}
+    \item $\bullet$ Krav
+    \item $\bullet$ Analyse
+    \item $\bullet$ Design
+    \item $\bullet$ Implementering
+    \item $\bullet$ Test
+\end{itemize}
+
+\noindent
+Producere der kan tilføje og redigere i krediteringerne, skal kun have mulighed for at redigere i de produktioner, de selv ejer.\\
+Det forventes at kreditering operations systemet er kompatibelt med andre systemer (fx Stofa, YouSee Play etc.).
+
+\subsubsection{Milepælsplan}
+\includegraphics[scale=0.6]{figures/Milepælsplan.png}
+
+\subsubsection{Hvad ligger uden for projektrammen}
+Der forventes ikke at der laves et færdigt system, men et system der kan bruges som et værktøj af TV2. Det er derfor uden for systemets omfang (scope) at lave en REST API.
+
+\subsection{Formål med inceptionsfasen}
+Formålet med inceptionsfasen er at fastlægge systemets omfang, der bliver udformet en overordnet kravspecifikation (requiremtns outlined), kravene prioriteres og metoden i elaborationsfasen beskrives. Dette sker gennem en nærmere undersøgelse af problemstillingen, indsamling af information og under kundemøder hvor kravene indsamles (eliciteres).\\
+
+\noindent
+Målene for inceptionsfasen kan således opstilles i punktform:
+\begin{itemize}
+    \item $\bullet$ At gennemføre kravudvikling
+    \item $\bullet$ At identificere kritiske risici
+    \item $\bullet$ At fastlægge projektets metoder i elaborationsfasen
+\end{itemize}
+
+\subsection{Problemanalyse}
+Hvordan kan vi udvikle et samlet krediteringssystem, der giver mulighed for at erstatte rulletekster efter et endt program?
+
+\subsubsection{Igangsættende problem}
+TV2 ønsker at frigøre 30 sekunders krediterings tekster efter hvert program, så de i stedet kan bruge tiden på at vise reklamer. Problemet består i at disse krediterings tekster, så skal vises på en anden platform. \\
+
+\begin{center}
+\begin{tabular}{|p{10cm}|p{4cm}|}
+\hline
+\textbf{Beskrivelse} & \textbf{Type} \\
+\hline
+“Vi har brug for  et krediterings system der kan  håndtere  dansk TV content” 
+& En vag opgave \\
+
+\hline
+“This includes the possibility to enter new credits into the system when a new production has been made, as well as being able to search for a given production (programme/series) and get a list of credits tied to that production. It should be possible to see which role a given person has had on a production, as one person can have different roles on different productions.” 
+& Ønske om en bestemt løsning \\
+
+\hline 
+“Producers/TV-stations should be able to input and edit credits for the programs/productions that they own. They should also be able to edit the production IDs for these program/productions. System Administrators should be able to maintain, ie. create, read, update, and delete persons and credits, as well as users in the system.” 
+& Ønske om en bestemt løsning \\
+
+\hline
+“Finally the Credits Management System should publish a service for other systems to consume. The consumer systems can for example be a web portal or an app. But other systems should also be able to consume the API, so the data can be used in other existing systems, such as TVTID.dk (TV 2’s TV-Guide).”
+& Ønske om en bestemt løsning \\
+
+\hline
+“Some kind of access control should be implemented for the protected parts of the system (entering/editing/deleting data etc.)” 
+& Ønske om en bestemt løsning \\
+
+\hline
+“There should also be a publicly available part of the system, where it is possible to see the credits for a production without logging in.“ 
+& Ønske om en bestemt løsning \\
+
+\hline
+“Nuværende løsning er begrænset til 30 sekunder, og dermed kan alle krediteringerne ikke altid vises i praksis” 
+& Et problem \\
+
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Identifikation \& verifikation}
+Årsagen til problemet er, at der maksimalt er afsat 30 sekunder efter hvert program til at vise krediteringer. Konsekvensen af dette er, at der ikke altid er tid til at vise alle krediteringer, hvilket ender ud i at krediteringerne skal prioriteres før de bliver vist på tv.\\
+
+Problemet i denne løsning er, at de krediteringer seerne får vist ikke er fyldestgørende, og at alle der har arbejdet på programmet ikke får den anerkendelse de har krav på.
+
+\subsubsection{Egentligt problem}
+Det egentlige problem er, at de vil gerne fjerne de 30 sekunders krediteringer og vise noget andet, fx reklamer og promoveringer.
+
+\subsubsection{Præcis beskrivelse af problem}
+Hvordan laver TV2 en løsning, der overholder kravene for at  krediteringerne bliver vist, samtidig med at frigøre dem fra TV sendetiden.
+
+\subsection{Problemformulering og afgrænsning}
+Hvordan kan vi udvikle et samlet krediteringssystem, der giver mulighed for at erstatte rulletekster efter et endt program?
+
+\begin{enumerate}
+    \item Hvilke lovgivninger er der for visning af krediteringer?
+    \item Hvem skal kunne håndtere krediteringer?
+    \item Hvordan skal krediteringerne gøres tilgængelige, og hvordan skal seerne refereres dertil?
+    \item Hvordan kan man oprette et system som kan indeholde krediteringer?
+\end{enumerate}
+
+\noindent
+Projektgruppen har valgt at afgrænse...

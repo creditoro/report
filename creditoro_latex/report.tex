@@ -1,0 +1,82 @@
+\documentclass[a4paper,12pt]{article}
+% Resten af pakkerne
+\usepackage[english, danish]{babel}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{flafter}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+
+%\usepackage{multirow}
+
+% Nedenstående package giver fejl
+%\usepackage{hyperref}
+%\hypersetup{
+%    colorlinks=true,
+%    linkcolor=cyan,
+%    filecolor=magenta,      
+%    urlcolor=blue,
+%}
+
+
+% Line Mellem rum
+% \linespread{1.4}
+\graphicspath{{./figures/}{../figures/}}
+
+
+\begin{document}
+
+    % Forside
+    \input{customtitlepage}
+    \newpage
+    
+    % Titelblad
+    \input{tex/0. Titelblad}
+    \newpage
+ 
+    % Indholdsfortegnelse
+    \tableofcontents
+    \newpage
+    
+    % Indledning
+    \input{tex/1. Indledning}
+    \newpage
+    
+    % Faglig vidensgrundlag
+    \input{tex/2. Faglig vidensgrundlag}
+    \newpage
+    
+    % Overordnet kravspecifikation
+    \input{tex/3. Overordnet kravspecifikation}
+    \newpage
+
+    % Kritiske risici
+    \input{tex/4. Kritiske risici}
+    \newpage
+    
+    % Prioritering
+    \input{tex/5. Prioritering}
+    \newpage
+    
+    % Metode i elaborationsfasen
+    \input{tex/6. Metode i eleborationsfasen}
+    \newpage
+    
+    % Ressourcer
+    \input{tex/7. Ressourcer}
+    \newpage
+    
+    % Konklusion
+    \input{tex/8. Konklusion}
+    \newpage
+    
+    % Bilag
+    \input{appendices/bilag.tex}
+    
+    % Bibliografi
+    \bibliography{appendices/bibliography.bib}
+    
+\end{document}

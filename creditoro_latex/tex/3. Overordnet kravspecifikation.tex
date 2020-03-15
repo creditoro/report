@@ -1,0 +1,71 @@
+\section{Overordnet kravspecifikation}
+Systemet afspejler det system TV2 har lagt op til i projekt-casen. Der er tale om et system, hvor man kan se - og redigere krediteringer for programmer. Systemet skal kunne tilgås via en dansk brugergrænseflade. Det skal indeholde forskellige brugerroller; Administrator, bruger og gæst. Producere der kan tilføje og redigere i krediteringerne, skal kun have mulighed for at redigere i de produktioner, de selv ejer.\\
+
+Kanaladministratoren skal kunne redigere, oprette og slette krediteringer for et givent program. En bruger skal kunne redigere samt oprette krediteringer for et givent program, og en gæst skal kunne se krediteringer for alle programmer. Det skal være muligt at kombinere personer som refererer til den samme person i den virkelige verden. Når to forskellige producere vil oprette en kreditering for et program, skal krediteringen være associeret med en person og vedkommendes rolle. Det betyder altså, at det skal være muligt at oprette personer der kan sammenflettes (f.eks. med UUID).\\
+
+TV2 har ikke lov til at lagre persondata, såsom et CPR-nummer eller et telefonnummer, så det skal være muligt at identificere personer i systemet og sikre at krediteringerne er korrekt forbundet til de rigtige personer.
+Det skal være muligt at eksportere en specifik mængde data i forskellige formater såsom XML og CSV. Derudover skal databasen være søgbar, så det er nemt at finde personer, programmer og lignende. Det er vigtigt at systemet er nemt at bruge, så seerne nemt kan se krediteringerne for det program de lige har set.\\
+
+TV 2 kunne være interesseret i at integrere systemet med andre systemer (Yousee Play, Boxer play osv.), og det er derfor vigtigt at systemet er kompatibelt med krediteringer i andre systemer. Det kunne også være interessant at have muligheden for at få notifikationer når noget nyt sker i systemet. Samrådet for Ophavsret og Producentforeningen kunne også være interesseret i at modtage en form for meddelelse hver gang der er blevet tilføjet noget nyt til systemet, hvor de kan godkende krediteringerne og ud fra disse udbetalte royalties.\\
+
+For at beskytte dele af systemet (tilføjelse/redigering/sletning af data osv.), skal der indføres en form for adgangskontrol. Der skal være en offentligt tilgængelig del af systemet, hvor det er muligt at se krediteringerne for et et program uden at skulle logge ind.
+\begin{table}
+\centering
+\begin{tabular}{ |p{1cm}|p{3.5cm}|p{7cm}| }
+\hline
+\textbf{ID} & \textbf{Navn} & \textbf{Beskrivelse} \\
+\hline
+K01 & Brugergrænseflade & Systemet skal tilgås via en dansk brugergrænseflade \\
+\hline
+K02 & Brugerroller & Systemet skal indeholde brugerroller \\
+\hline
+K03 & Tildel roller & Kanaladministrator skal kunne tildele producer- og kanaladministrator roller \\
+\hline
+K04 & Slet bruger & Systemadministratoren skal kunne slette brugere \\
+\hline
+K05 & Se krediteringer & Alle skal kunne se krediteringer \\
+\hline
+K06 & Søg efter krediteringer & Alle skal kunne søge efter og se krediteringer for alle programmer \\
+\hline
+K07 & Opret krediteringer & Specielle brugere, kanaladministratore og systemadmin skal kunne oprette
+krediteringer for et givent program \\
+\hline
+K08 & Rediger krediteringer & Specielle brugere, kanaladmin og systemadmin skal kunne redigere krediteringer for egne programmer \\
+\hline
+K09 & Slet kreditering & Kanaladmin og systemadmin skal kunne oprette/redigere/slette krediteringer under egen kanal \\
+\hline
+K10 & Søg efter personer & Alle skal kunne søge efter personer \\
+\hline
+K11 & Knyt personer til krediteringer & Personer skal kunne knyttes til krediteringer så man kan se hvilke programmer en person har deltaget i Systemadmin, kanaladmin og producer skal kunne se persondata som email og tlf. nr. \\
+\hline
+K12 & Link personer i den virkelige verden & Det skal være muligt at linke personer i krediteringer til personer i den virkelige verden, så der krediteres korrekt \\
+\hline
+K13 & Eksporter data & Brugere skal kunne eksportere data til forskellige formater såsom XML og CSV \\
+\hline
+K14 & Importering af data & Systemet skal kunne importere EPG data via TVTid.dk \\
+\hline
+\end{tabular} 
+\caption{Funktionskrav}
+\label{table:1}
+\end{table}
+
+\subsection{Overordnet brugsmønstermodel}
+-- INDSÆT MODEL --
+
+\subsection{Overordnet supplerende krav}
+\begin{table}
+\centering
+\begin{tabular}{ |p{2cm}|p{2.5cm}|p{7cm}| }
+\hline
+\textbf{ID} & \textbf{Type} & \textbf{Beskrivelse} \\
+\hline
+S01 & Notifikationer & Systemet skal give notifikationer til Royal Bruger (p) \\
+\hline
+S02 & Integration & Systemet skal kunne integreres med andre systemer (YouSee Play, Boxer Play, osv) - Via importering af eksisterende krediteringsdata \\
+\hline
+S03 & Sprogvalg & Systemet skal understøtte flere sprog \\ 
+\hline
+\end{tabular}
+\caption{Supplerende krav}
+\label{table:1}
+\end{table}
