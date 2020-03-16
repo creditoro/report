@@ -7,27 +7,35 @@
 \usepackage{graphicx}
 \usepackage{setspace}
 \usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage[font=small,labelfont=bf]{caption}
+
+% \usepackage{csvsimple}
+\usepackage{longtable}
+
+
+% Needs to be the last package included
 \usepackage{hyperref}
-
-
-%\usepackage{multirow}
-
-% Nedenstående package giver fejl
-%\usepackage{hyperref}
-%\hypersetup{
-%    colorlinks=true,
-%    linkcolor=cyan,
-%    filecolor=magenta,      
-%    urlcolor=blue,
-%}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
 
 
 % Line Mellem rum
 % \linespread{1.4}
 \graphicspath{{./figures/}{../figures/}}
 
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
 
 \begin{document}
+% Fjerner side tal
+\pagenumbering{gobble}
 
     % Forside
     \input{customtitlepage}
@@ -40,7 +48,10 @@
     % Indholdsfortegnelse
     \tableofcontents
     \newpage
-    
+    % Start counting from this line
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+
     % Indledning
     \input{tex/1. Indledning}
     \newpage

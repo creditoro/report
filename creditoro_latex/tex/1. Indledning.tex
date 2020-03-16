@@ -1,11 +1,7 @@
 \section{Indledning}
-Når et program bliver broadcasted på en TV station, skal krediteringer vises. Dette gøres i slutningen af programmet, i maksimalt 30 sekunder. Det betyder, at der ikke altid er tid til at vise det hele af krediteringer, og derfor prioriteres de før de vises. \\
-
-\noindent
-Hvis disse 30 sekunder for hvert program kunne frigøres, kunne danske TV stationer bruge tiden på at vise noget andet, såsom nogle reklamer. Derved kunne TV 2 øge deres årlige indtægter med op til 60 millioner kroner. \\
-
-\noindent
-TV 2 har brug for et system, der kan administrere krediteringer for programmer produceret i Danmark. Hertil skal der kunne tilføjes nye Krediteringer i systemet for nye produktioner, samt det skal være muligt at kunne søge efter eksisterende krediteringer. Det skal være muligt at kunne se hvilken rolle en given person har haft i en produktion, da denne person kan have haft flere forskellige roller på flere forskellige produktioner.
+Når et program bliver broadcasted på en TV station, skal krediteringer vises. Dette gøres i slutningen af programmet, i maksimalt 30 sekunder. Det betyder, at der ikke altid er tid til at vise alle krediteringer, og derfor prioriteres de før de vises. \\
+Hvis de 30 sekunder for hvert program kan frigøres, kan danske TV stationer bruge tiden på at vise noget andet, som f.eks. reklamer. Derved kunne TV 2 øge deres årlige indtægter med op til 60 millioner kroner. \\
+TV 2 har brug for et system, der kan administrere krediteringer for programmer produceret i Danmark. Hertil skal der kunne tilføjes nye krediteringer i systemet for nye produktioner, samt det skal være muligt at kunne søge efter eksisterende krediteringer. Det skal være muligt at kunne se hvilken rolle en given person har haft i en produktion, da denne person kan have haft flere forskellige roller på flere forskellige produktioner.
 
 \subsection{Projektrammer}
 Denne sektion har til formål at opridse rammerne for projektet, samt hvilket område projektgruppen arbejder indenfor.
@@ -13,14 +9,14 @@ Denne sektion har til formål at opridse rammerne for projektet, samt hvilket om
 \subsubsection{Krav til projektet}
 Systemet skal så vidt muligt skrives i programmeringssproget Java. \\
 Krediterings-data skal lagres i en database. I dette projekt skal den brugte database være SQL baseret. Der skal bruges PostgreSQL.\\
-Systemet forventes ikke at være et færdigt system, men en række forslag til løsninger der opfylder system behovet. Forslagene skal inkludere:
+Systemet forventes ikke at være et færdigt system, men en række forslag til løsninger der opfylder systembehovet. Forslagene skal inkludere:
 
 \begin{itemize}
-    \item $\bullet$ Krav
-    \item $\bullet$ Analyse
-    \item $\bullet$ Design
-    \item $\bullet$ Implementering
-    \item $\bullet$ Test
+    \item Krav
+    \item Analyse
+    \item Design
+    \item Implementering
+    \item Test
 \end{itemize}
 
 \noindent
@@ -28,7 +24,8 @@ Producere der kan tilføje og redigere i krediteringerne, skal kun have mulighed
 Det forventes at kreditering operations systemet er kompatibelt med andre systemer (fx Stofa, YouSee Play etc.).
 
 \subsubsection{Milepælsplan}
-\includegraphics[scale=0.6]{figures/Milepælsplan.png}
+Milepælsplanen har til formål at give projektgruppen et overblik over projektfaserne.\\
+\input{tex/1.1 Milepælspland.tex}
 
 \subsubsection{Hvad ligger uden for projektrammen}
 Der forventes ikke at der laves et færdigt system, men et system der kan bruges som et værktøj af TV2. Det er derfor uden for systemets omfang (scope) at lave en REST API.
@@ -39,9 +36,9 @@ Formålet med inceptionsfasen er at fastlægge systemets omfang, der bliver udfo
 \noindent
 Målene for inceptionsfasen kan således opstilles i punktform:
 \begin{itemize}
-    \item $\bullet$ At gennemføre kravudvikling
-    \item $\bullet$ At identificere kritiske risici
-    \item $\bullet$ At fastlægge projektets metoder i elaborationsfasen
+    \item At gennemføre kravudvikling
+    \item At identificere kritiske risici
+    \item At fastlægge projektets metoder i elaborationsfasen
 \end{itemize}
 
 \subsection{Problemanalyse}
@@ -89,6 +86,7 @@ TV2 ønsker at frigøre 30 sekunders krediterings tekster efter hvert program, s
 \subsubsection{Identifikation \& verifikation}
 Årsagen til problemet er, at der maksimalt er afsat 30 sekunder efter hvert program til at vise krediteringer. Konsekvensen af dette er, at der ikke altid er tid til at vise alle krediteringer, hvilket ender ud i at krediteringerne skal prioriteres før de bliver vist på tv.\\
 
+\noindent
 Problemet i denne løsning er, at de krediteringer seerne får vist ikke er fyldestgørende, og at alle der har arbejdet på programmet ikke får den anerkendelse de har krav på.
 
 \subsubsection{Egentligt problem}
@@ -108,4 +106,4 @@ Hvordan kan vi udvikle et samlet krediteringssystem, der giver mulighed for at e
 \end{enumerate}
 
 \noindent
-Projektgruppen har valgt at afgrænse...
+Projektgruppen har valgt at afgrænse dette projekt, ved at konstruere en prototype til et system.

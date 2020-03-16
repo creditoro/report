@@ -1,7 +1,45 @@
 \section{Prioritering}
-\textit{Prioritering der bygger på kravenes forretningsmæssige betydning (nytte/benefit), arkitektoniske betydning, risiko samt læringsmæssige udbytte.}
-
+\subsection{Forretningsmæssige betydning}
+% MoSCW: I hvor høj grad er kravet forretningsmæssigt kritisk?
 \noindent
-MoSCoW \\
+Til prioriteringen af brugsmønstrene er MoSCoW metoden benyttet. Resultatet kan ses på figur \ref{fig:moscow}.\\
 
 \includegraphics[scale=1]{figures/MoSCoW.pdf}
+\captionof{figure}{MoSCoW}
+\label{fig:moscow}
+
+\subsection{Arkitektonisk betydning}
+De arkitektoniske krav der har en arketeknoisk betydning for systemet er:
+\begin{itemize}
+    \item Produktet vil være Dansk
+    \item Persistens vil blive håndteret af en database
+    \item Databasen vil være PostgreSQL
+    \item Systemet vil køre syv dage om ugen, 24/7
+\end{itemize}
+% Hvis vi arbejder med dette krav, vil det så i særlig grad hjælpe os til at få udviklet en passende løsningsstruktur?
+% Som jeg forstår dette, bør vi se på alle vores funktionelle/ikke funktionelle krav, hvis kravet bidrager til en bedre løsningsstruktur, angiv kravet og fortæl hvordan.
+
+
+%\subsection{Risiko} UNDLADET
+% Hvis vi arbejder med dette krav, vil det så i særlig grad hjælpe os med at få håndteret risici?
+% Som jeg forstår dette, bør vi se på alle vores funktionelle/ikke funktionelle krav, hvis kravet mindsker risici, nævn det.
+
+\subsection{Læringsmæssige udbytte}
+% Hvis vi arbejder med dette krav, vil vi så i særlig grad opnå et læringsmæssigt udbytte?
+% Som jeg forstår dette, bør vi se på alle vores funktionelle/ikke funktionelle krav, hvis kravet giver os en særlig grad af læringsmæssigt udbytte.
+\begin{itemize}
+    \item Supplerende krav - REST Api
+    \begin{itemize}
+        \item Vi har valgt at satse på at lave et system der vil afspejle den løsning som TV2 oprindeligt lagde op til. Den løsning indeholder et REST Api, som er vurderet som værende udenfor det der forventes at kunne som studerende på nuværende tispunkt. Ved at vælge sådan en løsning, vil det give os et rigtigt godt redskab i vores programmerings-værktøjskasse i fremtidige projekter, samt når vi er færdige.
+    \end{itemize}{}
+\end{itemize}
+
+
+\subsection{X-faktor}
+% Handler dette krav om noget som vi vil finde særligt motiverende, spændende, sjovt ... at arbejde med?
+\begin{itemize}
+    \item \hyperref[table:funktionskrav]{K14 - Importering af data} 
+    \begin{itemize}
+        \item Integrationen mellem andre systemer, og gå de forskellige systemer til at spille sammen er spændende. Det er her med til at give systemet et boost, da det automatisere oprettelsen af nye programmer i systemet.
+    \end{itemize}{}
+\end{itemize}
