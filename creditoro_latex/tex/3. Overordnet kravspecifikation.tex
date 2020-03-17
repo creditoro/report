@@ -13,9 +13,11 @@ TV 2 kunne være interesseret i at integrere systemet med andre systemer (Yousee
 
 \noindent
 For at beskytte dele af systemet (tilføjelse/redigering/sletning af data osv.), skal der indføres en form for adgangskontrol. Der skal være en offentligt tilgængelig del af systemet, hvor det er muligt at se krediteringerne for et et program uden at skulle logge ind.
-\begin{center}
-\begin{table}
-\begin{tabular}{ |p{1cm}|p{3.5cm}|p{7cm}| }
+
+
+
+\begin{longtable}[h]{ |p{1cm}|p{4cm}|p{11cm}| }
+
 \hline
 \textbf{ID} & \textbf{Navn} & \textbf{Beskrivelse} \\
 \hline
@@ -48,18 +50,16 @@ K13 & Eksporter data & Brugere skal kunne eksportere data til forskellige format
 \hline
 K14 & Importering af data & Systemet skal kunne importere EPG data via TVTid.dk \\
 \hline
-\end{tabular} 
 \caption{Funktionskrav}
 \label{table:funktionskrav}
-\end{table}
-\end{center}
+\end{longtable} 
+
 
 \subsection{Aktørliste}
 
-\scalebox{0.7}{
-\begin{center}
 
-\begin{tabular}{ |p{6cm}|p{6cm}|p{6cm}| }
+
+\begin{longtable}{ |p{3.7cm}|p{6.15cm}|p{6.15cm}| }
 \hline
 \textbf{Aktør} & \textbf{Beskrivelse} & \textbf{Mål og tjenester} \\
 \hline
@@ -88,11 +88,12 @@ Gæst (p)
 & Kan se krediteringer for forskellige programmer \newline Kan søge efter krediteringer for forskellige programmer \newline Se alt hvad en person har været med i \newline Søge efter information\\
 
 \hline
-
-\end{tabular}
 \caption{Aktørlisten}
 \label{table:aktørlist}
-\end{center}}
+
+\end{longtable}
+
+
 
 \subsection{Overordnet brugsmønstermodel}
 \begin{figure}[H]
@@ -106,8 +107,8 @@ Gæst (p)
 
 \begin{table}[H]
 \centering
-\scalebox{0.9}{
-\begin{tabular}{ |p{1cm}|p{3.5cm}|p{10cm}| }
+
+\begin{tabular}{ |p{1cm}|p{3.5cm}|p{11.5cm}| }
 \hline
 ID & Navn & Aktør \\
 \hline
@@ -151,14 +152,52 @@ B19 & Opret systemadministrator & Systemadministrator (p) \\
 \hline
 B20 & Bekræfte betalt royalty & Royal Bruger (p) \\
 \hline
-\end{tabular}}
+\end{tabular}
+\caption{Brugsmønstre}
+\label{tab:brugsmønstre}
 \end{table}
 
-
 \subsection{Overordnet supplerende krav}
-\begin{table}[H]
+
+Her bruger vi FURPS+ for supplerende krav.
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{3cm}|p{13cm}|}
+    \hline
+    \textbf{FURPS+}           &    \textbf{Requirements} \\
+    \hline
+    %What the customer wants! Note that this includes security-related needs.
+    Functionality           & Skal kunne kreditere produktionsroller som er angivet af DRs Krediteringsregler \\
+                            & Skal overholde persondataloven \\
+    \hline
+    % How effective is the product from the standpoint of the person who must use it? Is it aesthetically acceptable? Is the documentation accurate and complete?
+    Usability       & Systemet skal kunne understøtte flere sprog \\
+    \hline
+    % What is the maximum acceptable system downtime? Are failures predictable? Can we demonstrate the accuracy of results? How is the system recovered?
+    Reliability     &  Hvis serveren til systemet genstarter, startes del-systemerne igen automatisk. Der vil ikke være behov for at ligge systemet ned regelmæssigt for at kunne foretage backup. \\
+    \hline
+    % How fast must it be? What's the maximum response time? What's the throughput? What's the memory consumption?
+    Performance     &  Databasen skal kunne håndtere 10000 nye brugere - samt 15000 krediteringerer årligt i 25 år, uden at ofte brugte kald til REST Api'et bliver sløvt (reponsetid på mere end 300 ms) \\
+    \hline
+    % Is it testable, extensible, serviceable, installable, and configurable? Can it be monitored?
+    Supportability  &  Systemet vil indeholde unit tests, og komme med en rapport over hvor stor en procendel der er dækket af dette. % Hvis der er mere tid kan vi indrage integrations tests?
+    %Centraliseret logning (Elastic search, eller blot centraliseret system log?)
+    Systemet vil blive forbundet til det centraliserede fejllognings system \texttt{Sentry}.
+    Systemet er installerbart vha. Docker via Docker-compose. % (så vi blot kan sige docker-compose up -d for at få systemet op).
+    Det vil være muligt at konfigurere system indstillinger via en \texttt{.env} (miljø) fil.
+    En opsætningsguide vil være at finde sammen med kildekoden. 
+    \\ \hline
+    % The + reminds us of a few additional needs that a customer could have:
+    % fx. Design constraints, Implementation requirements, interface requirements or physical requirements.
+    \end{tabular}
+    \caption{FURPS+}
+    \label{tab:furps}
+\end{table}
+
+% Tabel over supplerende krav
+\begin{table}[h]
 \centering
-\begin{tabular}{ |p{2cm}|p{2.5cm}|p{7cm}| }
+\begin{tabular}{ |p{1cm}|p{2.5cm}|p{12.0cm}| }
 \hline
 \textbf{ID} & \textbf{Type} & \textbf{Beskrivelse} \\
 \hline
@@ -174,12 +213,11 @@ S03 & Sprogvalg & Systemet skal understøtte flere sprog \\
 \end{table}
 
 
-
-
 \subsection{Detaljerede brugsmønstre}
 
 \begin{table}[H]
-\begin{tabular}{|p{14cm}|}
+\centering
+\begin{tabular}{|p{16cm}|}
 \hline
     \begin{center}{}
     \textbf{Brugsmønster:} Opret kreditering  
@@ -208,12 +246,15 @@ Step 4: Hvis aktøren er systemadministrator, er vedkommende ikke forbundet til 
 Step 5: Hvis programmets titel allerede eksistere, gøres aktøren opmærksom på dette. \\
 
 Step 8: Hvis krediteringen afvises, laves de fornødne ændringer, og den nye kreditering sendes videre til godkendelse. \\
-\\ \hline
-\end{tabular}{}
+\hline
+\end{tabular}
+\label{tab:create_credits}
+\caption{Brugsmønster: Opret kreditering}
 \end{table}
 
 \begin{table}[H]
-\begin{tabular}{|p{14cm}|}
+\centering
+\begin{tabular}{|p{16cm}|}
 \hline
     \begin{center}{}
     \textbf{Brugsmønster:}  Læs kreditering  
@@ -234,7 +275,9 @@ Step 8: Hvis krediteringen afvises, laves de fornødne ændringer, og den nye kr
     En kreditering bliver vist \\ \hline
 
 	\textbf{Alternative hændelsesforløb (alternative flow):} \\
-Step 2: Hvis programmet ikke findes, får vedkommende besked om at programmet ikke findes 
-\\ \hline
-\end{tabular}{}
+Step 2: Hvis programmet ikke findes, får vedkommende besked om at programmet ikke findes \\ 
+\hline
+\end{tabular}
+\label{tab:read_credits}
+\caption{Brugsmønster: Læs kreditering}
 \end{table}

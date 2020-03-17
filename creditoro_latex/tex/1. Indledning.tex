@@ -21,14 +21,26 @@ Systemet forventes ikke at være et færdigt system, men en række forslag til l
 
 \noindent
 Producere der kan tilføje og redigere i krediteringerne, skal kun have mulighed for at redigere i de produktioner, de selv ejer.\\
-Det forventes at kreditering operations systemet er kompatibelt med andre systemer (fx Stofa, YouSee Play etc.).
+Det forventes at krediteringssystemet er kompatibelt med andre systemer (f.eks. fra Stofa, YouSee etc.).
 
 \subsubsection{Milepælsplan}
 Milepælsplanen har til formål at give projektgruppen et overblik over projektfaserne.\\
-\input{tex/1.1 Milepælspland.tex}
+\input{tex/1.1 Milepælsplan.tex}
 
-\subsubsection{Hvad ligger uden for projektrammen}
-Der forventes ikke at der laves et færdigt system, men et system der kan bruges som et værktøj af TV2. Det er derfor uden for systemets omfang (scope) at lave en REST API.
+% Gantt diagram -- HUSK AT FOLDE FASERNE UD!
+\begin{landscape}
+\begin{figure}
+    \centering
+
+\includegraphics[scale=0.35]{figures/gantt1.png}
+\caption{Gantt diagram}
+\label{fig:gantt}
+\end{figure}{}
+\end{landscape}
+
+% PRE review
+% \subsubsection{Hvad ligger uden for projektrammen}
+% Der forventes ikke at der laves et produktionsparat system, men et system der kan bruges som et værktøj af TV2. % PRE review: Det er derfor uden for systemets omfang (scope) at lave en REST API.
 
 \subsection{Formål med inceptionsfasen}
 Formålet med inceptionsfasen er at fastlægge systemets omfang, der bliver udformet en overordnet kravspecifikation (requiremtns outlined), kravene prioriteres og metoden i elaborationsfasen beskrives. Dette sker gennem en nærmere undersøgelse af problemstillingen, indsamling af information og under kundemøder hvor kravene indsamles (eliciteres).\\
@@ -42,13 +54,16 @@ Målene for inceptionsfasen kan således opstilles i punktform:
 \end{itemize}
 
 \subsection{Problemanalyse}
-Hvordan kan vi udvikle et samlet krediteringssystem, der giver mulighed for at erstatte rulletekster efter et endt program?
+% PRE review: Hvordan kan vi udvikle et samlet krediteringssystem, der giver mulighed for at erstatte rulletekster efter et endt program?
 
 \subsubsection{Igangsættende problem}
-TV2 ønsker at frigøre 30 sekunders krediterings tekster efter hvert program, så de i stedet kan bruge tiden på at vise reklamer. Problemet består i at disse krediterings tekster, så skal vises på en anden platform. \\
+TV2 ønsker at frigøre 30 sekunders krediterings tekster efter hvert program, så de i stedet kan bruge tiden på at vise reklamer. Problemet består i at disse krediterings tekster, så skal vises på en anden platform.\\
 
-\begin{center}
-\begin{tabular}{|p{10cm}|p{4cm}|}
+\noindent
+I tabel \ref{table:kravFraCase} ses kravene fra TV2's projektcase:
+
+% Oversæt gerne højre kolonne til dansk :-)
+\begin{longtable}{|p{12cm}|p{4cm}|}
 \hline
 \textbf{Beskrivelse} & \textbf{Type} \\
 \hline
@@ -80,22 +95,21 @@ TV2 ønsker at frigøre 30 sekunders krediterings tekster efter hvert program, s
 & Et problem \\
 
 \hline
-\end{tabular}
-\end{center}
+\caption{Krav fra TV2s projektcase}
+\label{table:kravFraCase}
+\end{longtable}
 
-\subsubsection{Identifikation \& verifikation}
-Årsagen til problemet er, at der maksimalt er afsat 30 sekunder efter hvert program til at vise krediteringer. Konsekvensen af dette er, at der ikke altid er tid til at vise alle krediteringer, hvilket ender ud i at krediteringerne skal prioriteres før de bliver vist på tv.\\
+% -----------------------------------------------------------------------------------------------------
+\subsubsection{Identifikation af problemet}
+Som det er nu bliver krediteringer vist i slutningen af et program. Ifølge reglerne for visning af krediteringer, må krediteringer ikke vises mere end 20 sekunder for produktioner under 60 minutter, og 30 sekunder for produktioner over 60 minutter. Dette giver en del problemer. For det første betyder den begrænsede varighed, at ikke alle medarbejdere kan krediteres. Dette ender ud i at der skal prioriteres i krediteringerne, før de bliver vist på TV. Derved får alle medarbejdere ikke den anerkendelse de burde.\\
+Hvis krediteringer flyttes til et eksternt system, og derved ikke bliver vist på TV, kan man undgå at skulle prioritere. Alle kan derved få den fortjente kredit. Derudover vil det også give mulighed for at vise noget andet, som f.eks. reklamer eller promoveringer for andre programmer (red: eget indhold).
+\footnote{\href{https://www.dr.dk/NR/rdonlyres/00221a7b/dpikscstjptklixxdnjgywgeuakhwpog/DR_kreditmanual_050810.pdf}{DR’s krediteringsregler for TV}}
+% brug bibliography. show me the way
 
 \noindent
-Problemet i denne løsning er, at de krediteringer seerne får vist ikke er fyldestgørende, og at alle der har arbejdet på programmet ikke får den anerkendelse de har krav på.
+Et sådan eksternt system vil også hjælpe med oprettelsen af nye krediteringer, ved at gøre processen hurtigere og nemmere, samt mere overskueligt. Dertil har gruppen valgt at arbejde med samtlige/alle problemstillinger givet af TV2 i tabel \ref{table:kravFraCase}, og lave en prototype til et funktionsdygtigt system. Denne prototype vil kunne bruges som et udkast til et endeligt system.
 
-\subsubsection{Egentligt problem}
-Det egentlige problem er, at de vil gerne fjerne de 30 sekunders krediteringer og vise noget andet, fx reklamer og promoveringer.
-
-\subsubsection{Præcis beskrivelse af problem}
-Hvordan laver TV2 en løsning, der overholder kravene for at  krediteringerne bliver vist, samtidig med at frigøre dem fra TV sendetiden.
-
-\subsection{Problemformulering og afgrænsning}
+\subsection{Problemformulering \& afgrænsning}
 Hvordan kan vi udvikle et samlet krediteringssystem, der giver mulighed for at erstatte rulletekster efter et endt program?
 
 \begin{enumerate}
@@ -105,5 +119,19 @@ Hvordan kan vi udvikle et samlet krediteringssystem, der giver mulighed for at e
     \item Hvordan kan man oprette et system som kan indeholde krediteringer?
 \end{enumerate}
 
-\noindent
+\noindent % afgrænsning
 Projektgruppen har valgt at afgrænse dette projekt, ved at konstruere en prototype til et system.
+% Indsat post review. 
+
+\noindent % Det vi har med:
+Projektgruppen har valgt at lave et system der ligger tæt op ad det oprindelige foreslag fra TV2s projektcase. Dette indebærer alle kravene i tabel \ref{table:kravFraCase}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.35]{figures/tv2_system.png}
+\label{fig:tv2_system}
+\caption{Foreslag til systemtegning - © TV2}
+\end{figure}
+% Indsæt figur af deres oprindelige systemtegning?
+
+\noindent % Det vi vælger fra:
+I et produktionsklart system vil det være ideelt at have en webside, men dette har vi konkluderet som værende uden for projektet.

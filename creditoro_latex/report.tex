@@ -11,10 +11,39 @@
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
+\usepackage{lastpage} % Bruges i customtitlepage til at tælle sider
 \usepackage[font=small,labelfont=bf]{caption}
+\usepackage{lscape}
+\usepackage{xargs}
 
+\usepackage{xcolor}
 % \usepackage{csvsimple}
 \usepackage{longtable}
+
+% Margin
+\usepackage{geometry}
+\geometry{a4paper,  total={170mm,250mm},
+ left=20mm,
+ top=30mm}
+
+% Bibliografi
+\usepackage[
+backend=biber,
+style=alphabetic,
+citestyle=authoryear
+]{biblatex}
+\addbibresource{appendices/bibliography.bib} %Imports bibliography file
+\bibliography{appendices/bibliography.bib}
+
+% New Commands
+\newcommand\myworries[1]{\textcolor{red}{#1}} 
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
+
+
+
+
+
+
 
 
 % Needs to be the last package included
@@ -30,8 +59,6 @@
 % Line Mellem rum
 % \linespread{1.4}
 \graphicspath{{./figures/}{../figures/}}
-
-\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
 
 \begin{document}
 % Fjerner side tal
@@ -85,9 +112,9 @@
     \newpage
     
     % Bilag
+    \appendix % Bruges til billag, så den laver billag indholdfortegnelse og overskrifter
     \input{appendices/bilag.tex}
-    
-    % Bibliografi
-    \bibliography{appendices/bibliography.bib}
+
+    \printbibliography
     
 \end{document}

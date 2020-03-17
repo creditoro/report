@@ -1,48 +1,102 @@
 \section{Faglig vidensgrundlag}
 
+\subsection{Begrebsdefinitioner} 
+De begreber der findes i denne rapport er defineret i tabel \ref{tab:Begrebsdefinitioner}:
 
-\subsection{Begrebsdefinitioner}
-
-\begin{tabular}{|p{4cm}|p{10cm}|}
+% Begrebsdifinitioner
+\begin{table}[h]
+    \centering
+\begin{tabular}{|p{4cm}|p{12cm}|}
 \hline
 \textbf{Begreb} & \textbf{Definition} \\
 \hline
-Brugsmønster & Et brugsmønster viser hvilke scenarier en bruger af et software system kan interagere med \\
+REST API    & REST: \\
+            & Repræsentativ tilstandsoverførsel (dansk oversættelse af REST) er en software-arkitektonisk stil, der definerer et sæt begrænsnigner, der skal bruges til at oprettelse af webtjenester\\
+            & API: \\
+            & API står for Application Programming Interface, og er en softwaregrænseflade, der tillader et stykke software at interagere med andet software \\
+\hline
+EPG         & EPG er en forkortelse for Electronic Programme Guide. Det er en generelt betegnelse for elektronisk programoversigt over TV-programmer         \\
+\hline
+GDPR        & Databeskyttelsesforordning, der har til formål at styrke og harmonisere beskyttelsen af personoplysninger i EU \\
+\hline
+SQL         & Structured Query Language er et programmeringssprog til relationelle databaser\\
+\hline
+ \end{tabular}
+    \caption{Begrebsdefinitioner}
+    \label{tab:Begrebsdefinitioner}
+\end{table}
+
+\subsection{Metoder og værktøjer}
+\begin{longtable}{|p{4cm}|p{12cm}|}
+\hline
+\textbf{Begreb} & \textbf{Definition} \\
 \hline
 Brugsmønsterdiagram & Et brugsmønsterdiagram er et diagram der viser hvordan forskellige aktører interagerer med forskellige brugsmønstre \\
 \hline
-Supplerende krav & beskrivelse \\
-\hline
 MoSCoW & 
-MoSCoW er en prioterings model der bruges til at sige hvilke ting man: 
+MoSCoW er en prioriterings model der bruges til at sige hvilke ting man: 
 \begin{description}[noitemsep]
     \item [Skal] have
     \item [Burde] have 
     \item [Kan] have
     \item [Hvad man ikke] vil have
-\end{description}  \\
+\end{description}  \\ 
 \hline
- \end{tabular}
+PostgreSQL          &   PostgreSQL er en open-source objekt-relationel database server.\\
+\hline
+GitHub              &   GitHub er en web-baseretkollaborations platform henvendt til software udviklere, der gør det muligt at versions-kontrollere projekter.\\ 
+\hline
+Overleaf            &   Overleaf er en online skriveplatoform for \textbf{LaTeX}, hvor man kan være flere brugere der skriver samtidig. \\
+\hline
+UML                 &   Unified Modeling Language \\
+\hline
+IntelliJ            &   Integreret udviklings miljø, som primært bruges af gruppens medlemmer. \\
+\hline
+ZenHub              &   ZenHub er en platform der gør det lettere at anvende Scrum i praksis.  \\
+\hline
+Scrum Board         &   \\
+\hline
+Pair Programming    &   Pair programming er en softwareudvilkingsteknik, hvor to programmører arbejder sammen ved én computer.\\
+\hline
+Klassediagram       &   Bruges til visuelt at vise hvordan softwaresystemer er opbygget. I diagrammet beskrives systemets klasser, metoder og værdier klassen indeholder, samt klassernes relationer til hinanden.\\
+\hline
+FURPS+              &   FURPS+ er en model til klassificering af \textit{softwarekvalitetsattributter} % opstil hvad FURPS+ står for, ligesom med Scrum \\
+\\
+\hline
+    \caption{Metoder \& Værktøjer}
+    \label{tab:tools}
+\end{longtable}
 
  % Teori --------------------------------------------------------------------------------------------------------
 \subsection{Teori}
-\subsubsection{Udvikling af Brugsmønstermodeller} %-------------------------------
+\subsubsection{Udvikling af brugsmønstermodeller} %-------------------------------
 Det første skridt i udviklingen af et brugsmønster er at finde og definere de forskellige aktører der vil interagere med systemet. En aktør kan defineres som alt der kommunikerer med systemet og ikke selv er en del af systemet. Et eksempel på dette kunne være en kunde på en webshop. Disse aktører opstilles i en tabel sammen med de brugsmønstre hver aktør kan tilgå. \\
 
 \noindent
-Da kravindsamling er en evolutionær aktivitet, bliver alle aktører ikke nødvendigvis identificeret i første iteration. Det er muligt at identificere primærer aktører i løbet af første iteration, og først senere i forløbet blive i stand til at identificere sekundære aktører, når man får mere viden om systemet. \textit{Primære} aktører interagerer med systemet for at opnå påkrævede systemfunktioner, og ud fra det, få noget ud af at bruge systemet. \textit{Sekundære} aktører støtter systemet så de primærer aktører kan gøre deres arbejde. Når aktørerne er fundet kan brugsmønstrene findes. \textbf{Et brugsmønster angiver et scenarie en aktør kan interagere med}. \\
+Da kravindsamling er en evolutionær aktivitet, bliver alle aktører ikke nødvendigvis identificeret i første iteration. Det er muligt at identificere primærer aktører i løbet af første iteration, og først senere i forløbet blive i stand til at identificere sekundære aktører, når man får mere viden om systemet. \textit{Primære} aktører interagerer med systemet for at opnå påkrævede systemfunktioner, og ud fra det, få noget ud af at bruge systemet. \textit{Sekundære} aktører støtter systemet så de primærer aktører kan gøre deres arbejde. Når aktørerne er fundet kan brugsmønstrene findes. Et brugsmønster angiver et scenarie en aktør kan interagere med. \\
 
 \noindent
 Når både aktører og brugsmønstre er fundet, kan man opstille et brugsmønster-diagram for at give en visuel forståelse for hvilke aktører der kan tilgå hvilke brugsmønstre. Et eksempel på et brugsmønsterdiagram kan ses nedenfor: \\
-\includegraphics[scale=1]{figures/2. Faglig vidensgrundlag/UseCaseExample.png} \\
-
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=1]{figures/2. Faglig vidensgrundlag/UseCaseExample.png} \\
+    \label{fig:use_case_example}
+    \caption{Brugsmønster-diagram eksempel}
+\end{figure}
 \noindent
 Brugsmønstermodellen hjælper udvikleren med at forstå brugeren, så systemet kan konstrueres. Idet der er et samlet billede af hvordan systemet skal se ud, vil udviklingen være mere målfast da kravene og deres forhold til brugeren er klare.
 
-\subsubsection{Supplerende krav} % -------------------------------
-FURPS+ (skrives om til den rigtige aflevering)
 
-\subsubsection{MoSCoW} % ------------------------
+% Fagligt Videngrundlag ----------------------------------------------------------------------------
+\subsection{Fagligt Vidensgrundlag}
+
+\subsubsection{JAVA}
+
+\subsubsection{Database}
+
+\subsection{Metoder og værktøjer}
+
+\paragraph{MoSCoW} % ------------------------
 MoSCoW er en prioriterings model. Den bruges ofte i software udvikling.\\
 
 \noindent
@@ -55,48 +109,3 @@ MoSCoW er en vigtig model i software udvikling da, den beskriver hvilken del af 
     \item [Could have] betyder det som kunne være med. Hvis der er tid nok. 
     \item [Won't have (this time)] Det som der slet ikke skal prioriteres nu, men måske en anden gang.
 \end{description}
-
-% Fagligt Videngrundlag ----------------------------------------------------------------------------
-\subsection{Fagligt Vidensgrundlag}
-
-\subsubsection{Lovgivningen for visning af krediteringer}
-\myparagraph{Kredit formalia} 
-Når det kommer til kreditering er der mange regler. Disse regler afhænger bl.a. af hvilken TV-kanal eller land der er tale om. \textbf{I denne opgave vil vi gå ud fra DR's krediteringsregler for TV}. \\
-
-\noindent
-Formålet med krediteringer er at orientere seerne om hvem der har bidraget til et programs tilblivelse.
-
-\myparagraph{Form}
-Målet med krediteringer er at integrere dem så vidt muligt i programmet. Derfor skal kredit altid vises med programrelevant lyd- og billedside.
-
-\myparagraph{Varighed}
-Varigheden af krediteringer afhænger af længden af programmet. Krediteringer for programmer under 60 minutter må maksimalt vare 20 sekunder, hvor programmer der er længere end 60 minutter må have 30 sekunders krediteringer. Større dansk dramatik må have 46 sekunders krediteringer.
-
-\myparagraph{Hvem skal krediteres}
-Når det kommer til hvem der skal krediteres, kigges der på medarbejderens eller medvirkenes funktion i programmet. Ifølge ophavsretsloven skal ophavsmænd samt udøvende kunstnere krediteres.
-Hver medvirkende har kun ret til én kreditering pr. funktion. Det vil altså sige, at hvis en skuespiller nævnes i starten af programmet, må vedkommende kun nævnes i slutningen hvis vedkommende har andre funktioner.
-Hvis flere personer har samme funktion, fremhæves den hovedansvarliges navn grafisk.
-
-\myparagraph{Eksterne produktioner}
-Kreditering for eksterne produktioner skal så vidt muligt overholde DR's kreditregler. Indkøbte programmer som spillefilm eller dokumentarer, skal så vidt det forhandlingsmæssigt er muligt, tilpasses DR's kreditregler. Dertil skal der altid være kildeangivelse af producenten.
-
-\myparagraph{Eksterne firmaer og medarbejdere}
-Når enkelte funktioner bliver udført af personer hos eksterne firmaer (firmaer der ikke er programproducenten), krediteres den enkelte person. I andre tilfælde krediteres det eksterne firma. Eksterne firma samt det eksterne firmas medarbejdere må ikke begge krediteres.
-
-\myparagraph{Sponsorkreditering}
-Sponsorer skal krediteres i rulleteksterne, ikke med logo, i slutningen af et program.
-
-\myparagraph{Citater og arkiv}
-Ved citater skal ophavsmanden til værket krediteres. Hvis der i citatet er en funktion der indeholder en selvstændigt skabende indsats der har betydning for programmets indhold, skal også denne krediteres. Kilden, fx spillesteder eller andre TV-stationer skal også krediteres. \\
-Ved arkivmateriale skal ophavsmanden krediteres. Også her skal der krediteres hvis der i materialet er en funktion der indeholder en selvstændigt skabende indsats, der har betydning for programmets indhold. Nogle programmer kan dog indeholde mange arkivklip, så der skal hertil overvejes om der skal ske en fuld kreditering af alle ophavsmænd. I sådan et tilfælde er det i overensstemmelse med god skik, blot at kreditere i begrænset omfang.
-
-\myparagraph{Adresser, Konkurrencer MV.}
-Adresser, vindere af konkurrencer, telefonnr mm. skal vises permanent eller parallelt med almindelig kredit, så dette ikke optager unødvendig tid.
-
-\myparagraph{Start-kredit}
-Kredit kan i forbindelse med dramatikprogrammer fordeles mellem start og slut. Her vises funktioner som Instruktør, Manuskript, Oversættelse, Hovedroller mm. i starten af programmet. De øvrige krediteringer vises i slutningen.
-
-\myparagraph{Kredit design}
-Også ved design af krediteringer er der regler. Kredit opdeles i to områder. Den nederste tredjedel af skærmen bruges til at vise krediteringer, hvor de øverste to tredjedele bruges til programrelevante billeder. Denne opdeling giver mulighed for at overskrifte det øverste felt og vise programspots der, mens kreditering stadig vises i bunden. \\
-
-\includegraphics[scale=0.42]{figures/2. Faglig vidensgrundlag/Kredit Design.png}

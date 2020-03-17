@@ -4,9 +4,12 @@
 \noindent
 Til prioriteringen af brugsmønstrene er MoSCoW metoden benyttet. Resultatet kan ses på figur \ref{fig:moscow}.\\
 
+\begin{figure}[h]
+\centering
 \includegraphics[scale=1]{figures/MoSCoW.pdf}
-\captionof{figure}{MoSCoW}
+\caption{MoSCoW}
 \label{fig:moscow}
+\end{figure}
 
 \subsection{Arkitektonisk betydning}
 De arkitektoniske krav der har en arketeknoisk betydning for systemet er:
@@ -14,7 +17,8 @@ De arkitektoniske krav der har en arketeknoisk betydning for systemet er:
     \item Produktet vil være Dansk
     \item Persistens vil blive håndteret af en database
     \item Databasen vil være PostgreSQL
-    \item Systemet vil køre syv dage om ugen, 24/7
+    \item Systemet vil automatisk starte efter evt. server genstart.
+    
 \end{itemize}
 % Hvis vi arbejder med dette krav, vil det så i særlig grad hjælpe os til at få udviklet en passende løsningsstruktur?
 % Som jeg forstår dette, bør vi se på alle vores funktionelle/ikke funktionelle krav, hvis kravet bidrager til en bedre løsningsstruktur, angiv kravet og fortæl hvordan.
@@ -40,6 +44,6 @@ De arkitektoniske krav der har en arketeknoisk betydning for systemet er:
 \begin{itemize}
     \item \hyperref[table:funktionskrav]{K14 - Importering af data} 
     \begin{itemize}
-        \item Integrationen mellem andre systemer, og gå de forskellige systemer til at spille sammen er spændende. Det er her med til at give systemet et boost, da det automatisere oprettelsen af nye programmer i systemet.
+        \item Integrationen mellem andre systemer, og gå de forskellige systemer til at spille sammen er spændende. Det er her med til at give systemet et boost, da det automatiserer oprettelsen af nye programmer i systemet.
     \end{itemize}{}
 \end{itemize}
