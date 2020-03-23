@@ -15,6 +15,7 @@
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage{lscape}
 \usepackage{xargs}
+\usepackage{tabularx}
 
 \usepackage{xcolor}
 % \usepackage{csvsimple}
@@ -68,8 +69,8 @@ citestyle=authoryear
     \input{customtitlepage}
     \newpage
     
-    % Titelblad
-    \input{tex/0. Titelblad}
+    % Titelblad ------------------------------------------------------------------------ Husk at fjerne komment neden under?
+    \input{tex/00_Titelblad}
     \newpage
  
     % Indholdsfortegnelse
@@ -80,41 +81,46 @@ citestyle=authoryear
     \setcounter{page}{1}
 
     % Indledning
-    \input{tex/1. Indledning}
+    \input{tex/01.0_Indledning}
     \newpage
     
     % Faglig vidensgrundlag
-    \input{tex/2. Faglig vidensgrundlag}
+    \input{tex/02_Faglig_vidensgrundlag}
     \newpage
     
     % Overordnet kravspecifikation
-    \input{tex/3. Overordnet kravspecifikation}
+    \input{tex/03_Overordnet kravspecifikation}
     \newpage
 
     % Kritiske risici
-    \input{tex/4. Kritiske risici}
+    \input{tex/04_Kritiske_risici}
     \newpage
     
     % Prioritering
-    \input{tex/5. Prioritering}
+    \input{tex/05_Prioritering}
     \newpage
     
     % Metode i elaborationsfasen
-    \input{tex/6. Metode i eleborationsfasen}
+    \input{tex/06_Metoder og Værktøjer}
     \newpage
     
     % Ressourcer
-    \input{tex/7. Ressourcer}
+    \input{tex/07_Ressourcer}
     \newpage
     
     % Konklusion
-    \input{tex/8. Konklusion}
+    \input{tex/08_Konklusion}
+    \newpage
+    
+    % Procesdokumenter
+    \input{appendices/procesdokumenter}
     \newpage
     
     % Bilag
-    \appendix % Bruges til billag, så den laver billag indholdfortegnelse og overskrifter
+    \appendix % Bruges til bilag, så den laver bilag indholdfortegnelse og overskrifter
     \input{appendices/bilag.tex}
 
-    \printbibliography
+    % bibliography empty
+    %\printbibliography
     
 \end{document}
