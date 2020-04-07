@@ -1,0 +1,280 @@
+\documentclass[a4paper,12pt]{article}
+% Resten af pakkerne
+\usepackage[english, danish]{babel}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{flafter}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{lastpage} % Bruges i customtitlepage til at tælle sider
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{lscape}
+\usepackage{xargs}
+\usepackage{tabularx}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+% \usepackage{csvsimple}
+\usepackage{longtable}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+% Page numbering
+\pagestyle{fancy} 
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+% Margin
+\usepackage{geometry}
+\geometry{a4paper,  total={170mm,250mm},
+ left=20mm,
+ top=30mm}
+
+% Bibliografi
+\usepackage[
+backend=biber,
+style=alphabetic,
+citestyle=authoryear
+]{biblatex}
+\addbibresource{appendices/bibliography.bib} %Imports bibliography file
+\bibliography{appendices/bibliography.bib}
+
+% New Commands
+\newcommand\myworries[1]{\textcolor{red}{#1}} 
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
+
+
+% Needs to be the last package included
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+
+% Line Mellem rum
+% \linespread{1.4}
+\graphicspath{{./figures/}{../figures/}}
+
+\title{Requirements draft}
+\author{Group 06}
+\date{March 26th 2020}
+
+\begin{document}
+\pagenumbering{gobble} % Fjerner side tal, arabic skal bruges senere 
+% Sådan ser du antal sider i alt ;) 
+
+\maketitle
+
+\newpage
+\thispagestyle{empty}
+\include{tex/00_Titelblad}
+\newpage
+
+\pagenumbering{arabic}
+
+
+\section{Functional Requirements}
+% note: The Rest API is responsible for validating the logic, and the client is responsible for visualizing it.
+Since the REST API and the Desktop client share functionality, by having the client call the REST API to handle the logic, we have merged the two functional requirements. The desktop client will call the REST API to handle the logic, thus only minimal logic will be required in the desktop client.
+
+\begin{longtable}{|p{1cm}|p{3.5cm}|p{11cm}|} 
+    \hline
+    
+    % \multicolumn{3}{|c|}{}  \\ 
+    % \multicolumn{3}{|c|}{Rest API}  \\ 
+    % \hline
+    % F01 & Authentication & The API should return a token to the caller upon successful login post request. \\
+    % \hline
+    % F02 & Specific credit & The API should return the credit if found when provided with an ID.  \\
+    % \hline
+    % F03 & List Credits & The API should return paginated credit results if the user is authenticated. \\
+    % \hline
+    
+    %\multicolumn{3}{|c|}{}  \\ 
+    \multicolumn{3}{|c|}{ \textbf{Desktop-client \& REST API}}  \\ 
+    \hline
+    \textbf{ID} & \textbf{Name} & \textbf{Description} \\
+    \hline
+    D01 & Login/out & You should be able to login and out of the system with ease by providing username and password. \\
+    \hline
+    D02 & Search & You should be able to search for TV-show titles as well as persons \\
+    \hline
+    D03 & Channel Browse & You should be able to browse channels registered in the system, and see which TV-shows are streamed on these \\
+    \hline
+    D04 & Display credits associated with TV-program & You should be able to display all credits associated with a TV-program \\
+    \hline
+    D05 & Create Channnel & The system admin should be able to create new channels. \\
+    \hline
+    D06 & Add system admin & The system admin should be able to add other system admins. \\
+    \hline
+    D07 & Add Channel admin & The system admin and channel admin should be able to add channel administrators to a channel. (Channel admin only for own channel) \\
+    \hline
+    D08 & Add Producer & The system admin and channel admin should be able to add producers for a show (channel admin only for own channel) \\
+    \hline
+    D09 & Create credit & The system admin, channel admin and producer should be able to create a credit (channel admin and producer only for own channel) \\
+    \hline
+    D10 & Delete credit & The system admin and channel admin should be able to delete credits (channel admin only for own channel) \\
+    \hline
+    D11 & Update credit & The system admin, channel admin and producer should be able to update and change credit (channel admin and producer only for own channel) \\
+    \hline
+    D12 & Update person & System admin, channel admin and producer should be able to update a person, mainly which shows the person has helped produce \\
+    \hline
+    D13 & Approve or disapprove credit & The system admin and channel admin should be able to approve or disapprove created credits before they are publicly available (channel admin only for own channel) \\
+    \hline
+    D14 & Create royalty user & The system admin should be able to create a royalty user \\
+    \hline
+    D15 & Update royalty user & The system admin and royalty user should be able to update royalty users \\% Burde det ikke være CREATE? Og hvis ikke, hvorfor har vi så ikke en create?
+    \hline
+    D16 & Change language & You should be able to change the language of the user interface \\
+    \hline
+    
+    \caption{Desktop-client \& REST API: Functional Requirements}
+    \label{tab:desktop_client_rest_api_funreq}
+\end{longtable}
+
+\newpage
+% EPG POLLER ---------------------- EPG POLLER ------------------ EPG POLLER
+\begin{table}[h]
+    \begin{tabular}{|p{1cm}|p{3.5cm}|p{11cm}|}
+        \hline
+        %\multicolumn{3}{|c|}{}  \\
+        \multicolumn{3}{|c|}{\textbf{EPG Poller}} \\
+        \hline
+        \textbf{ID} & \textbf{Name} & \textbf{Description} \\
+        \hline
+        E01 & Poll-data
+        &  The EPG Poller should be able to poll data from \href{www.tvtid.tv2.dk}{tvtid.dk} \\
+        \hline
+        E02 & Update Database & Update the database with credits \\
+        \hline
+    \end{tabular}
+    \caption{EPG Poller: Functional Requirements}
+    \label{tab:epg_poller_funreq}
+\end{table}
+
+\section{Non-functional Requirements}
+
+\begin{longtable}{|p{1cm}|p{3.5cm}|p{11cm}|} 
+    \hline
+
+    %\multicolumn{3}{|c|}{}  \\ 
+    \multicolumn{3}{|c|}{\textbf{REST API}}  \\ 
+    \hline
+    \textbf{ID} & \textbf{Name} & \textbf{Description} \\
+    \hline
+    NR01 & Supportability &  Centralized error reporting should be available via a common interface (such as Sentry).\\
+    \hline
+    NR02 & Performance &  Commonly used API calls should respond within 300 milliseconds. \\
+    \hline
+    NR03 & Scalability &  The system should be able to handle 10K new users yearly for 25 years.\\
+    \hline
+    NR04 & Scalability &  The system should be able to handle 15K new credits yearly for 25 years.\\
+    \hline
+    NR05 & Configuration & Data persistence time should be configurable, to auto-cleanup data older than the configured value (defaults to 25 years).\\
+    \hline
+    NR06 & Availability &  The system should start automatically after server restarts. \\
+    \hline
+    NR07 & Usability &  API documentation should be available via Swagger UI. \\
+    \hline
+    NR08 & Security &  The server that the REST API is hosted on should only allow login via SSH. \\
+    \hline
+    NR09 & Security &  The server that the REST API is hosted on should only allow connections from the outside on port 443 (https), 80 (http) and 22222 (ssh). \\
+    \hline
+    NR10 & Installability & REST API should be deployable within a container (such as Docker). \\
+    \hline
+    NR11 & Configurability & REST API should be configurable using \textbf{environment} files. \\
+    \hline
+    NR12 & Authentication & REST API should handle authentication via token based authentication with it's clients. A token is valid for 2 hours, and is refreshed automatically after a request with the token when it's time to expire is less than an hour. \\ % When 
+    \hline
+    \caption{REST API: Non-functional Requirements}
+    \label{tab:rest_api_nfunreq}
+\end{longtable}
+
+\begin{table}
+    \centering
+    \begin{tabular}{|p{1cm}|p{3.5cm}|p{11cm}|} 
+        \hline
+        %\multicolumn{3}{|c|}{}  \\ 
+        \multicolumn{3}{|c|}{\textbf{Desktop-client}}  \\ 
+        \hline
+        \textbf{ID} & \textbf{Name} & \textbf{Description} \\
+        \hline
+        ND01 & Supportability &  Error reporting should be available via pop-out box \\
+        \hline
+        ND02 & Performance &  Commonly used buttons should work within 300 milliseconds \\
+        \hline
+        ND03 & Scalability &  The system should have a nice overview of all credits \\
+        \hline
+        ND04 & Scalability &  The client should be able to query search results in 5 seconds \\
+        \hline
+        ND05 & Configuration & Configuration should be configurable using \textbf{environment} files and GUI \\
+        \hline
+        ND06 & Availability &  The system should start automatically after server restarts. \\
+        \hline
+        ND07 & Authentication & The system should redirect to the login page when receiving a HTTP 401 (unauthorized) response from the REST API. \\
+        \hline
+        ND08 & Inactivity & The desktop-client should automatically detect if the authentication token is expired and redirect to login page. \\ 
+        \hline
+    \end{tabular}
+    \caption{Desktop Client: Non-functional Requirements}
+    \label{tab:desktop_client_nfunreq}
+\end{table}
+
+\begin{table}
+    \begin{tabular}{|p{1cm}|p{3.5cm}|p{11cm}|} 
+        \hline
+        %\multirow{2}{}{\multicolumn{3}{|c|}{\textbf{EPG Poller}}} \\
+        \multicolumn{3}{|c|}{\textbf{EPG Poller}} \\
+        \hline
+        \textbf{ID} & \textbf{Name} & \textbf{Description} \\
+        \hline
+        NE01 & Supportability &  Centralised error reporting should be available via a common interface (such as Sentry).\\
+        \hline
+        NE02 & Performance &  It should be able to poll data every hour and finish within 15 min to update the data \\
+        \hline
+        NE03 & Scalability &  The system should be able to poll 15K new shows every year yearly, for 25 years. \\
+        \hline
+        NE04 & configuration & How often the poller is run, where to poll data from and where to post data too should be configurable \\
+        \hline
+        NE05 & Availability &  The system should start automatically after server restarts. \\
+        \hline
+        NE06 & Usability & The system should warn about show's without credit \\
+        \hline
+        NE07 & Security & The server that the EPG poller is hosted on should only allow connections from the outside on port 22221(ssh). \\
+        \hline
+        NE08 & Configurability & The EPG Poller should be configurable using \textbf{environment} files. \\
+        \hline
+    \end{tabular}
+    \caption{EPG Poller: Non-functional Requirements}
+    \label{tab:epg_poller_nfunreq}
+\end{table}
+
+\newpage
+\section{Acceptance Criteria}
+\subsection{D01 - Login/out}
+As PO I want users to be able to authenticate so that we can limit functionality to the right users.
+
+\subsubsection{Login}
+\textbf{Given} the user is not signed in.
+
+\textbf{And} the user clicks the login button. \\
+\textbf{When} the user fills out a valid username.
+
+\textbf{And} the user fills out a valid password. 
+
+\textbf{And} the user clicks submit (or enter hotkey) \\
+\textbf{Then} a \texttt{post} request is sent to the server with the credentials over https.
+
+\textbf{And} the user is then authenticated and a temporary token is returned to the sender.
+
+\textbf{And} user is now signed in. \\
+
+%\subsubsection{Logout}
+
+\end{document}
