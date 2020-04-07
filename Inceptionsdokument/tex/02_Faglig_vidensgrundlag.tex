@@ -1,0 +1,60 @@
+\section{Faglig Vidensgrundlag}
+
+\subsection{Begrebsdefinitioner} 
+De begreber der findes i denne rapport er defineret i tabel \ref{tab:Begrebsdefinitioner}:
+
+% Begrebsdifinitioner
+\begin{table}[h]
+    \centering
+\begin{tabular}{|p{4cm}|p{12cm}|}
+\hline
+\textbf{Begreb} \& \textbf{Definition} \\
+\hline
+REST API    & REST: \\
+            & Repræsentativ tilstandsoverførsel (dansk oversættelse af REST) er en software-arkitektonisk stil, der definerer et sæt begrænsnigner, der skal bruges til at oprettelse af webtjenester\\
+            & API: \\
+            & API står for Application Programming Interface, og er en softwaregrænseflade, der tillader et stykke software at interagere med andet software \\
+\hline
+EPG         & EPG er en forkortelse for Electronic Programme Guide. Det er en generelt betegnelse for elektronisk programoversigt over TV-programmer         \\
+\hline
+GDPR        & Databeskyttelsesforordning, der har til formål at styrke og harmonisere beskyttelsen af personoplysninger i EU \\
+\hline
+SQL         & Structured Query Language er et programmeringssprog til relationelle databaser\\
+\hline
+Person & Person er de medarbejdere der skal krediteres. Det kunne f.eks. være en skuespiller eller en lydmand. \\
+\hline
+Personinformation & Personlig information som fx e-mail, tlf. nr. osv. \\
+\hline
+Swagger UI  & Brugergrænseflade til vores REST Api. (\url{https://swagger.io/}) \\
+\hline
+Docker      & Bruges til containeriseringen, så host styresystemet bliver agnostisk, og softwaren bliver indkapslet. Det forhindrer også "it works on my machine" problemer.  \\
+\hline
+ \end{tabular}
+    \caption{Begrebsdefinitioner}
+    \label{tab:Begrebsdefinitioner}
+\end{table}
+
+% Fagligt Videngrundlag ----------------------------------------------------------------------------
+\subsection{Fagligt Vidensgrundlag}
+Dette afsnit har til formål at dækker over den faglige viden gruppen skal have, for at kunne udføre projektet.
+
+\subsubsection{JAVA}
+At have kendskab til Java er en vigtig forudsætning for udarbejdelsen af projektet. Systemet vil hovedsageligt blive programmeret i sproget Java. Det faglige niveau svarer til 2. semesterstuderende på Softwareteknologi. Dette indebærer blandt andet forståelse af JavaFX og Scenebuilder.
+Arbejdet med Java i projektet forudsætter derudover forståelse for basale programmeringsprincipper og forståelse for det objektorienterede programmeringsparadigme. 
+
+\subsubsection{Python}
+Et grundlæggende kendskab til Python kræves for at kunne forstå - samt implementere REST Api'et.
+
+\subsubsection{Database}
+Systemet vil indeholde en lang række data, som skal lagres i en database. Det er derfor nødvendigt at have forståelse for databaser, databasestrukturer, relationelle SQL-databaser og SQL-queries. Databasen der vil blive benyttet i projektet er PostgreSQL, en basal viden om databasesproget/programmeringssproget SQL er derfor nødvendig. 
+Al nødvendig viden er givet i SDU's 'Data Management' kursets pensum.
+
+\subsubsection{Ubuntu \& Docker}
+En basal forståelse for Ubuntu (eller andet Linux baseret distro) og Docker kræves for opsætning af REST Api'et og databasen.
+
+\subsection{Relevante Eksisterende Løsninger}
+\textbf{IMDb} \\
+IMDb (Internet Movie Database) er en online database bestående af film, serier, medvirkende m.m. Man har mulighed for at søge efter informationer ved at referere til blandt andet førnævnte titler. IMDb har også et ratingsystem, der gør det muligt at bedømme film, serier etc.
+\textbf{Rotten Tomatoes} \\
+Rotten Tomatoes er på lige fod med IMDb, en database for film, serier, medvirkende m.m. Man kan på Rotten Tomatoes også søge information. Rotten Tomatoes distancerer sig fra IMDb, ved både at tage ratings fra sine brugere og et panel af anmeldere. 
+
