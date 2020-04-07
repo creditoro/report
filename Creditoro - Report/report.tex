@@ -1,0 +1,121 @@
+\documentclass[a4paper,12pt]{article}
+% Resten af pakkerne
+\usepackage[english, danish]{babel}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{flafter}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{lastpage} % Bruges i customtitlepage til at tælle sider
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{lscape}
+\usepackage{xargs}
+\usepackage{tabularx}
+
+\usepackage{ifthen}
+
+\usepackage{xcolor}
+% \usepackage{csvsimple}
+\usepackage{longtable}
+
+% Margin
+\usepackage{geometry}
+\geometry{a4paper,  total={170mm,250mm},
+ left=20mm,
+ top=30mm}
+
+
+% New Commands
+\newcommand\myworries[1]{\textcolor{red}{#1}} 
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
+
+
+% Needs to be the last package included
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=black,
+}
+
+
+% Linjemellemrum
+% \linespread{1.4}
+\graphicspath{{./figures/}{../figures/}}
+
+\begin{document}
+% Fjerner side tal
+\pagenumbering{gobble}
+    \renewcommand{\thesection}{\Roman{section}} 
+    \renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
+    % Forside
+    \input{tex/i_forside}
+    \newpage
+    
+    % Titelblad 
+    \input{tex/ii_titelblad}
+    \newpage
+
+    % Resume
+    \input{tex/iii_resume}
+    \newpage
+    
+    % Forord
+    \input{tex/iv_forord}
+    \newpage
+
+    % Indholdsfortegnelse
+    \input{tex/v_indholdsfortegnelse}
+    \newpage
+    
+    % Læsevejledning
+    \input{tex/vi_læsevejledning}
+    \newpage
+    
+    \input{tex/vii_redaktionelt}
+    \newpage
+    
+    % Start counting from this line
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+
+    \renewcommand{\thesection}{\arabic{section}} 
+    \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+    \setcounter{section}{0}
+    % Introduktion
+    \input{tex/1_introduktion}
+    \newpage
+    
+    % Faglige vidensgrundlag
+    \input{tex/2_faglige_vidensgrundlag}
+    \newpage
+    
+    % Metode
+    \input{tex/3_metode}
+    \newpage
+   
+    % Hovedtekst
+    \input{tex/4_0_hovedtekst}
+    \newpage
+   
+    % Procesdokumenter
+    % \input{appendices/procesdokumenter}
+    % \newpage
+    
+    % Bilag
+    \appendix % Bruges til bilag, så den laver bilag indholdfortegnelse og overskrifter
+    \input{appendices/bilag.tex}
+    
+
+    % bibliography empty
+    \newpage
+    \bibliographystyle{apalike}
+    \bibliography{appendices/bibliography.bib}
+\end{document}

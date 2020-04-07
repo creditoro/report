@@ -1,0 +1,271 @@
+\section{Brugsmønsterrealisering}
+
+\subsection{Klassekandidater}
+Nedenfor ses listen af potentielle klasser fra navneordsanalysen af brugsmønstrene:
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{4cm}|p{4cm}|p{8cm}|}
+        \hline
+        \textbf{Klassekandidat} & \textbf{Attributter} & \textbf{Kommentar} \\
+        \hline
+        % Læs kreditering -----------------------------------------------------------
+        Bruger & \texttt{uuid}, \texttt{e-mail}, \texttt{password}, \texttt{rolle} & Indebærer alle aktørerne (Systemadmin, kanaladmin, producer og royalty bruger).\\
+        \hline
+        Produktion & \texttt{uuid}, \texttt{titel}, \texttt{kanal\_id} & Et program indebærer alt hvad der bliver vist på TV. (Film, serier osv) \\
+        \hline
+        Kreditering & \texttt{person\_id}, \texttt{job}, \texttt{produktion\_id} & En kreditering er et job udført af en person til en produktion (hvor job kan være lydmand) \\
+        \hline
+        % Opret Kreditering ---------------------------------------------------------
+        Kanal & \texttt{ID}, \texttt{navn} & Angiver hvilken TV-kanal et program bliver afspillet på\\
+        \hline
+        % Opret Person --------------------------------------------------------------
+        Person & Personinformation (navn, beskæftigelse, e-mail, tlf.nr. osv)  & De der medvirker til produceringen af en produktion (kameramand, lydmand, etc.)\\
+        \hline
+        % Log ud --------------------------------------------------------------------
+            % Nur duplications
+        %Log in ---------------------------------------------------------------------
+            % Nur Duplications
+        % Opret Producer ------------------------------------------------------------
+            % Nur Duplications
+        % Se personinformation ------------------------------------------------------
+            % Nur Duplications
+        % Godkend nye krediteringer -------------------------------------------------
+    \end{tabular}
+    \caption{Klasssekandidater}
+    \label{table:class_candidates}
+\end{table}
+
+\subsection{Kasserede klassekandidater}
+De resterende potentielle klasser der blev fundet under navneordsanalysen er enten synonymer, operationer  eller egner sig bedre som attributter til de valgte potentielle klasser, og kan ses i nedenstående tabel: 
+
+\begin{longtable}{|p{6cm}|p{10cm}|}
+\hline
+\textbf{Kasserede klassekandidater} & \textbf{Kommentar} \\
+\hline
+Gæst & Påvirker ikke systemet - Kan kun se krediteringerne\\
+\hline
+Systemet & Systemet  \\
+\hline
+Rolle   & Attribut til Bruger-klassen\\
+\hline
+Visning  & En Operation\\
+\hline
+Film & Synonym til Produktion-klassen\\ 
+\hline
+Program & Synonym til Produktion-klassen\\ 
+\hline
+Knap & En del af Desktop-klienten\\
+\hline
+Programtitel & Attribut til Program-klassen\\
+\hline
+Vedkommende & Synonym for Bruger-klassen\\
+\hline
+Aktøren &  Synonym for Bruger-klassen\\
+\hline
+Person-vinduet & En del af Desktop-klienten\\
+\hline
+Informationer (navn, beskæftigelse, email, tlf.nr., osv.) &  Attributter til Person-klassen\\
+\hline
+Oprettelse & En operation \\
+\hline
+Desktopklienten &  Systemet\\
+\hline
+Startsiden &  En del af Desktop-klienten\\
+\hline
+Login-side & En del af Desktop-klienten\\
+\hline
+Login-oplysninger & Attribut til Bruger-klassen\\
+\hline
+Brugernavn & Attribut til Bruger-klassen\\
+\hline
+Password & Attribut til Bruger-klassen\\
+\hline
+Flow & Beskriver et hændelsesforløb\\
+\hline
+Navn & Attribut \\
+\hline
+Primær aktør &  Synonym for Bruger-klassen\\
+\hline
+Personinformation &  Attributter til Person-klassen\\
+\hline
+Godkendelse & En operation \\
+\hline
+Meddelelse & En operation \\
+\hline
+Systemadministrator & En rolle i systemet - bliver håndteret af Bruger-klassen \\
+\hline
+Kanaladministrator & En rolle i systemet - bliver håndteret af Bruger-klassen \\
+\hline 
+Producer & En rolle i systemet - bliver håndteret af Bruger-klassen \\
+\hline
+Royalty Bruger & En rolle i systemet - bliver håndteret af Bruger-klassen \\
+\hline
+\caption{Kasserede klassekandidater}
+\label{table:deleted_class_candidates}
+\end{longtable}
+
+
+\subsection{Klassekategori koncept}
+De potentielle klasser der arbejdes videre med kan opdeles i kategorier. Dette er med til at skabe et overblik over klassernes ‘placering’ i systemet samt skabe associationer mellem koncepter og potentielle klasser. Kategorilisten kan ses nedenunder:
+
+\begin{longtable}{|p{6cm}|p{10cm}|}
+\hline
+\textbf{Klassekategori koncept} & \textbf{Eksempel} \\
+\hline
+Forretnings overførsel & Ingen\\
+\hline
+Overførselslinje ting & Ingen\\
+\hline
+Produkt & Ingen \\
+\hline
+Hvor bliver overførslen optaget  & Ingen \\
+\hline
+Folkets roller & System- \& kanaladministrator, Producer, Royalty Bruger\\
+\hline
+Sted for overførsel & Ingen \\
+\hline
+Bemærkelsesværdige begivenheder & Ingen \\
+\hline
+Fysiske objekter & Ingen \\
+\hline
+Beskrivelse af ting & Krediteringer\\
+\hline
+Kataloger & Database med krediteringer\\
+\hline
+Lager af ting & Databasen\\
+\hline
+Ting på lageret & Krediteringer\\
+\hline
+Andre samarbejdssystemer & Ingen\\
+\hline
+Optagelser af finans, arbejde, kontrakter og juridiske sager &  Ingen \\
+\hline
+Finansielle instrumenter & Ingen\\
+\hline
+Arbejdsplaner, manualer, dokumenter der er regulært refereret til for at performere arbejde & Ingen\\
+\hline
+\caption{Kasserede klassekandidater}
+\label{table:class_categories}
+\end{longtable}
+
+
+\subsection{Beskrivelse af klasser}
+ I nedenstående tabeller er der givet et eksempel på, hvordan hver klasser kan komme til at se ud:
+ 
+% ------------------------- Bruger --------------------------------
+\begin{table}
+    \centering
+    \begin{tabular}{|p{6cm} | p{10cm} |}
+        \hline
+        \textbf{Navn} & Bruger\\
+        \hline
+        \textbf{Definition} &  En bruger har et UUID, en email-adresse, et password og en rolle. \\
+        \hline
+        \textbf{Eksempel} & En bruger kan se ud som følgende: \\
+                          & \texttt{UUID}: fbf50f43-9f1c-41e1-abce-cca32b836ef0 \\
+                          & \texttt{Email}: someperson@somemail.com\\
+                          & \texttt{Password}: Passw0rd\\
+                          & \texttt{Rolle}: Kanaladministrator \\
+        \hline
+        \textbf{Andet} & Nej\\
+        \hline
+    \end{tabular}
+    \caption{Beskrivelse af Bruger-klassen}
+    \label{tab:user_class_description}
+\end{table}
+
+% ------------------------- Produktion ----------------------------
+\begin{table}
+    \centering
+    \begin{tabular}{|p{6cm} | p{10cm} |}
+        \hline
+        \textbf{Navn} & Produktion\\
+        \hline
+        \textbf{Definition} &  En produktion har et UUID, en titel og et \texttt{kanal\_id}\\
+        \hline
+        \textbf{Eksempel} & En produktion kan se ud som følgende:\\
+                          & \texttt{UUID}: fbf20f43-9f1c-41e1-abce-cca32b836ef0 \\
+                          & Titel: Peter pedal \\
+                          & \texttt{kanal\_id}: TV2 \\
+        \hline
+        \textbf{Andet} & Nej\\
+        \hline
+    \end{tabular}
+    \caption{Beskrivelse af Produktion-klassen}
+    \label{tab:production_class_description}
+\end{table}
+
+% ------------------------- Kreditering ----------------------------
+\begin{table}
+    \centering
+    \begin{tabular}{|p{6cm} | p{10cm} |}
+        \hline
+        \textbf{Navn} & Kreditering\\
+        \hline
+        \textbf{Definition} & En kreditering indeholder \texttt{person\_id} og \texttt{job} for de personer der skal krediteres og et \texttt{produktion\_id} for den produktion de tilhører \\
+        \hline
+        \textbf{Eksempel} & En kreditering kan se ud som følgende: \\
+                          & \\
+                          & Hans Hansen \quad \quad \quad \quad Lydmand\\
+                          & \\
+                          & \texttt{produktion\_id}: 21004623541527 \\
+        \hline
+        \textbf{Andet} & Nej\\
+        \hline
+    \end{tabular}
+    \caption{Beskrivelse af Kreditering-klassen}
+    \label{tab:credit_class_description}
+\end{table}
+
+% ------------------------- Kanal ---------------------------------
+\begin{table}
+    \centering
+    \begin{tabular}{|p{6cm} | p{10cm} |}
+        \hline
+        \textbf{Navn} &  Kanal\\
+        \hline
+        \textbf{Definition} & En kanal har et \texttt{ID} og et \texttt{navn}\\
+        \hline
+        \textbf{Eksempel} & En kanal kan se ud som følgende: \\
+                          & \texttt{ID}: 840215538\\
+                          & \texttt{navn}: TV2\\
+        \hline
+        \textbf{Andet} & Nej\\
+        \hline
+    \end{tabular}
+    \caption{Beskrivelse af Kanal-klassen}
+    \label{tab:channel_class_description}
+\end{table}
+
+% ------------------------- Person --------------------------------
+\begin{table}
+    \centering
+    \begin{tabular}{|p{6cm} | p{10cm} |}
+        \hline
+        \textbf{Navn} &  Person\\
+        \hline
+        \textbf{Definition} &  En person har personinformationer (navn, beskæftigelse, e-mail, tlf.nr. osv)\\
+        \hline
+        \textbf{Eksempel} & En person kan se ud som følgende: \\
+                          & Navn: Hans Hansen\\
+                          & E-mail: hans@hansen.pm\\
+                          & Telefonnummer: + 42 42 06 96 66\\
+                          & Beskæftigelse: Lydmand\\
+        \hline
+        \textbf{Andet} & Nej\\
+        \hline
+    \end{tabular}
+    \caption{Beskrivelse af Person-klassen}
+    \label{tab:person_class_description}
+\end{table}
+
+\subsection{Analysemodel}
+Ud fra de navneordsanalysen er de potentielle klasser og deres attributter fundet. Dette vises i analysemodellen, som kan ses på figur \ref{fig:analysemodel} , med tilhørende relationer mellem klasserne. Modellen har til formål at danne et overblik over klasserne, deres attributter og deres relationer i systemet, samt at fungere som en model der kan bruges til den videre udvikling af systemet. \\
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.43]{figures/analysemodel.png}
+\caption{Analysemodel}
+\label{fig:analysemodel}
+\end{figure}
