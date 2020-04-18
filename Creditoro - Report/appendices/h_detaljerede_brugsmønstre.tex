@@ -1,0 +1,247 @@
+\subsection{Detaljerede Brugsmønstre}
+
+% ----------------------- Læs krediteringer -----------------------------------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|X|}
+        \hline
+        \textbf{Brugsmønster:}  Læs kreditering \\ 
+        \hline
+    	\textbf{ID:} UC10 \\ 
+    	\hline
+    	\textbf{Primære aktører:} Systemadministrator, kanaladministrator, producer, royalty bruger, gæst \\ \hline
+    	\textbf{Sekundære aktører:} \\ \hline
+    	\textbf{Kort beskrivelse:} Alle skal kunne se krediteringen for programmerne. \\ \hline
+    	\textbf{Prækonditioner (Pre conditions):} \\ \hline
+        \textbf{Hovedhændelsesforløb (main flow):} \\
+        1. Brugsmønstret starter når en aktør vil se krediteringer for et program \\
+        2. Aktøren søger efter programmet \\
+        3. Aktøren trykker på det ønskede program \\
+        4. Systemet checker hvilken rolle aktøren har \\
+        5. Aktøren bliver omdirigeret til den passende visning af krediteringen \\ \hline
+            \textbf{Postkonditioner (post conditions):} \\
+            En kreditering er blevet vist \\ \hline
+        
+        	\textbf{Alternative hændelsesforløb (alternative flow):} \\
+        Step 2: Hvis programmet ikke findes, får vedkommende besked om at programmet ikke findes \\ 
+        \hline
+    \end{tabularx}
+    \caption{Brugsmønster: Læs kreditering}
+    \label{table:read_credits}
+\end{table}
+
+% ----------------------- Opret krediteringer -----------------------------------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|X|}
+            \hline
+            \textbf{Brugsmønster:} Opret kreditering \\
+            \hline
+        	\textbf{ID:} UC07 \\ \hline
+        	\textbf{Primære aktører:} Systemadministrator, kanaladministrator, Producer \\ \hline
+        	\textbf{Sekundære aktører:} \\ \hline
+        	\textbf{Kort beskrivelse:} Produceren opretter en kreditering. Heri angives alle der har bidraget til produceringen af TV-programmet, filmen el. lign. \\ \hline
+        	\textbf{Prækonditioner (Pre conditions):} \\
+        Aktøren skal være \hyperref[table:login]{logget ind på} systemet \\ \hline
+        \textbf{Hovedhændelsesforløb (main flow):} \\
+        	1. Brugsmønstret starter når en administrator eller producer vil oprette en kreditering \\
+        	2. Aktøren trykker på knappen ‘Opret Kreditering’ \\
+        	3. Systemet checker aktørens rolle \\
+        	4. Aktøren er forbundet til en kanal, og angiver programmets titel \\
+        	5. Systemet checker om der allerede findes et program med den angivne titel \\ 
+        	6. Aktøren krediterer alle der har medvirket i produktionen af programmet \\ 
+        	7. Aktøren sender den færdige kreditering videre til godkendelse \\ \hline
+        \textbf{Postkonditioner (post conditions):} \\ 
+        	En kreditering er blevet sendt videre til godkendelse \\ \hline
+        	\textbf{Alternative hændelsesforløb (alternative flow):} \\
+        Step *: Aktøren kan til enhver tid afbryde oprettelsen af krediteringen \\
+        Step 4: Hvis aktøren er systemadministrator, er vedkommende ikke forbundet til en kanal, og kan skifte hvilken kanal krediteringen skal oprettes ved. \\
+        
+        Step 5: Hvis programmets titel allerede eksisterer, gøres aktøren opmærksom på dette. \\
+        
+        Step 8: Hvis krediteringen afvises, laves de fornødne ændringer, og den nye kreditering sendes videre til godkendelse. \\
+        \hline
+    \end{tabularx}
+    \caption{Brugsmønster: Opret kreditering}
+    \label{tab:create_credits}
+\end{table}
+
+% ----------------------- Opret Producer -----------------------------------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|X|}
+        \hline
+        \textbf{Brugsmønster:}  Opret producer \\ \hline
+        \textbf{ID:} UC03 \\ \hline
+        \textbf{Primære aktører:} Systemadministrator, kanaladministrator \\ \hline
+        \textbf{Sekundære aktører:} \\ \hline
+        \textbf{Kort beskrivelse:} System- eller kanaladministrator opretter en producer, som kan oprette       krediteringer i systemet \\ \hline
+        \textbf{Prækonditioner (Pre conditions):} \\
+        Aktøren skal være logget på systemet \\ \hline
+        \textbf{Hovedhændelsesforløb (main flow):} \\
+            1. Dette brugsmønster starter, når en administrator vil oprette en ny producer \\
+            2. Administrator indtaster producerens oplysninger \\ 
+            3. Administratoren opretter produceren \\ \hline
+        \textbf{Postkonditioner (post conditions):} \\
+            En producer er oprettet i systemet \\ \hline
+        \textbf{Alternative hændelsesforløb (alternative flow):} \\ Step 3. Produceren eksisterer allerede,     administrator får besked om dette ved oprettelse. Oprettelsen bliver ikke gennemført \\
+        \hline
+    \end{tabularx}
+    \caption{Brugsmønster: Opret Producer}
+    \label{table:create_producer}
+\end{table}
+
+
+% ---------------------- Se Personinformationer ---------------------------------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|X|}
+            \hline
+            \textbf{Brugsmønster:}  Se Personinformationer \\ 
+            \hline
+        	\textbf{ID:} UC04 \\ 
+        	\hline
+        	\textbf{Primære aktører:} Systemadministrator, Kanaladministrator, Royality Bruger \\ \hline
+        	\textbf{Sekundære aktører:} \\ \hline
+        	\textbf{Kort beskrivelse:} System-, kanaladministrator og Royality Bruger får vist personinformation om en bestemt person. \\ \hline
+        	\textbf{Prækonditioner (Pre conditions):} \\ \hline
+        \textbf{Hovedhændelsesforløb (main flow):} \\
+        1. Dette brugsmønster starter, når en primær aktør vil se information om en bestemt person \\ 
+        2. Den primære aktør søger efter en bestemt person ved at indtaste navn \\ 
+        3. Personer med det pågældende navn bliver vist \\ 
+        4. Den primære aktør vælger den person, der eftersøges \\
+        5. Informationen om den gældene person bliver vist \\ \hline
+            \textbf{Postkonditioner (post conditions):} \\
+            Personinformationer er blevet vist \\ \hline
+        
+        	\textbf{Alternative hændelsesforløb (alternative flow):} \\
+        step 4. Ingen person med det eftersøgte navn findes. Så bliver der angivet at der ikke findes nogle personer\\ \hline
+    \end{tabularx}
+    \caption{Brugsmønster: Se Personinformationer}
+    \label{table:read_personinfo}
+\end{table}
+
+
+
+%------------------------ Godkend nye krediteringer -------------------------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|X|}
+            \hline
+            \textbf{Brugsmønster:}  Godkend nye krediteringer \\ 
+            \hline
+        	\textbf{ID:} UC05 \\ 
+        	\hline
+        	\textbf{Primære aktører:} Systemadministrator, kanaladministrator \\ \hline
+        	\textbf{Sekundære aktører:} \\ \hline
+        	\textbf{Kort beskrivelse:} Efter Produceren har sendt en kreditering ind til godkendelse, kan kanaladministratoren enten godkende eller afvise krediteringen. Hvis krediteringen godkendes, gøres krediteringen offentlig. Hvis krediteringen afvises, skal kanaladministratoren skrive en meddelelse om hvad der skal ændres. \\ \hline
+        	\textbf{Prækonditioner (Pre conditions):} \\
+        	1. Kanaladministratoren skal være logget ind \\ 
+        	2. Produceren skal have sendt en kreditering ind til godkendelse \\
+        	\hline
+        \textbf{Hovedhændelsesforløb (main flow):} \\
+        1. Dette brugsmønster starter når en producer har sendt en kreditering ind til godkendelse \\ 
+        2. Kanaladministratoren gennemgår krediteringen \\ 
+        3. Hvis alt er i orden, trykker kanaladministratoren på godkend.\\ \hline
+        \textbf{Postkonditioner (post conditions):} \\
+            En kreditering er blevet godkendt og offentliggjort \\ \hline
+        \textbf{Alternative hændelsesforløb (alternative flow):} \\
+        Step 3: Hvis noget skal ændres i krediteringen, trykker kanaladministratoren på afvis. Derefter kan kanaladministratoren skrive en meddelelse om rettelser \\
+        \hline
+    \end{tabularx}
+    \caption{Brugsmønster: Godkend nye krediteringer}
+    \label{table:approve_credit}
+\end{table}
+
+
+%------------------------ Opret Person -------------------------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|X|}
+            \hline
+            \textbf{Brugsmønster:} Opret Person \\ 
+            \hline
+        \textbf{ID:} \myworries{UC06} \\ 
+        	\hline
+        	\textbf{Primære aktører:} Systemadministrator, kanaladministrator, Producer \\ \hline
+            \textbf{Sekundære aktører:} \\ \hline
+            \textbf{Kort beskrivelse:} Når en producer opretter krediteringer og en person der ikke allerede findes i systemet skal krediteres, skal produceren oprette vedkommende i systemet. \\ \hline
+        	\textbf{Prækonditioner (Pre conditions):} \\
+        	1. System-, kanaladministrator eller producer skal være \hyperref[table:login]{logget ind} \\
+        	\hline
+        \textbf{Hovedhændelsesforløb (main flow):} \\
+        1. Dette brugsmønster starter når en system-, kanaladministrator eller producer skal indskrive krediteringer \\
+        2. Systemet checker om vedkommende allerede findes i systemet \\
+        3. Aktøren trykker 'Opret Person' \\
+        4. Opret Person-vinduet popper op \\
+        5. Aktøren udfylder de nødvendige informationer (navn, beskæftigelse, email, tlf.nr., osv.) \\
+        6. Aktøren trykker 'Færdig' \\
+        7. Personen bliver automatisk indskrevet det pågældende sted i krediteringen \\
+        \hline
+        \textbf{Postkonditioner (post conditions):} \\
+            En person er blevet oprettet i systemet \\ \hline
+        \textbf{Alternative hændelsesforløb (alternative flow):} \\
+        Step 5: Hvis aktøren blot har lavet en stavefejl, og en person med samme email, tlf.nr. osv. Findes, bliver aktøren oplyst om dette og oprettelse af personen afbrydes. \\
+        Step 1-6: Aktøren kan til enhver tid afbryde oprettelsen \\
+        \hline
+    \end{tabularx}    
+    \caption{Brugsmønster: Opret Person}
+    \label{table:create_person}
+\end{table}
+
+
+%------------------------ Login -------------------------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|X|}
+            \hline
+            \textbf{Brugsmønster:} Login \\ 
+            \hline
+        \textbf{ID:} \myworries{UC07} \\ 
+        	\hline
+        	\textbf{Primære aktører:} Gæst \\ \hline
+            \textbf{Sekundære aktører:} \\ \hline
+            \textbf{Kort beskrivelse:} En gæst kan logge ind hvis vedkommende har en bruger i systemet. \\ \hline
+        	\textbf{Prækonditioner (Pre conditions):} \\
+        	Vedkommende skal ikke være logget ind \\
+        	\hline
+        \textbf{Hovedhændelsesforløb (main flow):} \\
+        1. Dette brugsmønster starter når en aktør vil logge ind \\
+        2. Aktøren trykker login \\
+        3. Aktøren bliver omdirigeret til login-siden \\
+        4. Aktøren udfylder login-oplysninger \\
+        5. Aktøren trykker ’Login’ \\
+        6. Aktøren bliver omdirigeret til startsiden \\
+        \hline
+        \textbf{Postkonditioner (post conditions):} \\
+            Aktøren er logget ind \\ \hline
+        \textbf{Alternative hændelsesforløb (alternative flow):} \\
+        Step 6: Hvis login-oplysningerne er forkerte, forbliver aktøren på login-siden og får en meddelelse om at brugernavn eller password var forkert \\
+        Step *: Aktøren kan til enhver tid afbryde login \\
+        \hline
+    \end{tabularx}
+    \caption{Brugsmønster: Login}
+    \label{table:login}
+\end{table}
+
+
+%------------------------ Logout -------------------------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|X|}
+        \hline
+        \textbf{Brugsmønster:} Logout \\ 
+        \hline
+        \textbf{ID:} \myworries{UC08} \\ 
+        \hline
+        \textbf{Primære aktører:}  Systemadministrator, kanaladministrator, producer, Royalty Bruger \\ \hline
+        \textbf{Sekundære aktører:} \\ \hline
+        \textbf{Kort beskrivelse:} En aktør kan logge ud af desktopklienten \\ \hline
+        \textbf{Prækonditioner (Pre conditions):} \\
+            Vedkommende skal være \hyperref[table:login]{logget ind} \\ 
+        \hline
+        \textbf{Hovedhændelsesforløb (main flow):} \\
+            \quad 1. Dette brugsmønster starter når en aktør vil logge ud \\
+            \quad 2. Aktøren trykker logout \\
+            \quad 3. Aktøren bliver omdirigeret til startsiden \\
+        \hline
+        \textbf{Postkonditioner (post conditions):} \\
+            Aktøren er logget ud \\ \hline
+        \textbf{Alternative hændelsesforløb (alternative flow):} \\
+        \hline
+    \end{tabularx}
+    \caption{Brugsmønster: Logout}
+    \label{table:logout}
+\end{table}

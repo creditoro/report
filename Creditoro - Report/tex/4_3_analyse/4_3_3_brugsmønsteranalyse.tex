@@ -1,22 +1,21 @@
-\section{Brugsmønsterrealisering}
+\subsection{Brugsmønsteranalyse}
 
-\subsection{Klassekandidater}
+\subsubsection{Klassekandidater}
 Nedenfor ses listen af potentielle klasser fra navneordsanalysen af brugsmønstrene:
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|p{4cm}|p{4cm}|p{8cm}|}
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|p{4cm}|p{4cm}|X|}
         \hline
         \textbf{Klassekandidat} & \textbf{Attributter} & \textbf{Kommentar} \\
         \hline
         % Læs kreditering -----------------------------------------------------------
-        Bruger & \texttt{uuid}, \texttt{e-mail}, \texttt{password}, \texttt{rolle} & Indebærer alle aktørerne (Systemadmin, kanaladmin, producer og royalty bruger).\\
+        Bruger      & \texttt{uuid}, \texttt{e-mail}, \texttt{password}, \texttt{rolle} & Indebærer alle aktørerne (Systemadmin, kanaladmin, producer og royalty bruger).\\
         \hline
-        Produktion & \texttt{uuid}, \texttt{titel}, \texttt{kanal\_id} & Et program indebærer alt hvad der bliver vist på TV. (Film, serier osv) \\
+        Produktion  & \texttt{uuid}, \texttt{titel}, \texttt{kanal\_id} & Et program indebærer alt hvad der bliver vist på TV. (Film, serier osv) \\
         \hline
         Kreditering & \texttt{person\_id}, \texttt{job}, \texttt{produktion\_id} & En kreditering er et job udført af en person til en produktion (hvor job kan være lydmand) \\
         \hline
         % Opret Kreditering ---------------------------------------------------------
-        Kanal & \texttt{ID}, \texttt{navn} & Angiver hvilken TV-kanal et program bliver afspillet på\\
+        Kanal & \texttt{ID}, \texttt{navn} & Angiver hvilken TV-kanal et program bliver afspillet på \\
         \hline
         % Opret Person --------------------------------------------------------------
         Person & Personinformation (navn, beskæftigelse, e-mail, tlf.nr. osv)  & De der medvirker til produceringen af en produktion (kameramand, lydmand, etc.)\\
@@ -30,132 +29,135 @@ Nedenfor ses listen af potentielle klasser fra navneordsanalysen af brugsmønstr
         % Se personinformation ------------------------------------------------------
             % Nur Duplications
         % Godkend nye krediteringer -------------------------------------------------
-    \end{tabular}
+    \end{tabularx}
     \caption{Klasssekandidater}
     \label{table:class_candidates}
 \end{table}
 
-\subsection{Kasserede klassekandidater}
+\subsubsection{Kasserede klassekandidater}
 De resterende potentielle klasser der blev fundet under navneordsanalysen er enten synonymer, operationer  eller egner sig bedre som attributter til de valgte potentielle klasser, og kan ses i nedenstående tabel: 
 
-\begin{longtable}{|p{6cm}|p{10cm}|}
-\hline
-\textbf{Kasserede klassekandidater} & \textbf{Kommentar} \\
-\hline
-Gæst & Påvirker ikke systemet - Kan kun se krediteringerne\\
-\hline
-Systemet & Systemet  \\
-\hline
-Rolle   & Attribut til Bruger-klassen\\
-\hline
-Visning  & En Operation\\
-\hline
-Film & Synonym til Produktion-klassen\\ 
-\hline
-Program & Synonym til Produktion-klassen\\ 
-\hline
-Knap & En del af Desktop-klienten\\
-\hline
-Programtitel & Attribut til Program-klassen\\
-\hline
-Vedkommende & Synonym for Bruger-klassen\\
-\hline
-Aktøren &  Synonym for Bruger-klassen\\
-\hline
-Person-vinduet & En del af Desktop-klienten\\
-\hline
-Informationer (navn, beskæftigelse, email, tlf.nr., osv.) &  Attributter til Person-klassen\\
-\hline
-Oprettelse & En operation \\
-\hline
-Desktopklienten &  Systemet\\
-\hline
-Startsiden &  En del af Desktop-klienten\\
-\hline
-Login-side & En del af Desktop-klienten\\
-\hline
-Login-oplysninger & Attribut til Bruger-klassen\\
-\hline
-Brugernavn & Attribut til Bruger-klassen\\
-\hline
-Password & Attribut til Bruger-klassen\\
-\hline
-Flow & Beskriver et hændelsesforløb\\
-\hline
-Navn & Attribut \\
-\hline
-Primær aktør &  Synonym for Bruger-klassen\\
-\hline
-Personinformation &  Attributter til Person-klassen\\
-\hline
-Godkendelse & En operation \\
-\hline
-Meddelelse & En operation \\
-\hline
-Systemadministrator & En rolle i systemet - bliver håndteret af Bruger-klassen \\
-\hline
-Kanaladministrator & En rolle i systemet - bliver håndteret af Bruger-klassen \\
-\hline 
-Producer & En rolle i systemet - bliver håndteret af Bruger-klassen \\
-\hline
-Royalty Bruger & En rolle i systemet - bliver håndteret af Bruger-klassen \\
-\hline
-\caption{Kasserede klassekandidater}
-\label{table:deleted_class_candidates}
-\end{longtable}
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \hline
+        \textbf{Kasserede klassekandidater} & \textbf{Kommentar} \\
+        \hline
+        Gæst & Påvirker ikke systemet - Kan kun se krediteringerne\\
+        \hline
+        Systemet & Systemet  \\
+        \hline
+        Rolle   & Attribut til Bruger-klassen\\
+        \hline
+        Visning  & En Operation\\
+        \hline
+        Film & Synonym til Produktion-klassen\\ 
+        \hline
+        Program & Synonym til Produktion-klassen\\ 
+        \hline
+        Knap & En del af Desktop-klienten\\
+        \hline
+        Programtitel & Attribut til Program-klassen\\
+        \hline
+        Vedkommende & Synonym for Bruger-klassen\\
+        \hline
+        Aktøren &  Synonym for Bruger-klassen\\
+        \hline
+        Person-vinduet & En del af Desktop-klienten\\
+        \hline
+        Informationer (navn, beskæftigelse, email, tlf.nr., osv.) &  Attributter til Person-klassen\\
+        \hline
+        Oprettelse & En operation \\
+        \hline
+        Desktopklienten &  Systemet\\
+        \hline
+        Startsiden &  En del af Desktop-klienten\\
+        \hline
+        Login-side & En del af Desktop-klienten\\
+        \hline
+        Login-oplysninger & Attribut til Bruger-klassen\\
+        \hline
+        Brugernavn & Attribut til Bruger-klassen\\
+        \hline
+        Password & Attribut til Bruger-klassen\\
+        \hline
+        Flow & Beskriver et hændelsesforløb\\
+        \hline
+        Navn & Attribut \\
+        \hline
+        Primær aktør &  Synonym for Bruger-klassen\\
+        \hline
+        Personinformation &  Attributter til Person-klassen\\
+        \hline
+        Godkendelse & En operation \\
+        \hline
+        Meddelelse & En operation \\
+        \hline
+        Systemadministrator & En rolle i systemet - bliver håndteret af Bruger-klassen \\
+        \hline
+        Kanaladministrator & En rolle i systemet - bliver håndteret af Bruger-klassen \\
+        \hline 
+        Producer & En rolle i systemet - bliver håndteret af Bruger-klassen \\
+        \hline
+        Royalty Bruger & En rolle i systemet - bliver håndteret af Bruger-klassen \\
+        \hline
+    \end{tabularx}
+    \caption{Kasserede klassekandidater}
+    \label{table:deleted_class_candidates}
+\end{table}
 
 
-\subsection{Klassekategori koncept}
+\subsubsection{Klassekategori koncept}
 De potentielle klasser der arbejdes videre med kan opdeles i kategorier. Dette er med til at skabe et overblik over klassernes ‘placering’ i systemet samt skabe associationer mellem koncepter og potentielle klasser. Kategorilisten kan ses nedenunder:
 
-\begin{longtable}{|p{6cm}|p{10cm}|}
-\hline
-\textbf{Klassekategori koncept} & \textbf{Eksempel} \\
-\hline
-Forretnings overførsel & Ingen\\
-\hline
-Overførselslinje ting & Ingen\\
-\hline
-Produkt & Ingen \\
-\hline
-Hvor bliver overførslen optaget  & Ingen \\
-\hline
-Folkets roller & System- \& kanaladministrator, Producer, Royalty Bruger\\
-\hline
-Sted for overførsel & Ingen \\
-\hline
-Bemærkelsesværdige begivenheder & Ingen \\
-\hline
-Fysiske objekter & Ingen \\
-\hline
-Beskrivelse af ting & Krediteringer\\
-\hline
-Kataloger & Database med krediteringer\\
-\hline
-Lager af ting & Databasen\\
-\hline
-Ting på lageret & Krediteringer\\
-\hline
-Andre samarbejdssystemer & Ingen\\
-\hline
-Optagelser af finans, arbejde, kontrakter og juridiske sager &  Ingen \\
-\hline
-Finansielle instrumenter & Ingen\\
-\hline
-Arbejdsplaner, manualer, dokumenter der er regulært refereret til for at performere arbejde & Ingen\\
-\hline
-\caption{Kasserede klassekandidater}
-\label{table:class_categories}
-\end{longtable}
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \hline
+        \textbf{Klassekategori koncept} & \textbf{Eksempel} \\
+        \hline
+        Forretnings overførsel & Ingen\\
+        \hline
+        Overførselslinje ting & Ingen\\
+        \hline
+        Produkt & Ingen \\
+        \hline
+        Hvor bliver overførslen optaget  & Ingen \\
+        \hline
+        Folkets roller & System- \& kanaladministrator, Producer, Royalty Bruger\\
+        \hline
+        Sted for overførsel & Ingen \\
+        \hline
+        Bemærkelsesværdige begivenheder & Ingen \\
+        \hline
+        Fysiske objekter & Ingen \\
+        \hline
+        Beskrivelse af ting & Krediteringer\\
+        \hline
+        Kataloger & Database med krediteringer\\
+        \hline
+        Lager af ting & Databasen\\
+        \hline
+        Ting på lageret & Krediteringer\\
+        \hline
+        Andre samarbejdssystemer & Ingen\\
+        \hline
+        Optagelser af finans, arbejde, kontrakter og juridiske sager &  Ingen \\
+        \hline
+        Finansielle instrumenter & Ingen\\
+        \hline
+        Arbejdsplaner, manualer, dokumenter der er regulært refereret til for at performere arbejde & Ingen\\
+        \hline
+    \end{tabularx}
+    \caption{Klassekategorier}
+    \label{table:class_categories}
+\end{table}
 
 
-\subsection{Beskrivelse af klasser}
+\subsubsection{Beskrivelse af klasser}
  I nedenstående tabeller er der givet et eksempel på, hvordan hver klasser kan komme til at se ud:
  
 % ------------------------- Bruger --------------------------------
-\begin{table}
-    \centering
-    \begin{tabular}{|p{6cm} | p{10cm} |}
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
         \hline
         \textbf{Navn} & Bruger\\
         \hline
@@ -169,15 +171,14 @@ Arbejdsplaner, manualer, dokumenter der er regulært refereret til for at perfor
         \hline
         \textbf{Andet} & Nej\\
         \hline
-    \end{tabular}
+    \end{tabularx}
     \caption{Beskrivelse af Bruger-klassen}
     \label{tab:user_class_description}
 \end{table}
 
 % ------------------------- Produktion ----------------------------
-\begin{table}
-    \centering
-    \begin{tabular}{|p{6cm} | p{10cm} |}
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
         \hline
         \textbf{Navn} & Produktion\\
         \hline
@@ -190,15 +191,14 @@ Arbejdsplaner, manualer, dokumenter der er regulært refereret til for at perfor
         \hline
         \textbf{Andet} & Nej\\
         \hline
-    \end{tabular}
+    \end{tabularx}
     \caption{Beskrivelse af Produktion-klassen}
     \label{tab:production_class_description}
 \end{table}
 
 % ------------------------- Kreditering ----------------------------
-\begin{table}
-    \centering
-    \begin{tabular}{|p{6cm} | p{10cm} |}
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
         \hline
         \textbf{Navn} & Kreditering\\
         \hline
@@ -212,15 +212,14 @@ Arbejdsplaner, manualer, dokumenter der er regulært refereret til for at perfor
         \hline
         \textbf{Andet} & Nej\\
         \hline
-    \end{tabular}
+    \end{tabularx}
     \caption{Beskrivelse af Kreditering-klassen}
     \label{tab:credit_class_description}
 \end{table}
 
 % ------------------------- Kanal ---------------------------------
-\begin{table}
-    \centering
-    \begin{tabular}{|p{6cm} | p{10cm} |}
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
         \hline
         \textbf{Navn} &  Kanal\\
         \hline
@@ -232,15 +231,14 @@ Arbejdsplaner, manualer, dokumenter der er regulært refereret til for at perfor
         \hline
         \textbf{Andet} & Nej\\
         \hline
-    \end{tabular}
+    \end{tabularx}
     \caption{Beskrivelse af Kanal-klassen}
     \label{tab:channel_class_description}
 \end{table}
 
 % ------------------------- Person --------------------------------
-\begin{table}
-    \centering
-    \begin{tabular}{|p{6cm} | p{10cm} |}
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
         \hline
         \textbf{Navn} &  Person\\
         \hline
@@ -254,12 +252,12 @@ Arbejdsplaner, manualer, dokumenter der er regulært refereret til for at perfor
         \hline
         \textbf{Andet} & Nej\\
         \hline
-    \end{tabular}
+    \end{tabularx}
     \caption{Beskrivelse af Person-klassen}
     \label{tab:person_class_description}
 \end{table}
 
-\subsection{Analysemodel}
+\subsubsection{Analysemodel}
 Ud fra de navneordsanalysen er de potentielle klasser og deres attributter fundet. Dette vises i analysemodellen, som kan ses på figur \ref{fig:analysemodel} , med tilhørende relationer mellem klasserne. Modellen har til formål at danne et overblik over klasserne, deres attributter og deres relationer i systemet, samt at fungere som en model der kan bruges til den videre udvikling af systemet. \\
 
 

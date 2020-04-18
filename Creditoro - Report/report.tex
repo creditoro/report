@@ -72,6 +72,7 @@
     \newpage
 
     % Indholdsfortegnelse
+    \setcounter{tocdepth}{2} % anything below subsection will not be added
     \input{tex/v_indholdsfortegnelse}
     \newpage
     
@@ -90,32 +91,44 @@
     \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
     \setcounter{section}{0}
     % Introduktion
-    \input{tex/1_introduktion}
+    \input{tex/1_indledning}
+    \newpage
+    
+    % Metode & Planlægning
+    \input{tex/2_metode_og_planlægning}
     \newpage
     
     % Faglige vidensgrundlag
-    \input{tex/2_faglige_vidensgrundlag}
-    \newpage
-    
-    % Metode
-    \input{tex/3_metode}
+    \input{tex/3_faglige_vidensgrundlag}
     \newpage
    
     % Hovedtekst
     \input{tex/4_0_hovedtekst}
     \newpage
-   
-    % Procesdokumenter
-    % \input{appendices/procesdokumenter}
-    % \newpage
+    
+    % Diskussion
+    \input{tex/5_diskussion}
+    \newpage
+    
+    % Konklusion
+    \input{tex/6_konklusion}
+    \newpage
+    
+    % Perspektivering
+    \input{tex/7_perspektivering}
+    \newpage
+    
+    % Procesevaluering
+    \input{tex/8_procesevaluering}
+    \newpage
+
+    % bibliography empty
+    \bibliographystyle{apalike}
+    \bibliography{appendices/bibliography.bib}
+    \newpage
     
     % Bilag
     \appendix % Bruges til bilag, så den laver bilag indholdfortegnelse og overskrifter
     \input{appendices/bilag.tex}
-    
 
-    % bibliography empty
-    \newpage
-    \bibliographystyle{apalike}
-    \bibliography{appendices/bibliography.bib}
 \end{document}
