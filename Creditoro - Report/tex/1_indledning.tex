@@ -1,4 +1,7 @@
 \section{Indledning}
+
+\myworries{Formål og mål med projektet.}\\
+
 % ------------------------ Baggrund for projektet ------------------------------------------------
 Når et program bliver broadcasted på en TV station skal krediteringer vises. Dette gøres i slutningen af programmet, i maksimalt 30 sekunder. Det betyder, at der ikke altid er tid til at vise alle krediteringer, og derfor prioriteres de før de vises. \\
 Hvis de 30 sekunder for hvert program kunne frigøres, kan danske TV stationer bruge tiden på at vise noget andet, som f.eks. reklamer og promovering af eget indhold. Derved har TV 2 mulighed for at øge deres årlige indtægter med op til 60 millioner kroner. \\
@@ -82,57 +85,44 @@ TV2 ønsker at frigøre 30 sekunders krediterings tekster efter hvert program, s
     \label{table:kravFraCase}
 \end{table}
 
-% -----------------------------------------------------------------------------------------------------
+
+% ------------------------- Identifikation af problemet -----------------------------------------------------
 \subsubsection{Identifikation af Problemet}
 Som det er nu bliver krediteringer vist i slutningen af et program. Ifølge reglerne for visning af krediteringer, må krediteringer ikke vises mere end 20 sekunder for produktioner under 60 minutter, og 30 sekunder for produktioner over 60 minutter. Dette giver en del problemer. For det første betyder den begrænsede varighed, at ikke alle medarbejdere kan krediteres. Dette ender ud i at der skal prioriteres i krediteringerne, før de bliver vist på TV. Derved får alle medarbejdere ikke den anerkendelse de burde.
-Hvis krediteringer flyttes til et eksternt system, og derved ikke bliver vist på TV, kan man undgå at skulle prioritere. Alle kan derved få den fortjente kredit. Derudover vil det også give mulighed for at vise noget andet, som f.eks. reklamer eller promoveringer for andre programmer (red: eget indhold).
-\footnote{\href{https://www.dr.dk/NR/rdonlyres/00221a7b/dpikscstjptklixxdnjgywgeuakhwpog/DR_kreditmanual_050810.pdf}{DR’s krediteringsregler for TV}}
-% brug bibliography. show me the way
+Hvis krediteringer flyttes til et eksternt system, og derved ikke bliver vist på TV, kan man undgå at skulle prioritere. Alle kan derved få den fortjente kredit. Derudover vil det også give mulighed for at vise noget andet, som f.eks. reklamer eller promoveringer for eget indhold. \cite{DR-Krediteringsregler} \\
 
 \noindent
 Et sådan eksternt system vil også hjælpe med oprettelsen af nye krediteringer, ved at gøre processen hurtigere og nemmere, samt mere overskueligt. Dertil har gruppen valgt at arbejde med samtlige/alle problemstillinger givet af TV2 i tabel \ref{table:kravFraCase}, og lave en prototype til et funktionsdygtigt system. Angående valget med at arbejde med samtlige problemstillinger præsenteret af TV2, har gruppen konkluderet det som værende realistisk jævnfør figur \ref{fig:gantt}. Denne prototype vil kunne bruges som et udkast til et endeligt system.
 
 
-% ------------------------ Mål og Formål med projektet ----------------------------------------------
-
-\subsection{Formål med rapporten}
-Formålet med inceptionsfasen er at fastlægge systemets omfang, der bliver udformet en overordnet kravspecifikation, kravene prioriteres og metoderne i elaborationsfasen beskrives. Dette sker gennem en nærmere undersøgelse af problemstillingen, indsamling af information og under kundemøder hvor kravene indsamles (eliciteres).\\
-
-\noindent
-Målene for inceptionsfasen kan således opstilles i punktform:
-\begin{itemize}
-    \item At gennemføre kravudvikling
-    \item At identificere kritiske risici
-    \item At fastlægge projektets metoder i elaborationsfasen
-\end{itemize}
-
-\subsection{Problemanalyse}
-% PRE review: Hvordan kan vi udvikle et samlet krediteringssystem, der giver mulighed for at erstatte rulletekster efter et endt program?
+% ------------------------- Formål med projektet -----------------------------------------------------
+\subsection{Formål med Projektet}
+Projektet har til formål at gøre gruppemedlemmerne i stand til at tilrettelægge og gennemføre udviklingen af en softwareapplikation i en agil udviklingsproces. Den udvilklingsproces der tages i brug i dette projekt, er Unified Proces. I tæt sammenspil med den agile udvilkingsmetode SCRUM, opnåes viden om, hvordan man går fra objektorienterede systemmodeller til implementering af kode. Ydermere er formålet, at gruppen opnår viden omkring databaser, og hvordan man udarbejder et databasedesign, laver databaseforespørgelesr og bruger disse i applikationen.
 
 
 % ------------------------ Problemformulering & Afgrænsning ------------------------------------------
 \subsection{Problemformulering \& Afgrænsning}
+Ud fra overstående er projektgruppen er kommet frem til følgende problemformulering med tilhørende underspørgsmål:\\
+
+\noindent
 \textit{Hvordan kan vi udvikle et samlet krediteringssystem, der giver mulighed for at erstatte rulletekster efter et endt program?}
 
 \begin{enumerate}
     \item Hvem skal kunne håndtere krediteringer?
     \item Hvordan skal krediteringerne gøres tilgængelige, og hvordan skal seerne refereres dertil?
-    \item Hvordan kan man oprette et system som kan indeholde krediteringer?
+    \item Hvordan kan man oprette et system som kan indeholde krediteringer?\\ % <- skal være der for at holde afstand til afgrænsningen
 \end{enumerate}
 
-\noindent % afgrænsning
-Projektgruppen har valgt at afgrænse dette projekt, ved at konstruere en prototype til et system.
-% Indsat post review. 
 
-\noindent % Det vi har med:
-Projektgruppen har valgt at lave et system der ligger tæt op ad det oprindelige foreslag fra TV2s projektcase. Dette indebærer alle kravene i tabel \ref{table:kravFraCase}.
+% afgrænsning
+\noindent 
+Projektgruppen har valgt at afgrænse dette projekt, ved at konstruere en prototype til et system. Det er blevet valgt at lave et system der ligger tæt op ad det oprindelige foreslag fra TV2s projektcase, hvor systemtegningen kan ses på figur \ref{fig:tv2_system}, og et sådan system vil indebære alle kravene i tabel \ref{table:kravFraCase}.
 \begin{figure}[H]
-\centering
-\includegraphics[scale=0.3]{figures/tv2_system.png}
-\label{fig:tv2_system}
-\caption{Foreslag til systemtegning - © TV2}
+    \centering
+    \includegraphics[scale=0.4]{figures/tv2_system.png}
+    \caption{Foreslag til systemtegning - © TV2}
+    \label{fig:tv2_system}
 \end{figure}
-% Indsæt figur af deres oprindelige systemtegning?
 
 \noindent % Det vi vælger fra:
 I et produktionsklart system vil det være ideelt at have en webside, men dette har vi konkluderet som værende uden for projektet.

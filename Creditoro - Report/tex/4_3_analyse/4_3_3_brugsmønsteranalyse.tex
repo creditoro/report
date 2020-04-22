@@ -34,8 +34,11 @@ Nedenfor ses listen af potentielle klasser fra navneordsanalysen af brugsmønstr
     \label{table:class_candidates}
 \end{table}
 
+\noindent
+\myworries{Her har vi tildelt nogle attributter, bl.a. fra kasserede klassekandidater, som vi mener klasserne bør indeholde.}
+
 \subsubsection{Kasserede klassekandidater}
-De resterende potentielle klasser der blev fundet under navneordsanalysen er enten synonymer, operationer  eller egner sig bedre som attributter til de valgte potentielle klasser, og kan ses i nedenstående tabel: 
+De resterende potentielle klasser der blev fundet under navneordsanalysen er enten synonymer, operationer  eller egner sig bedre som attributter til de valgte potentielle klasser. Disse kan ses i nedenstående tabel: 
 
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{|X|X|}
@@ -105,9 +108,12 @@ De resterende potentielle klasser der blev fundet under navneordsanalysen er ent
     \label{table:deleted_class_candidates}
 \end{table}
 
+\noindent
+\myworries{Her har vi bl.a. valgt at "Brugernavn" og "Password" begge er attributter til brugerklassen, og kandidaten "Gæst" ikke skal være en klasse for sig, da denne kun kan se krediteringerne. Gæster skal ikke have specielle rettigheder eller indeholde login-oplysninger, som brugernavn og password.}
 
 \subsubsection{Klassekategori koncept}
-De potentielle klasser der arbejdes videre med kan opdeles i kategorier. Dette er med til at skabe et overblik over klassernes ‘placering’ i systemet samt skabe associationer mellem koncepter og potentielle klasser. Kategorilisten kan ses nedenunder:
+De potentielle klasser der arbejdes videre med kan opdeles i kategorier. Dette er med til at skabe et overblik over klassernes ‘placering’ i systemet samt skabe associationer mellem koncepter og potentielle klasser.
+Kategorilisten kan ses nedenunder:
 
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{|X|X|}
@@ -151,12 +157,11 @@ De potentielle klasser der arbejdes videre med kan opdeles i kategorier. Dette e
     \label{table:class_categories}
 \end{table}
 
-
 \subsubsection{Beskrivelse af klasser}
- I nedenstående tabeller er der givet et eksempel på, hvordan hver klasser kan komme til at se ud:
+ I nedenstående tabeller er der givet et eksempel på, hvordan hver klasse kan komme til at se ud:
  
 % ------------------------- Bruger --------------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|p{3cm}|X|}
         \hline
         \textbf{Navn} & Bruger\\
@@ -177,7 +182,7 @@ De potentielle klasser der arbejdes videre med kan opdeles i kategorier. Dette e
 \end{table}
 
 % ------------------------- Produktion ----------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|p{3cm}|X|}
         \hline
         \textbf{Navn} & Produktion\\
@@ -197,7 +202,7 @@ De potentielle klasser der arbejdes videre med kan opdeles i kategorier. Dette e
 \end{table}
 
 % ------------------------- Kreditering ----------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|p{3cm}|X|}
         \hline
         \textbf{Navn} & Kreditering\\
@@ -218,7 +223,7 @@ De potentielle klasser der arbejdes videre med kan opdeles i kategorier. Dette e
 \end{table}
 
 % ------------------------- Kanal ---------------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|p{3cm}|X|}
         \hline
         \textbf{Navn} &  Kanal\\
@@ -237,7 +242,7 @@ De potentielle klasser der arbejdes videre med kan opdeles i kategorier. Dette e
 \end{table}
 
 % ------------------------- Person --------------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|p{3cm}|X|}
         \hline
         \textbf{Navn} &  Person\\
@@ -258,7 +263,7 @@ De potentielle klasser der arbejdes videre med kan opdeles i kategorier. Dette e
 \end{table}
 
 \subsubsection{Analysemodel}
-Ud fra de navneordsanalysen er de potentielle klasser og deres attributter fundet. Dette vises i analysemodellen, som kan ses på figur \ref{fig:analysemodel} , med tilhørende relationer mellem klasserne. Modellen har til formål at danne et overblik over klasserne, deres attributter og deres relationer i systemet, samt at fungere som en model der kan bruges til den videre udvikling af systemet. \\
+Ud fra navneordsanalysen er de potentielle klasser og deres attributter fundet. Dette vises i analysemodellen, som kan ses på figur \ref{fig:analysemodel} , med tilhørende relationer mellem klasserne. Modellen har til formål at danne et overblik over klasserne, deres attributter og deres relationer i systemet, samt at fungere som en model der kan bruges til videreudvikling af systemet. \\
 
 
 \begin{figure}[h]

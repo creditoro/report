@@ -2,17 +2,17 @@
 Denne sektion skal indeholde:
 
 \begin{itemize}
-    \item Detaljeret brugsmønsterdiagram (hvis relevant).
     \item Detaljerede brugsmønsterbeskrivelser.
     \item Detaljerede beskrivelser af supplerende krav, fx organiseret efter FURPS+.
 \end{itemize}{}
 
 % ---------------------------- Detaljerede brugsmønstre ----------------------------
 \subsection{Detaljerede Brugsmønstre}
-Nedenfor ses et udvalg beskrivelser af detaljerede essentielle brugsmønstre. 
-Beskrivelserne er udarbejdet ud fra aktørlisterne og brugsmønster beskrivelserne i inceptionsdokumentet. Detaljerede brugsmønster beskrivelserne bruges til at danne et overblik over hver enkel brugsmønsters cyklus. Her nævnes brugsmønstrets primære og sekundære aktører, de præ- og postkonditioner der er knyttet til brugsmønsteret - hvad skal være opfyldt, for at brugsmønsteret sættes i gang, og hvad sker der når brugsmønsteret er gennemført. Herudover beskrives hoved- og alternative hændelsesforløb. Hovedhændelsesforløbet beskriver forløbet, hvis der ingen problemer opstår. Alternativ hændelsesforløb beskriver eventuelle alternative hændelser i specifikke trin/steps i hovedhændelsesforløbet. \\
+Nedenfor ses en detaljeret beskrivelse af det essentielle brugsmønster "Opret Kreditering".
+Beskrivelsen er udarbejdet ud fra aktørlisterne og brugsmønster beskrivelserne i inceptionsdokumentet. Detaljerede brugsmønster beskrivelserne bruges til at danne et overblik over hver enkel brugsmønsters cyklus. Her nævnes brugsmønstrets primære og sekundære aktører, de præ- og postkonditioner der er knyttet til brugsmønsteret - hvad skal være opfyldt, for at brugsmønsteret sættes i gang, og hvad sker der når brugsmønsteret er gennemført. Herudover beskrives hoved- og alternative hændelsesforløb. Hovedhændelsesforløbet beskriver forløbet, hvis der ingen problemer opstår. Alternativ hændelsesforløb beskriver eventuelle alternative hændelser i specifikke trin/steps i hovedhændelsesforløbet. \\
+I det udvalgte brugsmønster 
 \\
-Brugsmønstrene nedenfor er blevet valgt på baggrund af fra MosCow analysen i inceptionsdokumentet baseret på systemets brugsmønstre. De essentielle brugsmønstre er derfor valgt ud fra brugsmønstrene i kategorien "must have".\\
+Brugsmønstrene nedenfor er blevet valgt på baggrund af fra MosCow analysen i inceptionsdokumentet baseret på systemets brugsmønstre. Det mest essentielle brugsmønstre er valgt ud fra brugsmønstrene i kategorien "must have". Det er vurderet at brugsmønstret "Opret Kreditering" er det mest essentielle bnrugsmønstre, da det denne funktion hele systemet er bygget op omkring.\\
 \myworries{Hvilke brugsmønstre skal med? - kechr}\\
 
 
@@ -48,38 +48,38 @@ Brugsmønstrene nedenfor er blevet valgt på baggrund af fra MosCow analysen i i
 % \end{longtable}
 
 % % ----------------------- Opret krediteringer -----------------------------------
-% \subsubsection{Opret Krediteringer}
-% \begin{longtable}[h] {|p{16cm}|}
-% \hline
-%     \textbf{Brugsmønster:} Opret kreditering \\
-%     \hline
-% 	\textbf{ID:} UC07 \\ \hline
-% 	\textbf{Primære aktører:} Systemadministrator, kanaladministrator, Producer \\ \hline
-% 	\textbf{Sekundære aktører:} \\ \hline
-% 	\textbf{Kort beskrivelse:} Produceren opretter en kreditering. Heri angives alle der har bidraget til produceringen af TV-programmet, filmen el. lign. \\ \hline
-% 	\textbf{Prækonditioner (Pre conditions):} \\
-% Aktøren skal være \hyperref[table:login]{logget ind på} systemet \\ \hline
-% \textbf{Hovedhændelsesforløb (main flow):} \\
-% 	1. Brugsmønstret starter når en administrator eller producer vil oprette en kreditering \\
-% 	2. Aktøren trykker på knappen ‘Opret Kreditering’ \\
-% 	3. Systemet checker aktørens rolle \\
-% 	4. Aktøren er forbundet til en kanal, og angiver programmets titel \\
-% 	5. Systemet checker om der allerede findes et program med den angivne titel \\ 
-% 	6. Aktøren krediterer alle der har medvirket i produktionen af programmet \\ 
-% 	7. Aktøren sender den færdige kreditering videre til godkendelse \\ \hline
-% \textbf{Postkonditioner (post conditions):} \\ 
-% 	En kreditering er blevet sendt videre til godkendelse \\ \hline
-% 	\textbf{Alternative hændelsesforløb (alternative flow):} \\
-% Step *: Aktøren kan til enhver tid afbryde oprettelsen af krediteringen \\
-% Step 4: Hvis aktøren er systemadministrator, er vedkommende ikke forbundet til en kanal, og kan skifte hvilken kanal krediteringen skal oprettes ved. \\
+ \subsubsection{Opret Krediteringer}
+\begin{longtable}[h] {|p{16cm}|}
+ \hline
+       \textbf{Brugsmønster:} Opret kreditering \\
+    \hline
+	\textbf{ID:} UC07 \\ \hline
+	\textbf{Primære aktører:} Systemadministrator, kanaladministrator, Producer \\ \hline
+	\textbf{Sekundære aktører:} \\ \hline
+ 	\textbf{Kort beskrivelse:} Produceren opretter en kreditering. Heri angives alle der har bidraget til produceringen af TV-programmet, filmen el. lign. \\ \hline
+	\textbf{Prækonditioner (Pre conditions):} \\
+ Aktøren skal være \hyperref[table:login]{logget ind på} systemet \\ \hline
+ \textbf{Hovedhændelsesforløb (main flow):} \\
+	1. Brugsmønstret starter når en administrator eller producer vil oprette en kreditering \\
+	2. Aktøren trykker på knappen ‘Opret Kreditering’ \\
+	3. Systemet checker aktørens rolle \\
+	4. Aktøren er forbundet til en kanal, og angiver programmets titel \\
+	5. Systemet checker om der allerede findes et program med den angivne titel \\ 
+	6. Aktøren krediterer alle der har medvirket i produktionen af programmet \\ 
+	7. Aktøren sender den færdige kreditering videre til godkendelse \\ \hline
+\textbf{Postkonditioner (post conditions):} \\ 
+	En kreditering er blevet sendt videre til godkendelse \\ \hline
+	\textbf{Alternative hændelsesforløb (alternative flow):} \\
+tep *: Aktøren kan til enhver tid afbryde oprettelsen af krediteringen \\
+Step 4: Hvis aktøren er systemadministrator, er vedkommende ikke forbundet til en kanal, og kan skifte hvilken kanal krediteringen skal oprettes ved. \\
 
-% Step 5: Hvis programmets titel allerede eksisterer, gøres aktøren opmærksom på dette. \\
+Step 5: Hvis programmets titel allerede eksisterer, gøres aktøren opmærksom på dette. \\
 
-% Step 8: Hvis krediteringen afvises, laves de fornødne ændringer, og den nye kreditering sendes videre til godkendelse. \\
-% \hline
-% \caption{Brugsmønster: Opret kreditering}
-% \label{tab:create_credits}
-% \end{longtable}
+Step 8: Hvis krediteringen afvises, laves de fornødne ændringer, og den nye kreditering sendes videre til godkendelse. \\
+\hline
+\caption{Brugsmønster: Opret kreditering}
+\label{tab:create_credits}
+\end{longtable}
 
 % % ----------------------- Opret Producer -----------------------------------
 % % navneord: l72: producer, l74: systemadministrator, l76: kanaladministrator, l76: krediteringer, l76: systemet, l78: Aktøren, l79: flow, l80: brusmønster, l81: administrator

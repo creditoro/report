@@ -2,16 +2,26 @@
 
 % -----------------------------------------------------------------------------------------------------------------
 \subsubsection{Systemsekvensdiagram}
-Et systemsekvensdiagram er et sekvensdiagram der viser systemhændelserne for ét scenarie af et
-brugsmønster. Diagrammet viser hvordan aktørerne interagerer med systemet for at opfylde
-brugsmønstret. Diagrammet viser systemet som en ‘black box’, hvilket betyder at man ikke kan se
-hvad der sker inde i systemet, man kun hvad der sker udenfor systemet. På diagrammet ses det,
-hvordan aktørerne generere systembegivenheder og hvad systemets output er. Ydermere viser
-diagrammet den ‘tidslinje’ begivenhederne sker i. \\
+Et systemsekvensdiagram er et sekvensdiagram der viser systemhændelserne for ét scenarie af et brugsmønster. Diagrammet viser hvordan aktørerne interagerer med systemet for at opfylde brugsmønstret. Diagrammet viser systemet som en ‘black box’, hvilket betyder at man ikke kan se
+hvad der sker inde i systemet, man kun hvad der sker udenfor systemet. På diagrammet ses det, hvordan aktørerne genererer systembegivenheder og hvad systemets output er. Ydermere viser diagrammet den ‘tidslinje’ begivenhederne sker i. \\
+\myworries{Et eksempel på et systemsekvensdiagram kan ses nedenfor.} \\
 
-\myworries{Indsæt tekst om hvilke systemsekvensdiagrammer vi har valgt at medbringe her i teksten, hvorfor og at de andre kan findes i bilag :-) - Sammenkobel den her tekst med den tekst der er i brugsmønsterrealisering - kechr}
 
-\begin{figure}[h]
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.40]{figures/systemsekvensdiagrammer/opretKreditering.PNG} \\
+\caption{Systemsekvensdiagram for "Opret Kreditering"}
+\label{fig:systemsekvensdiagram opretKreditering}
+\end{figure}
+
+
+\myworries{Her kan vi se, at aktøren (Systemadministrator, kanaladministrator eller Producer) kalder metoden opretKreditering ind til systemet, som returnerer at en kreditering er blevet oprettet. Vi kan altså ikke se hvordan krediteringen bliver oprettet, og vi holder os dermed til hvad der sker uden for systemet. Ud over det ovenstående (system)sekvensdiagram har vi valgt at medtage systemsekvensdiagrammer for \textit{godkendKreditering}, \textit{opretProducer}, \textit{sePersonInfo} og \textit{læsKreditering}. } \\
+
+\myworries{Efter systemsekvensdiagrammerne er lavet, finder man de operationer systemsekvensdiagrammet kræver. Vi kigger altså her ikke længere blot udenfor systemet, men ser på præcis hvordan 'flowet' for brugsmønstret udvikles. Til dette skal vi kigge på kontrakter for systemfunktioner.} \\
+
+\myworries{ Indsæt tekst om hvilke systemsekvensdiagrammer vi har valgt at medbringe her i teksten, hvorfor og at de andre kan findes i bilag :-) - Sammenkobel den her tekst med den tekst der er i brugsmønsterrealisering - kechr  } \\
+
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.43]{figures/systemsekvensdiagrammer/læsKreditering.PNG}
 \caption{Systemsekvensdiagram for "Læs kreditering"}
@@ -21,23 +31,20 @@ diagrammet den ‘tidslinje’ begivenhederne sker i. \\
 
 % -----------------------------------------------------------------------------------------------------------------
 \subsubsection{Kontrakter for systemfunktioner}
-En systemoperationskontrakt beskriver en operations ansvar, altså hvad en operation har forpligtet
-sig til. Kontrakten lægger vægt på hvad en operation ændre på, og ikke på hvordan det
-ændre sig. En kontrakt kan derfor anses som værende en formel beskrivelse af en operation.\\
-Systemoperationskontrakten indeholder navnet på operationen, krydsreferencer til til de relevante
-brugsmønstre, beskrivelse af ansvaret og det output operationen genererer, og pre- og
-postkonditioner for operationen. \\
-Pre- og postkondinitionerne er stilbilleder af systemet på det givne tidspunkt operationen bliver
-kaldt. De beskriver altså systemets tilstand før og efter at operationen har kørt. Postkonditioner skal
-altid noteres i datid, som f.eks. “Købet blev foretaget”, da det er en ting der er sket, og ikke sker.\\
+En systemoperationskontrakt beskriver en operations ansvar, altså hvad en operation har forpligtet sig til. Kontrakten lægger vægt på hvad en operation ændrer på, og ikke på hvordan det ændre sig. En kontrakt kan derfor anses som værende en formel beskrivelse af en operation.\\
+Systemoperationskontrakten indeholder navnet på operationen, krydsreferencer til de relevante brugsmønstre, beskrivelse af ansvaret, det output operationen genererer, samt pre- og postkonditioner for operationen. \\
+Pre- og postkondinitionerne er stilbilleder af systemet på det givne tidspunkt operationen bliver kaldt. De beskriver altså systemets tilstand før og efter at operationen har kørt. Postkonditioner skal altid noteres i datid, som f.eks. “Købet blev foretaget”, da det er en ting der er sket, og ikke sker.\\
 
 \noindent
-Det er valgt at lave operationskontrakter for "Læs kreditering", "Opret kreditering", "Opret producer", "Se personinformation" og "Godkend ny kreditering", da disse operationer viser essensen af den logik der skal implementeres. \myworries{Skriv dette om - Sammenkoble med den tekst der står under systemsekvensdiagrammer -- Eventuelt skriv det under 10. brugsmønsterrealisering, at vi har valgt at arbejde med de brugsmøsnter/operationer/we vi har - begrund uddybende - kechr}
+\myworries{Det er valgt at lave operationskontrakter for de samme operationer som ved systemsekvensdiagrammerne, da disse operationer viser essensen af den logik der skal implementeres.} \\
+
+\myworries{Skriv dette om - Sammenkoble med den tekst der står under systemsekvensdiagrammer -- Eventuelt skriv det under 10. brugsmønsterrealisering, at vi har valgt at arbejde med de brugsmøsnter/operationer/we vi har - begrund uddybende - kechr}
 
 % Skal "overskriften" ikke bare fjernes fra nedenstående tabeller? - kechr
+% Skal vi bare indsætte en enkelt operationskontrakt, og smide resten i bilagene?
 
 %------------------------ Læs krediteringer -------------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|p{4cm}|X|}
         \hline
         \multicolumn{2}{|X|}{\textbf{Læs Kreditering}}\\ 
@@ -52,7 +59,7 @@ Det er valgt at lave operationskontrakter for "Læs kreditering", "Opret kredite
         \textbf{Output}                 & 1. Krediteringen vises\\ 
                                         & Alternativt: Besked sendt ud til brugeren\\ \hline
         \textbf{Prækonditioner}         & Ingen \\ \hline
-        \textbf{Postkonditioner}        & Du vil have læst kreditering \\ \hline
+        \textbf{Postkonditioner}        & En kreditering vil blive vist \\ \hline
     \end{tabularx}
     \caption{Systemfunktionskontrakt 'læsKreditering'}
     \label{tab:kontrakter_læs_kreditering}
@@ -60,7 +67,7 @@ Det er valgt at lave operationskontrakter for "Læs kreditering", "Opret kredite
 
 
 %------------------------ Opret kreditering -------------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|p{4cm}|X|}
         \hline
         \multicolumn{2}{|X|}{\textbf{Opret kreditering}}\\
@@ -84,7 +91,7 @@ Det er valgt at lave operationskontrakter for "Læs kreditering", "Opret kredite
 
 
 %------------------------ Opret producer -------------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|p{4cm}|X|}
         \hline
         \multicolumn{2}{|X|}{\textbf{Opret producer}}\\
@@ -107,7 +114,7 @@ Det er valgt at lave operationskontrakter for "Læs kreditering", "Opret kredite
 
 
 %------------------------ Se Personinformationer -------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|p{4cm}|X|}
         \hline
         \multicolumn{2}{|X|}{\textbf{Se Personinformationer}}\\
@@ -128,7 +135,7 @@ Det er valgt at lave operationskontrakter for "Læs kreditering", "Opret kredite
 \end{table}
 
 %------------------------ Godkend nye krediteringer -------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|p{4cm}|X|}
         \hline
         \multicolumn{2}{|x|}{\textbf{Godkend ny kreditering}}\\
@@ -152,9 +159,7 @@ Det er valgt at lave operationskontrakter for "Læs kreditering", "Opret kredite
 
 % -----------------------------------------------------------------------------------------------------------------
 \subsubsection{Operationssekvensdiagram}
-Operationssekvensdiagrammet viser systemet som en ”white box”, hvor man kan se hvad der sker
-inde i systemet. Sekvensdiagrammet bruges til at identificere systemfunktioner, da de begivenheder der vises i
-diagrammet er de funktioner systemet skal indeholde.
+Operationssekvensdiagrammet viser systemet som en ”white box”, hvor man kan se hvad der sker inde i systemet. Sekvensdiagrammet bruges til at identificere systemfunktioner, da de begivenheder der vises i diagrammet er de funktioner systemet skal indeholde. Et eksempel på et operationssekvensdiagram for "Læs Kreditering" kan ses nedenfor.
 
 \begin{figure}[ht] % <--- HUSK AT ÆNDRE MIG :-)
 \centering
@@ -166,5 +171,6 @@ diagrammet er de funktioner systemet skal indeholde.
 % -----------------------------------------------------------------------------------------------------------------
 \subsubsection{Revurderet analysemodel}
 
-lol
-\myworries{Der blev ikke fundet nogel nye klasser eller metoder under brugsmønsterrealiseringen :)}
+\myworries{De fundne metoder tilføjer vi til analysemodellen vi lavede tidligere.} \\
+% ---------------------------------------------------------------INDSÆT MODEL
+\myworries{Da der ikke er fundet nogle nye klasser under brugsmønsterrealiseringen, opdateres modellen ikke yderligere. } \\
