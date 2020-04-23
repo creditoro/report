@@ -1,22 +1,18 @@
 \section{Detaljerede Krav}
-Denne sektion skal indeholde:
+\noindent
+Detaljerede krav er en uddybelse af foregående afsnit "Overordnede Krav". I dette afsnit vil der udarbejdes detaljerede brugsmønsterbeskrivelser udfra de allerede udarbejdede overordnede brugsmønsterbeskrivelser. Der vil I dette afsnit blive fokuseret på det mest essentielle brugsmønster for systemet.
 
-\begin{itemize}
-    \item Detaljerede brugsmønsterbeskrivelser.
-    \item Detaljerede beskrivelser af supplerende krav, fx organiseret efter FURPS+.
-\end{itemize}{}
+\noindent
+Afsnittet vil derudover indeholde en detaljeret beskrivelse af de supplerende ikke-funktionelle krav. Til dette bliver FURPS+ modellen benyttet.
+
 
 % ---------------------------- Detaljerede brugsmønstre ----------------------------
 \subsection{Detaljerede Brugsmønstre}
-Nedenfor ses en detaljeret beskrivelse af det essentielle brugsmønster "Opret Kreditering".
-Beskrivelsen er udarbejdet ud fra aktørlisterne og brugsmønster beskrivelserne i inceptionsdokumentet. Detaljerede brugsmønster beskrivelserne bruges til at danne et overblik over hver enkel brugsmønsters cyklus. Her nævnes brugsmønstrets primære og sekundære aktører, de præ- og postkonditioner der er knyttet til brugsmønsteret - hvad skal være opfyldt, for at brugsmønsteret sættes i gang, og hvad sker der når brugsmønsteret er gennemført. Herudover beskrives hoved- og alternative hændelsesforløb. Hovedhændelsesforløbet beskriver forløbet, hvis der ingen problemer opstår. Alternativ hændelsesforløb beskriver eventuelle alternative hændelser i specifikke trin/steps i hovedhændelsesforløbet. \\
-I det udvalgte brugsmønster 
-\\
-Brugsmønstrene nedenfor er blevet valgt på baggrund af fra MosCow analysen i inceptionsdokumentet baseret på systemets brugsmønstre. Det mest essentielle brugsmønstre er valgt ud fra brugsmønstrene i kategorien "must have". Det er vurderet at brugsmønstret "Opret Kreditering" er det mest essentielle bnrugsmønstre, da det denne funktion hele systemet er bygget op omkring.\\
-\myworries{Hvilke brugsmønstre skal med? - kechr}\\
+I tabel \ref{tab:create_credits} ses en detaljeret beskrivelse af det essentielle brugsmønster "Opret Kreditering".
+Beskrivelsen er udarbejdet ud fra aktørlisterne og brugsmønster beskrivelserne i inceptionsdokumentet (se bilag ? side ?). Detaljerede brugsmønster beskrivelserne bruges til at danne et overblik over hver enkel brugsmønsters cyklus. Her nævnes brugsmønstrets primære og sekundære aktører, de præ- og postkonditioner der er knyttet til brugsmønsteret - hvad skal være opfyldt, for at brugsmønsteret sættes i gang, og hvad sker der når brugsmønsteret er gennemført. Herudover beskrives hoved- og alternative hændelsesforløb. Hovedhændelsesforløbet beskriver forløbet, hvis der ingen problemer opstår. Alternativ hændelsesforløb beskriver eventuelle alternative hændelser i specifikke trin/steps i hovedhændelsesforløbet. \\
 
-
-\myworries{Reference links til aktørliste, brugsmønsterbeskrivelse, inceptionsdokument, MosCow - (Hvad betyder det her? - kechr)}
+\noindent
+Brugsmønstrene nedenfor er blevet valgt på baggrund af MosCow analysen i inceptionsdokumentet (se bilag ? side ?) baseret på systemets brugsmønstre. Det mest essentielle brugsmønstre er valgt ud fra brugsmønstrene i kategorien "must have". Det er vurderet at brugsmønstret "Opret Kreditering" er det mest essentielle bnrugsmønstre, da det denne funktion hele systemet er bygget op omkring.\\
 
 
 % % ----------------------- Læs krediteringer -----------------------------------
@@ -263,4 +259,29 @@ Step 8: Hvis krediteringen afvises, laves de fornødne ændringer, og den nye kr
 
 \subsection{Detaljeret beskrivelse af supplerende krav}
 
-\myworries{Fra Henrik: Giv de supplerende krav id'er}
+\noindent Nedenfor ses de detaljerede beskrivelser af supplerende ikke-funktionelle krav i form af en FURPS+ model. modellen er med til at give et overblik over hvilke supplerende ikke-funktionelle krav systemet skal overholde, for at være tilstrækkeligt i forhold til TV2 og gruppens forventninger.
+
+\begin{center}
+    \begin{longtable}[h]{|p{4cm}|p{1cm}|p{11cm}|}
+        \hline
+        \textbf{FURPS+}                     & \textbf{\#}   & \textbf{Krav} \\ 
+        \hline
+        \multirow{2}{0}{Functionality}      & S01           & Skal kunne kreditere produktionsroller som er angivet af DRs Krediteringsregler  \\ \cline{2-3} 
+                                            & S02           & Skal overholde GDPR \\ \hline
+        \multirow{2}{0}{Usability}          & S03           & Systemet skal kunne understøtte flere sprog \\ \cline{2-3}
+                                            & S04           & Systemet skal have en responsiv brugergrænseflade (UI) \\ \hline
+        Reliability                         & S05           & Hvis serveren til systemet genstarter, startes del-systemerne igen automatisk. Der vil ikke være behov for at ligge systemet ned regelmæssigt for at kunne foretage backup. \\ \hline
+        \multirow{2}{0}{Performance}       & S06           & Databasen skal kunne håndtere 10000 nye brugere - samt 15000 krediteringerer årligt i 25 år, uden at ofte brugte kald til REST Api'et bliver sløvt (reponsetid på mere end 300 ms) \\ \cline{2-3}
+                                            & S07           & Systemet skal kunne håndtere 5000 brugere indenfor et minut\\ \hline
+        \multirow{3}{0}{Supportability}     & S08           & Systemet er installerbart vha. Docker via Docker-compose\\ \cline{2-3}
+                                            & S09           & Det vil være muligt at konfigurere system indstillinger via en \texttt{.env} (miljø) fil. En opsætningsguide vil være at finde sammen med kildekoden. \\ \hline
+        Design constraints                  & S10           & Systemet skal benytte en relationel database. Databasen skal laves i PostgreSQL og skrives i programmeringssproget SQL\\ \hline
+        \multirow{3}{0}{Implementation requirements}   & S08   & Systemet vil indeholde unit tests, og komme med en rapport over hvor stor en procentdel der er dækket af dette.\\ \cline{2-3}
+                                            & S11           & Systemet vil blive forbundet til det centraliserede fejllognings system \texttt{Sentry}.\\ \cline{2-3}   
+                                            & S12           & Desktop klienten implementeres i programeringssproget Java. REST API implementeres i Python\\ \hline
+        Interface requirements              & S13           & Systemet skal trække EPG data fra TVTid.dk via en EPG Poller. \\ \hline
+        Physical requirements               & S14           & Ingen\\ \hline
+    \caption{FURPS+}
+    \label{tab:furps+}
+    \end{longtable}
+\end{center}

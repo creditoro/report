@@ -6,4 +6,44 @@ Denne sektion skal indeholde:
     \item Krav -> Test: Resultater både fra iteration \#1 og fra iteration \#2.
 \end{itemize}{}
 
-\subsection{1. Iteration}
+    \subsection{1. Iteration}
+
+    \subsubsection{Test af Views enum}
+    En af de test der bliver udført i core pakken er ViewsTest. som kan ses nedenfor:\\
+    %cool minted hightlighting inserted here 
+    Testen har ikke brug for nogen forberedelse da den kun skal checke om værdier der er i Views(et enum) er en af dens værdier. Det gør den ved først at iterere igennem alle Views værdier og for hver værdi kalder metoden isView.\\
+    %indset cool isview snippets%
+    Denne metoder tager et view og tjekker igennem alle Views værdier og tjekker hvis værdien er lige med den indsatte værdi. Hvis den findes retunere den true eller false.
+    %indset super awesome code% 
+
+
+    \subsubsection{Test af endpoint klassen}
+    UserEndpoint testen starter ved at den i dens constructer danner et nyt userEndpoint objekt. \\
+    postLogin testen tester om en der kan logges ind i systemet. Det gør den ved at hente den token man får tilbage når man logger ind. Det token er en string der er null hvis brugeren ikke kunne logge ind eller en lang string som giver brugen adgang til applikationen i sat stykke tid. \\
+    % hmm ok hmm ok hmm ok hmm ok %
+    Efter at have dannet token objektet tjekker den ok den om at den ikke er null. Det gør den ved at bruge assertNotEquals metoden der tjekker om den værdi man giver den ikke er den forventede værdi. Så hvis token objektet ikker null besåtes testen. \\
+    %yes it did happend and I’m sorry why couldn’t the snippets just work ? I don’t know man%
+    Herefter bliver der testet for det modsatte. Der bliver igen oprettet et token objekt med et forkert login så token objektet skulle gerne være null. Efter objektet er oprettet bliver det testet af assertNull der tester om værdien er null. Så hvis værdien er null beståes testen. \\
+    %please kill me please kill me please kill me please kill me please kill me please kill me % <--- :kekBomb:
+
+
+    \subsubsection{Test af loginViewModel}
+    Testen af loginViewModel sker ved at der i konstrukteren bliver oprettet en loginViewModel\\
+    %awesome snippet%
+    Herefter bliver der før hver test kørt setUp metoden\\
+    %snippet again%
+    Her bliver loginViewModels email samt password sat.
+    Der er i alt fire test metoder emailProperty, passwordProperty, loginResultProperty, clearFields.\\
+    
+    \noindent\textbf{MailProperty} test metoden checker om den email setUp metoden er den samme som den forventede værdi\\
+    % :/ %
+    Det sker ved at kalde assertEquals metoden der tjekker om den forventede værdi er lige med den givende værdi. I dette tilfælde tjekker den om emailen er \textbf{string@string.dk} og hvis den ikke er fejler testen.\\
+    
+    \noindent\textbf{PasswordProperty} test metoden gør det samme som emailProperty test metoden, i stedet for email er det et password der bliver testet for\\
+    % eksmpel %
+    
+    \noindent\textbf{LoginResultProperty} test metoden bruger assertNull metoden der fejler testen hvis det input den for er et samme som null. Her bliver loginViewModellens loginResponseProperty kaldt for at se om den kan logge ind med de oplysninger som blev definieret ved setUp metoden. Så hvis den ikke kunne logge brugeren ind med de oplysninger den fik returnerer den null og testen mislykkes.\\
+    % metoden :O %
+    
+    \noindent\textbf{ClearFields} test metoden kører først loginViewModel’s clearFields metode der fjerne tekst i email- og passwordProperty. Herefter tjekker den med assertEqueals om de to er tomme ved at sammenligne dem med et empty string. Så hvis email og password felterne er tomme beståes testen.\\
+    % ingen code highlightning yay % 

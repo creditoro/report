@@ -1,7 +1,7 @@
 \subsection{Detaljerede Brugsmønstre}
 
 % ----------------------- Læs krediteringer -----------------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|X|}
         \hline
         \textbf{Brugsmønster:}  Læs kreditering \\ 
@@ -30,42 +30,42 @@
 \end{table}
 
 % ----------------------- Opret krediteringer -----------------------------------
-\begin{table}[ht]
-    \begin{tabularx}{\textwidth}{|X|}
-            \hline
-            \textbf{Brugsmønster:} Opret kreditering \\
-            \hline
-        	\textbf{ID:} UC07 \\ \hline
-        	\textbf{Primære aktører:} Systemadministrator, kanaladministrator, Producer \\ \hline
-        	\textbf{Sekundære aktører:} \\ \hline
-        	\textbf{Kort beskrivelse:} Produceren opretter en kreditering. Heri angives alle der har bidraget til produceringen af TV-programmet, filmen el. lign. \\ \hline
-        	\textbf{Prækonditioner (Pre conditions):} \\
-        Aktøren skal være \hyperref[table:login]{logget ind på} systemet \\ \hline
-        \textbf{Hovedhændelsesforløb (main flow):} \\
-        	1. Brugsmønstret starter når en administrator eller producer vil oprette en kreditering \\
-        	2. Aktøren trykker på knappen ‘Opret Kreditering’ \\
-        	3. Systemet checker aktørens rolle \\
-        	4. Aktøren er forbundet til en kanal, og angiver programmets titel \\
-        	5. Systemet checker om der allerede findes et program med den angivne titel \\ 
-        	6. Aktøren krediterer alle der har medvirket i produktionen af programmet \\ 
-        	7. Aktøren sender den færdige kreditering videre til godkendelse \\ \hline
-        \textbf{Postkonditioner (post conditions):} \\ 
-        	En kreditering er blevet sendt videre til godkendelse \\ \hline
-        	\textbf{Alternative hændelsesforløb (alternative flow):} \\
-        Step *: Aktøren kan til enhver tid afbryde oprettelsen af krediteringen \\
-        Step 4: Hvis aktøren er systemadministrator, er vedkommende ikke forbundet til en kanal, og kan skifte hvilken kanal krediteringen skal oprettes ved. \\
+% \begin{table}[ht]
+%     \begin{tabularx}{\textwidth}{|X|}
+%             \hline
+%             \textbf{Brugsmønster:} Opret kreditering \\
+%             \hline
+%         	\textbf{ID:} UC07 \\ \hline
+%         	\textbf{Primære aktører:} Systemadministrator, kanaladministrator, Producer \\ \hline
+%         	\textbf{Sekundære aktører:} \\ \hline
+%         	\textbf{Kort beskrivelse:} Produceren opretter en kreditering. Heri angives alle der har bidraget til produceringen af TV-programmet, filmen el. lign. \\ \hline
+%         	\textbf{Prækonditioner (Pre conditions):} \\
+%         Aktøren skal være \hyperref[table:login]{logget ind på} systemet \\ \hline
+%         \textbf{Hovedhændelsesforløb (main flow):} \\
+%         	1. Brugsmønstret starter når en administrator eller producer vil oprette en kreditering \\
+%         	2. Aktøren trykker på knappen ‘Opret Kreditering’ \\
+%         	3. Systemet checker aktørens rolle \\
+%         	4. Aktøren er forbundet til en kanal, og angiver programmets titel \\
+%         	5. Systemet checker om der allerede findes et program med den angivne titel \\ 
+%         	6. Aktøren krediterer alle der har medvirket i produktionen af programmet \\ 
+%         	7. Aktøren sender den færdige kreditering videre til godkendelse \\ \hline
+%         \textbf{Postkonditioner (post conditions):} \\ 
+%         	En kreditering er blevet sendt videre til godkendelse \\ \hline
+%         	\textbf{Alternative hændelsesforløb (alternative flow):} \\
+%         Step *: Aktøren kan til enhver tid afbryde oprettelsen af krediteringen \\
+%         Step 4: Hvis aktøren er systemadministrator, er vedkommende ikke forbundet til en kanal, og kan skifte hvilken kanal krediteringen skal oprettes ved. \\
         
-        Step 5: Hvis programmets titel allerede eksisterer, gøres aktøren opmærksom på dette. \\
+%         Step 5: Hvis programmets titel allerede eksisterer, gøres aktøren opmærksom på dette. \\
         
-        Step 8: Hvis krediteringen afvises, laves de fornødne ændringer, og den nye kreditering sendes videre til godkendelse. \\
-        \hline
-    \end{tabularx}
-    \caption{Brugsmønster: Opret kreditering}
-    \label{tab:create_credits}
-\end{table}
+%         Step 8: Hvis krediteringen afvises, laves de fornødne ændringer, og den nye kreditering sendes videre til godkendelse. \\
+%         \hline
+%     \end{tabularx}
+%     \caption{Brugsmønster: Opret kreditering}
+%     \label{tab:create_credits}
+% \end{table}
 
 % ----------------------- Opret Producer -----------------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|X|}
         \hline
         \textbf{Brugsmønster:}  Opret producer \\ \hline
@@ -90,7 +90,7 @@
 
 
 % ---------------------- Se Personinformationer ---------------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|X|}
             \hline
             \textbf{Brugsmønster:}  Se Personinformationer \\ 
@@ -120,7 +120,7 @@
 
 
 %------------------------ Godkend nye krediteringer -------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|X|}
             \hline
             \textbf{Brugsmønster:}  Godkend nye krediteringer \\ 
@@ -150,7 +150,7 @@
 
 
 %------------------------ Opret Person -------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|X|}
             \hline
             \textbf{Brugsmønster:} Opret Person \\ 
@@ -185,7 +185,7 @@
 
 
 %------------------------ Login -------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|X|}
             \hline
             \textbf{Brugsmønster:} Login \\ 
@@ -219,7 +219,7 @@
 
 
 %------------------------ Logout -------------------------
-\begin{table}[ht]
+\begin{table}[H]
     \begin{tabularx}{\textwidth}{|X|}
         \hline
         \textbf{Brugsmønster:} Logout \\ 

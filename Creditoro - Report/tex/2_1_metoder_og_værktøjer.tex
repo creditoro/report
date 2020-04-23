@@ -1,0 +1,145 @@
+\section{Metoder \& Værktøjer}
+Dette afsnit har til formål at beskrive de metoder og værktøjer der er blevet brugt i løbet af udviklingen af produktet og udarbejdelsen af rapporten. 
+
+% ------------------------------ Metoder --------------------------------------
+\subsection{Metoder}
+%% ----------------------------- Brugsmønsterdiagram --------------------------
+\subsubsection{Brugsmønsterdiagram}
+Det første skridt i udviklingen af et brugsmønster er at finde og definere de forskellige aktører der vil interagere med systemet. En aktør kan defineres som alt der kommunikerer med systemet og ikke selv er en del af systemet. Et eksempel på dette kunne være en kunde på en webshop. Disse aktører opstilles i en tabel sammen med de brugsmønstre hver aktør kan tilgå. \\
+
+\noindent
+Da kravindsamling er en evolutionær aktivitet, bliver alle aktører ikke nødvendigvis identificeret i første iteration. Det er muligt at identificere primærer aktører i løbet af første iteration, og først senere i forløbet blive i stand til at identificere sekundære aktører, når man får mere viden om systemet. \textit{Primære} aktører interagerer med systemet for at opnå påkrævede systemfunktioner, og ud fra det, få noget ud af at bruge systemet. \textit{Sekundære} aktører støtter systemet så de primærer aktører kan gøre deres arbejde. Når aktørerne er fundet kan brugsmønstrene findes. Et brugsmønster angiver et scenarie en aktør kan interagere med. \\
+
+\noindent
+Når både aktører og brugsmønstre er fundet, kan man opstille et brugsmønsterdiagram for at give en visuel forståelse for hvilke aktører der kan tilgå hvilke brugsmønstre. Et eksempel på et brugsmønsterdiagram kan ses på figur \ref{fig:usecasemodel} \\
+
+\noindent
+Brugsmønstermodellen hjælper udvikleren med at forstå brugeren, så systemet kan konstrueres. Idet der er et samlet billede af hvordan systemet skal se ud, vil udviklingen være mere målfast da kravene og deres forhold til brugeren er klare.
+
+
+%% ----------------------------- FURPS+ ---------------------------------------
+\subsubsection{FURPS+}
+FURPS er en model til klassificering af ikke-funktionelle krav, og er med til at give en detaljeret beskrivelse af kravene. Akronymet står for:
+
+\begin{description}
+    \item [Functionality:] Hvad kunden vil have. Dette inkluderer også sikkerhedsforanstaltninger.
+    \item [Usability:] Hvor effektivt er produktet fra brugerens synspunkt? Er produktet æstetisk acceptabelt? Er dokumentationen fyldestgørende? 
+    \item [Reliability:] Hvad er den mest acceptable system nedetid? Er systemfejl forudsigelige? Er det muligt at demonstrere hvor præcise resultaterne er? Hvordan bliver systemet gendannet?
+    \item [Performance:] Hvor hurtigt skal systemet være? Hvad er den maksimale responstid? Hvad er gennemløbet? Hvor meget hukommelse bruger systemet?
+    \item [Supportability:] Kan systemet testes? Er det muligt at konfigurere systemet, udvide det, installere det, og yde service på systemet.\\
+\end{description}
+
+\noindent
++-tegnet står for supplerende behov kunden kan have, og omfatter:
+
+\begin{description}
+    \item [Design constraints:] Har I/O enheder eller database management systemer indflydelse på hvordan softwaren skal opbygges?
+    \item [Implementation requirements:] Er det nogle standarder programmørerne skal overholde? er testdrevet udvikling nødvendigt? 
+    \item [Interface requirements:] Hvilke downstream feeds skal der laves? Hvilke andre systemer skal systemet samarbejde med?
+    \item [Physical requirements:] Hvilken hardware skal systemet implementeres på?
+\end{description}
+
+
+%% ----------------------------- MoSCoW --------------------------------------
+\subsubsection{MoSCoW}
+MoSCoW er en vigtig prioriteringsmodel indenfor softwareudvikling, da den beskriver hvilke dele af systemet der som minimum skal laves før produktet kan accepteres. De brugsmønstre, udvilkerne af systemet skal tage udgangspunkt i, bliver prioriteret med kunden, så det bliver klart hvilke dele af systemet der skal udvikles først. Disse bliver opstillet i en MoSCoWmodel, så der let skabes et overblik. MoSCow er et akronym der står for:
+
+\begin{description}
+    \item [Must have] - betyder skal have og er det som der minimum skal være med for at softwaren virker og kan accepteres af kunden. 
+    \item [Should have] - betyder det som burde være med og det kunden gerne vil have med.
+    \item [Could have] - betyder det som kunne være med, hvis der er tid nok. 
+    \item [Won't have (this time)] - betyder det som der ikke skal prioriteres nu, men måske i en anden iteration.
+\end{description}
+
+
+%% ----------------------------- UP & Scrum ----------------------------------
+\subsubsection{UP \& Scrum}
+
+\myparagraph{UP}
+'UP' er en forkortelse af 'unified process' og består af fire faser. De fire faser er beskrevet i den rækkefølge som de udføres. \\
+
+\noindent
+\textbf{Inceptionsfasen} er der for at finde ud af om projekt overhovedet kan gennemføres, bestemme hvilket anvendelseområde systemet har og identificere vigtige krav og kritiske risici. \\
+
+\noindent
+\textbf{Elaborationfasen} er for at lave en iterativ udvikling af de forskellige krav, design, analyse og test ud fra den overordnede kravspecifikation og den prioritering der er lavet. I Elaborationfasen vil der blive brugt Scrum. \\
+
+\noindent
+\textbf{Konstruktionfasen}, hvor fokus vil være på udvikling af komponenter og andre funktioner.
+I fasen vil der blive brugt UML til at identificere hvilke klasser og komponenter der skal være. Det er i denne fase kodeningen kommer til at ske og den første iteration af software produktet.  \\
+
+\noindent
+\textbf{Overgangfasen}, hvor der vil være fokus på at få et færdigt softwareprodukt.
+Det vil man gøre ved, at se om man har implementeret de aftalte funktioner og i dialog med kunden finde ud af om de er tilfredse med produktet.
+
+\myparagraph{Scrum} 
+Scrum er en agil udvilkingsmetode, der benyttes til at lede og kontrollere leverancer af løsninger/produkter. Scrum består af 3 faser: 
+
+\begin{enumerate}
+    \item Forberedelse
+    \item Eksekvering
+    \item Idriftsættelse
+\end{enumerate}
+
+\noindent
+I forberedelsesfasen er der 3 aktiviteter: Produktvision, der er en overordnet beskrivelse af løsningen og dens omfang, product roadmap, der er en overordnet plan for hvornår vigtige funktioner forventes leveret, release plan, der er en inddeling af product roadmap i en eller flere (realeses), hvor den første (realese) består af de minimumsfunktioner der er beskrevet i MoSCoW modellen.\\
+
+\noindent
+I eksekveringsfasen er der tre artefakter og tre ceremonier. Artefakterne består af product backlog, der er en samling over alle krav for systemet, sprint backlog, der består af de krav gruppen skal implementere i den kommende sprint, burndown chart, der er en visualisering af gruppens fremskridt. Ceremonierne består af sprint planlægning, hvor planlægningen af de enkelte sprints finder sted, dagligt stand up, der er et dagligt koordineringsmøde hvor gruppemedlemmerne snakker om hvad de har lavet siden sidste møde og hvad der skal laves til næste møde, sprint review, der er en gennemgang af hvordan sprintet er forløbet og bruges til at lave eventuelle rettelse i planlægningen af næste sprint. \\
+
+\noindent
+I idriftsættelsesfasen bliver sprintet idrisftsat, hvilket betyder at der bliver frigivet til kunden i form af et nyt softwareprodukt eller en opdatering til en eksisterende produkt.\\
+
+\noindent
+Scrum vil blive brugt i elaborationsfasen til at nedbryde de krav der blev defineret i inceptionsfasen. Der vil blive benyttet en sprintperiode på 2 uger, og da sprintperioden er kort (normalt bruges 1-4 uger) er det vigtigt at kravene bliver brudt ned til User Stories der kan nåes indenfor 2 sprints.
+Gruppen vil i projektet benytte værktøjet ZenHub til GitHub for at integrere Scrum ind i projektet. Dette giver mulighed for at samle projekt management og kode på gruppens GitHub siden (\url{https://github.com/creditoro}).
+
+\noindent
+Til projektet bliver der benyttet et scrum board med følgende kolonner:\\
+
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|X|}
+    \hline
+    \textbf{New Issues} & \textbf{Icebox} & \textbf{Backlog} & \textbf{In Progress} & \textbf{Done} & \textbf{Closed} \\ \hline
+     & Issues med lav prioritet & Kommende issues & Igangværende issues & Færdige issues der bliver lukket næste sprint møde & \\ \hline
+    \end{tabularx}
+    \caption{Scrum Board}
+    \label{tab:scrumboard}
+\end{table} 
+
+\noindent
+Alle issues er sorteret fra top til bund alt efter prioritet. \\
+
+\newpage
+% ------------------------------ Værktøjer -----------------------------------
+\subsection{Værktøjer}
+I tabel \ref{tab:tools} ses de værktøjer projektgruppen har benyttet under inceptionsfasen og de værktøjer, der skal bruges fremadrettet.
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|p{4cm}|X|}
+        \hline
+        \textbf{Værktøj} & \textbf{Beskrivelse} \\
+        \hline
+        PostgreSQL          &   PostgreSQL er en open-source objekt-relationel database server.\\
+        \hline
+        GitHub              &   GitHub er en web-baseretkollaborations platform henvendt til software udviklere, der gør det muligt at versions-kontrollere projekter.\\ 
+        \hline
+        Overleaf            &   Overleaf er en online skriveplatoform for \textbf{LaTeX}, hvor man kan være flere brugere der skriver samtidig. \\
+        \hline
+        UML                 &   Unified Modeling Language \\
+        \hline
+        IntelliJ            &   Integreret udviklings miljø, som primært bruges af gruppens medlemmer. \\
+        \hline
+        ZenHub              &   ZenHub er en platform der gør det lettere at anvende Scrum i praksis.  \\
+        \hline
+        Scrum Board         &   Et Scrum Board er et værktøj, der har til formål at gøre opgarverne i Sprint og Backlog synlige og overskuelige.\\
+        \hline
+        Pair Programming    &   Pair programming er en softwareudvilkingsteknik, hvor to programmører arbejder sammen ved én computer.\\
+        \hline
+        Klassediagram       &   Bruges til visuelt at vise hvordan softwaresystemer er opbygget. I diagrammet beskrives systemets klasser, metoder og værdier klassen indeholder, samt klassernes relationer til hinanden.\\
+        \hline
+        SonarCloud          &   Online service til scanne kode for bugs, vulnerbilities og code smells.\\
+        \hline
+    \end{tabularx}
+    \caption{Værktøjer til projektarbejdet}
+    \label{tab:tools}
+\end{table}

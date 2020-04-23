@@ -1,15 +1,12 @@
 \section{Overordnede Krav}
-Denne sektion skal indeholde:
-
-\begin{itemize}
-    \item Opdateret resume af overordnede krav fra inceptionsdokument\\
-    \myworries{Hvor meget må tages direkte fra inceptionsdokumentet?}\\
-    \item Inklusiv overordnet brugsmønsterdiagram og oversigt over supplerende krav
-\end{itemize}{}
+\noindent
+Dette afsnit har til formål at uarbejde de overordnede kravspecificationer for systemet. Kravene er udformet udfra projektcasen, virksomhedsmøderne med TV2 samt gruppens egne tilføjelser.
+Afsnittet vil indeholde et resume af de overordnede krav, et overordnet brugsmønsterdiagram samt en række supplerende ikke-funktionelle krav.
 
 % ---------------------------- Overordnede krav ------------------------------------
 \subsection{Resume af Overordnede Krav} 
 
+\textit{(Taget fra inceptionsdokumentet (se bilag ? side ?))}\\ \\
 \noindent
 Systemet afspejler det system TV2 har lagt op til i projektcasen. Der er tale om et system, hvor alle kan se - og nogle kan redigere krediteringer for programmer. Systemet skal kunne tilgås via en dansk brugergrænseflade. Det skal indeholde forskellige brugerroller; systemadministrator, kanaladministrator, producer, royalty bruger og gæst.\\
 
@@ -81,6 +78,12 @@ I tabel \ref{table:kravliste} ses kravene opsummeret i en tabel for bedre overbl
 % ---------------------------- Overordnet brugsmønsterdiagram ----------------------
 \subsection{Overordnet Brugsmønsterdiagram}
 
+\noindent 
+I figur \ref{fig:usecasemodel} ses det overordnede brugsmønsterdiagram (use case model). Diagrammet giver et visuelt overblik over systemets overordnede brugsmønstre og hvilke aktører der kan benytte disse.\\
+
+\noindent
+I diagrammet ses systemets fem aktører (se aktørliste i bilag ? side ?) - System Administrator, Kanal Administrator, Royalty Bruger, Producer og Gæst. Diagrammet viser arvehierakiet mellem aktørerne, jo højere oppe på diagrammet aktøreren er placeret i diagrammet, jo flere rettigheder har den enkelte aktør. "System Administrator" har flest rettigheder og er derfor placeret øverst. Ligeledes har "Gæst" færrest rettigheder, og er derfor placeret nederst i brugsmønsterdiagrammet. 
+
 \begin{figure}[H]
     \centering
     \captionsetup{justification=centering}
@@ -96,53 +99,40 @@ I tabel \ref{table:kravliste} ses kravene opsummeret i en tabel for bedre overbl
 % ---------------------------- Supplerende krav ------------------------------------
 \subsection{Supplerende krav}
 
-Her bruges FURPS for supplerende krav.
+\noindent 
+På baggrund af den udlerede projektcase, samt de to virksomhedsmøder med TV2, er en række ikke-funktionelle supplerende krav blevet udformet. Systemet skal gøre det muligt for aktører med rettighederne dertil (se figur \ref{fig:usecasemodel}), at kunne kreditere produktionsroller som overholder DRs krediteringsregler samt databeskyttelsesloven (GDPR).\\
+
+\noindent 
+Systemet skal give brugeren, uanset rettighedsniveau, mulighed for at kunne skifte imellem forskellige sprog i brugergrænsefladen. Brugergrænsefladen skal derfor være responsiv, og kunne ændres dynamisk, alt afhængig af brugerens færden.\\
+
+\noindent
+tilfælde af systemets servere genstarter, starter del-systemerne igen automatisk. Altså genstartes systemets server, vil REST Api, database og EPG Poller automatisk starte op igen. Det vil derfor ikke være nødvendigt at lukke systemet ned, for at foretage back-up.\\
+
+\noindent 
+Systemet skal benytte sig af en database som skal kunne op til 10000 nye brugere, samt 15000 krediteringer årligt uden af de hyppigste kald til REST Api'et får nedsat funktionalitet. Hvilket vil sige med en responstid på mere end 300 ms. Databasen skal kunne overholde dette krav årligt i 25 år. Systemet skal derudover kunne håndtere 5000 brugere inden hvert minut.
+
+\noindent
+Systemet skal være installerbart vha. Docker cia Docker-compose. Det vil være muligt at konfiguere systems indstillinger via en \texttt{.env} fil. Det vil i kildekoden være muligt at finde en opsætningsguide.\\
+
+\noindent 
+I tabel \ref{tab:furps} ses en oversigt over de ovennævnte ikke-funktionelle krav. Tabellen benytter FURPS modellen. 
+
 \begin{table}[ht]
-    \begin{tabularx}{\textwidth}{|p{1cm}|X|X|}
+    \centering
+    \begin{tabularx}{\textwidth}{|p{4cm}|X|}
         \hline
-        \textbf{\#} &   \textbf{FURPS}           &    \textbf{Krav} \\
+        \textbf{FURPS}                      & \textbf{Krav} \\ 
         \hline
-        %What the customer wants! Note that this includes security-related needs.
-        S01 &   Funktionalitet (Functionality)           & Skal kunne kreditere produktionsroller som er angivet af DRs Krediteringsregler \\ & & Skal overholde GDPR \\
-                                
-        \hline
-        % How effective is the product from the standpoint of the person who must use it? Is it aesthetically acceptable? Is the documentation accurate and complete?
-        S02 & Brugervenlighed (Usability)       & Systemet skal kunne understøtte flere sprog \\
-        \hline
-        % What is the maximum acceptable system downtime? Are failures predictable? Can we demonstrate the accuracy of results? How is the system recovered?
-        S03 &   Pålidelighed (Reliability)     &  Hvis serveren til systemet genstarter, startes del-systemerne igen automatisk. Der vil ikke være behov for at ligge systemet ned regelmæssigt for at kunne foretage backup. \\
-        \hline
-        % How fast must it be? What's the maximum response time? What's the throughput? What's the memory consumption?
-        S04 &   Ydeevne (Performance)     &  Databasen skal kunne håndtere 10000 nye brugere - samt 15000 krediteringerer årligt i 25 år, uden at ofte brugte kald til REST Api'et bliver sløvt (reponsetid på mere end 300 ms) \\
-        \hline
-        % Is it testable, extensible, serviceable, installable, and configurable? Can it be monitored?
-        S05 & Kompabilitet (Supportability)  &  Systemet vil indeholde unit tests, og komme med en rapport over hvor stor en procendel der er dækket af dette. % Hvis der er mere tid kan vi indrage integrations tests?
-        %Centraliseret logning (Elastic search, eller blot centraliseret system log?)
-        Systemet vil blive forbundet til det centraliserede fejllognings system \texttt{Sentry}.
-        Systemet er installerbart vha. Docker via Docker-compose. % (så vi blot kan sige docker-compose up -d for at få systemet op).
-        Det vil være muligt at konfigurere system indstillinger via en \texttt{.env} (miljø) fil.
-        En opsætningsguide vil være at finde sammen med kildekoden. 
-        \\ \hline
-    %   % Do things like I/O devices or DBMS constrain how the software must be built?
-    %    Design constraints  &   Systemet skal benytte en relationel database. Databasen skal laves i PostgreSQL og skrives i programmeringssproget SQL  \\ 
-    %    \hline
-        % Do the programmers need to adhere to standards? Is the use of TDD required? Is statistically sound testing in the context of Cleanroom required?
-    %    Implementation requirements     &    \\ 
-    %   \hline 
-        % What downstream feeds must be created? What other systems must this one interface with? How frequent are feeds produced?
-    %   Interface requirements  &    tekst \\ 
-    %   \hline 
-        % What hardware must the system be deployable on? Must we be able to deploy to a machine no larger than 12" square, to be stationed in the Iraqi desert?
-    %    Physical requirements   &   Ingen\\ 
-    %    \hline
+        \multirow{3}{0}{Functionality}      & Skal kunne kreditere produktionsroller som er angivet af DRs Krediteringsregler  \\ \cline{2-2} 
+                                            & Skal overholde GDPR \\ \hline
+        \multirow{2}{0}{Usability}          & Systemet skal kunne understøtte flere sprog \\ \cline{2-2}
+                                            & Systemet skal have en responsiv brugergrænseflade (UI) \\ \hline
+        \multirow{3}{0}{Reliability}        & Hvis serveren til systemet genstarter, startes del-systemerne igen automatisk. Der vil ikke være behov for at lægge systemet ned regelmæssigt for at kunne foretage backup. \\ \hline
+        \multirow{4}{0}{Performance}        & Databasen skal kunne håndtere 10000 nye brugere - samt 15000 krediteringerer årligt i 25 år, uden at ofte brugte kald til REST Api'et bliver sløvt (reponsetid på mere end 300 ms) \\ \cline{2-2}
+                                            & Systemet skal kunne håndtere 5000 brugere indenfor et minut\\ \hline
+        \multirow{4}{0}{Supportability}     & Systemet er installerbart vha. Docker via Docker-compose\\ \cline{2-2}
+                                            & Det vil være muligt at konfigurere system indstillinger via en \texttt{.env} (miljø) fil. En opsætningsguide vil være at finde sammen med kildekoden. \\ \hline
     \end{tabularx}
     \caption{FURPS}
     \label{tab:furps}
-\end{table} 
-
-\myworries{Følgende skal overvejes:}
-
-\begin{itemize}
-    \item Usability: Responsive UI
-    \item Perfomance: The system should be able to handle 5000 concurrent users within a minute.
-\end{itemize}
+\end{table}

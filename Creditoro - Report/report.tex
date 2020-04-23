@@ -16,6 +16,22 @@
 \usepackage{lscape}
 \usepackage{xargs}
 \usepackage{tabularx}
+\usepackage{comment}
+\usepackage{pdfpages}
+\usepackage{xcolor}
+%\usepackage{minted}  <-- Fix me please :-)
+
+% 
+% \usepackage[
+% backend=biber,
+% style=alphabetic,
+% sorting=ynt
+% ]{biblatex}
+% \addbibresource{appendices/bibliography.bib}
+
+% \title{Bibliography management: \texttt{biblatex} package}
+% \author{Overleaf}
+% \date{ }
 
 \usepackage{ifthen}
 
@@ -51,8 +67,8 @@
 \graphicspath{{./figures/}{../figures/}}
 
 \begin{document}
-% Fjerner side tal
-\pagenumbering{gobble}
+    % Fjerner side tal
+    \pagenumbering{gobble}
     \renewcommand{\thesection}{\Roman{section}} 
     \renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
     % Forside
@@ -128,9 +144,15 @@
 
     % bibliography empty
     \bibliographystyle{apalike}
+    % \bibliographystyle{alphabetic}
+    % \bibliographystyle{unsrt}
     \bibliography{appendices/bibliography.bib}
+    % \medskip
+    % \printbibliography
     \newpage
     
+    % fjerner sidetal
+    \pagenumbering{gobble}
     % Bilag
     \appendix % Bruges til bilag, så den laver bilag indholdfortegnelse og overskrifter
     \input{appendices/bilag.tex}

@@ -1,0 +1,34 @@
+\section{Planlægning}
+Dette afsnit har til formål at fremvise gruppen planlægning af eleborationsfasen sammenlignet med det faktiske arbejde, samt komme nærmere ind på hvordan gruppen har planlagt arbejdet i de enkelte sprints og iterationer.
+
+\subsection{Plan for Elaborationsfasen og Det Faktiske Udviklingsarbejde}
+\begin{itemize}
+    \item Plan For elaborationsfasen og de enkelte iterationer. Brug af prioritering af krav i planlægningen.
+    \item Det faktiske udviklingsarbejde. Faserne, iterationerne og det faktiske  arbejde i dem? \\
+\end{itemize}
+
+\noindent
+Semesterprojektet er delt op i 2 iterationer. Til første iteration er planen at få sat REST API'et og databasen op. Disse skal indeholde vores brugere, kanaler, produktioner, personer og krediteringer så det kan hentes via API'et, som skrives i python og databasen er en relationel database i PostgreSQL. For alle API'ets moduler skal metoderne POST, GET, PATCH, PUT, DELTE og UPDATE implementeres. Disse metoder skal kunne tilgås via koden, så vi nemt og hurtigt kan hente dataet.\\
+Til desktop-klienten skal vi i første iteration lave design mockup, til en del af programmet, så vi har en ide til hvordan programmet skal se ud. Her skal vi lave fxml dokumenterne for login-siden, gennemse kanaler og gennemse produktioner. Vi skal også implementere login, så brugerne kan logge ind via API'et. På siden for "gennemse kanaler"  skal vi hente data fra TVtid.dk via en EPG Poller. Derved kan vi se hvilke kanaler vi skal vise i vores program. \\
+\myworries{Browse Channels Datamodel} 
+
+\noindent
+I anden iteration implementere roller i vores system. Indtil videre har målet være at vise programmet fra systemadministratorens synspunkt, men i anden iteration er planen at brugere nu skal have forskellige roller. Dette indebærer at ikke alle brugere ser samme knapper og information som f.eks. systemadministratoren. \myworries{Systemadministratoren skal bl.a. have mulighed for at oprette nye kanaler, hvor kanaladministratoren ikke skal.}
+% Skal vi overhoved oprette nye kanaler? Vi henter dem jo bare fra vore API?
+Vi skal lave design mockup til resten af programmet, bl.a. Produktions-siden og kanal siden. Derudover skal vi, til anden iteration, kunne trykke på kanalerne og se hvilke produktioner der hører til. Vi skal dertil også kunne importere nye produktioner fra TVtid via vores EPG Poller, samt oprette nye produktioner og nye krediteringer hertil.\\
+\myworries{Channel Model \& Channel ViewModel}
+
+\subsection{Backlogs}
+Her kommer vores backlogs fra Zenhub til at blive præsenteret.
+
+\subsection{Rollefordeling i projektgruppen}
+Her kommer rollefordelingen i projektgruppen til at blive præsenteret.\\
+
+\noindent
+Der bliver taget udgangspunkt i Belbins rolleprofil, hvor det bliver sammenlignet med den faktiske rollefordeling.
+
+\subsection{Ceremonier}
+Her bliver Sprintplanlægning og dagligt stand up præsenteret. Sprint review kommer ikke til at blive nævnt, da dette er en af vores scrum-buts.
+
+\subsection{Scrum-buts}
+Sprint review bl.a.
