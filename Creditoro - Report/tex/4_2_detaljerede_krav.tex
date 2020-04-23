@@ -7,12 +7,12 @@ Afsnittet vil derudover indeholde en detaljeret beskrivelse af de supplerende ik
 
 
 % ---------------------------- Detaljerede brugsmønstre ----------------------------
-\subsection{Detaljerede Brugsmønstre}
+\subsection{Detaljerede Brugsmønstre} {\label{section: detailed_usemodels}}
 I tabel \ref{tab:create_credits} ses en detaljeret beskrivelse af det essentielle brugsmønster "Opret Kreditering".
 Beskrivelsen er udarbejdet ud fra aktørlisterne og brugsmønster beskrivelserne i inceptionsdokumentet (se bilag ? side ?). Detaljerede brugsmønster beskrivelserne bruges til at danne et overblik over hver enkel brugsmønsters cyklus. Her nævnes brugsmønstrets primære og sekundære aktører, de præ- og postkonditioner der er knyttet til brugsmønsteret - hvad skal være opfyldt, for at brugsmønsteret sættes i gang, og hvad sker der når brugsmønsteret er gennemført. Herudover beskrives hoved- og alternative hændelsesforløb. Hovedhændelsesforløbet beskriver forløbet, hvis der ingen problemer opstår. Alternativ hændelsesforløb beskriver eventuelle alternative hændelser i specifikke trin/steps i hovedhændelsesforløbet. \\
 
 \noindent
-Brugsmønstrene nedenfor er blevet valgt på baggrund af MosCow analysen i inceptionsdokumentet (se bilag ? side ?) baseret på systemets brugsmønstre. Det mest essentielle brugsmønstre er valgt ud fra brugsmønstrene i kategorien "must have". Det er vurderet at brugsmønstret "Opret Kreditering" er det mest essentielle bnrugsmønstre, da det denne funktion hele systemet er bygget op omkring.\\
+Brugsmønstrene nedenfor er blevet valgt på baggrund af MosCow analysen i inceptionsdokumentet \myworries{(se bilag ? side ?)} baseret på systemets brugsmønstre. Det mest essentielle brugsmønstre er valgt ud fra brugsmønstrene i kategorien "must have". Det er vurderet at brugsmønstret "Opret Kreditering" er det mest essentielle bnrugsmønstre, da det denne funktion hele systemet er bygget op omkring.\\
 
 
 % % ----------------------- Læs krediteringer -----------------------------------
@@ -259,7 +259,11 @@ Step 8: Hvis krediteringen afvises, laves de fornødne ændringer, og den nye kr
 
 \subsection{Detaljeret beskrivelse af supplerende krav}
 
-\noindent Nedenfor ses de detaljerede beskrivelser af supplerende ikke-funktionelle krav i form af en FURPS+ model. modellen er med til at give et overblik over hvilke supplerende ikke-funktionelle krav systemet skal overholde, for at være tilstrækkeligt i forhold til TV2 og gruppens forventninger.
+\noindent I tabel \ref{tab:furps+} ses de detaljerede beskrivelser af supplerende ikke-funktionelle krav i form af en FURPS+ model. modellen er med til at give et overblik over hvilke supplerende ikke-funktionelle krav systemet skal overholde, for at være tilstrækkeligt i forhold til TV2 og gruppens forventninger.
+FURPS+ er en udviddet udgave af FURPS modellen. Udover kravene i FURPS modellen i afsnit \ref{supplerende_krav}, er der i tilføjet 4 nye kategorier - Design constraints, Implementation requirements, Interface requirements og Physical requirements. Derudover har hver af de ikke-funktionelle krav fået tildelt et nummer, for lettere reference. \\
+Af de tilføjede kategorier er nye krav udformet. Systemet skal benytte en relationel databse. Databasen skal skrives i programmeringssproget SQL og laves i PostgreSQL. Desktop clienten bygges i programmeringssproget Java og REST Apt'et bygges i Python.\\
+Systemet vil blive unit testet, for at sikre en høj kvalitet af implementeret kode. Systemet vil blive forbindet til det centraliserede fejlognings system Sentry.\\
+Systemet skal kunne trække EPG data fra TVTid.dk via en EPG Poller og sende dataen til REST Api'et.
 
 \begin{center}
     \begin{longtable}[h]{|p{4cm}|p{1cm}|p{11cm}|}

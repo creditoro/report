@@ -1,0 +1,83 @@
+\subsection{Beskrivelser af klassekandidater}
+
+
+% ------------------------- Produktion ----------------------------
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
+        \hline
+        \textbf{Navn} & Produktion\\
+        \hline
+        \textbf{Definition} &  En produktion har et UUID, en titel og et \texttt{kanal\_id}\\
+        \hline
+        \textbf{Eksempel} & En produktion kan se ud som følgende:\\
+                          & \texttt{UUID}: fbf20f43-9f1c-41e1-abce-cca32b836ef0 \\
+                          & Titel: Peter pedal \\
+                          & \texttt{kanal\_id}: TV2 \\
+        \hline
+        \textbf{Andet} & Nej\\
+        \hline
+    \end{tabularx}
+    \caption{Beskrivelse af Produktion-klassen}
+    \label{tab:production_class_description}
+\end{table}
+
+% ------------------------- Kreditering ----------------------------
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
+        \hline
+        \textbf{Navn} & Kreditering\\
+        \hline
+        \textbf{Definition} & En kreditering indeholder \texttt{person\_id} og \texttt{job} for de personer der skal krediteres og et \texttt{produktion\_id} for den produktion de tilhører \\
+        \hline
+        \textbf{Eksempel} & En kreditering kan se ud som følgende: \\
+                          & \\
+                          & Hans Hansen \quad \quad \quad \quad Lydmand\\
+                          & \\
+                          & \texttt{produktion\_id}: 21004623541527 \\
+        \hline
+        \textbf{Andet} & Nej\\
+        \hline
+    \end{tabularx}
+    \caption{Beskrivelse af Kreditering-klassen}
+    \label{tab:credit_class_description}
+\end{table}
+
+% ------------------------- Kanal ---------------------------------
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
+        \hline
+        \textbf{Navn} &  Kanal\\
+        \hline
+        \textbf{Definition} & En kanal har et \texttt{ID} og et \texttt{navn}\\
+        \hline
+        \textbf{Eksempel} & En kanal kan se ud som følgende: \\
+                          & \texttt{ID}: 840215538\\
+                          & \texttt{navn}: TV2\\
+        \hline
+        \textbf{Andet} & Nej\\
+        \hline
+    \end{tabularx}
+    \caption{Beskrivelse af Kanal-klassen}
+    \label{tab:channel_class_description}
+\end{table}
+
+% ------------------------- Person --------------------------------
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
+        \hline
+        \textbf{Navn} &  Person\\
+        \hline
+        \textbf{Definition} &  En person har personinformationer (navn, beskæftigelse, e-mail, tlf.nr. osv)\\
+        \hline
+        \textbf{Eksempel} & En person kan se ud som følgende: \\
+                          & Navn: Hans Hansen\\
+                          & E-mail: hans@hansen.pm\\
+                          & Telefonnummer: + 42 42 06 96 66\\
+                          & Beskæftigelse: Lydmand\\
+        \hline
+        \textbf{Andet} & Nej\\
+        \hline
+    \end{tabularx}
+    \caption{Beskrivelse af Person-klassen}
+    \label{tab:person_class_description}
+\end{table}

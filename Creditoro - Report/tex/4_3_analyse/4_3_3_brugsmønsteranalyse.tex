@@ -1,7 +1,9 @@
 \subsection{Brugsmønsteranalyse}
+Der vil i dette afsnit blive lavet en brugsmønsteranalyse på de detaljerede brugsmønstre fra afsnit \ref{section: detailed_usemodels}, der har til formål at finde klasse, finde struktur og finde adfærd i et system. Det første der gøres er at finde klasser:
 
 \subsubsection{Klassekandidater}
-Nedenfor ses listen af potentielle klasser fra navneordsanalysen af brugsmønstrene:
+Når man skal finde potentielle klasser, kan der tages brug af en navneordsanalyse, hvor man finder potentielle klasserkandidater. Nedenfor kan listen af potentielle klasser fra navneordsanalysen af brugsmønstrene ses:
+
 \begin{table}[ht]
     \begin{tabularx}{\textwidth}{|p{4cm}|p{4cm}|X|}
         \hline
@@ -35,10 +37,10 @@ Nedenfor ses listen af potentielle klasser fra navneordsanalysen af brugsmønstr
 \end{table}
 
 \noindent
-\myworries{Her har vi tildelt nogle attributter, bl.a. fra kasserede klassekandidater, som vi mener klasserne bør indeholde.}
+Her er der tildelt nogle attributter, blandt andet fra kasserede klassekandidater, som klasserne bør indeholde.
 
 \subsubsection{Kasserede klassekandidater}
-De resterende potentielle klasser der blev fundet under navneordsanalysen er enten synonymer, operationer  eller egner sig bedre som attributter til de valgte potentielle klasser. Disse kan ses i nedenstående tabel: 
+De resterende potentielle klasser der blev fundet under navneordsanalysen er enten synonymer, operationer eller egner sig bedre som attributter til de valgte potentielle klasser. Disse kan ses i nedenstående tabel: 
 
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{|X|X|}
@@ -109,7 +111,8 @@ De resterende potentielle klasser der blev fundet under navneordsanalysen er ent
 \end{table}
 
 \noindent
-\myworries{Her har vi bl.a. valgt at "Brugernavn" og "Password" begge er attributter til brugerklassen, og kandidaten "Gæst" ikke skal være en klasse for sig, da denne kun kan se krediteringerne. Gæster skal ikke have specielle rettigheder eller indeholde login-oplysninger, som brugernavn og password.}
+Her er det besluttet, at kandidaterne 'Brugernavn' og 'Password' begge er attributter til brugerklassen, og kandidaten 'Gæst' ikke skal være en klasse for sig, da denne klassekandidat kun kan se krediteringerne. Gæster skal ikke have specielle rettigheder eller login-oplysninger, som brugernavn og password.
+
 
 \subsubsection{Klassekategori koncept}
 De potentielle klasser der arbejdes videre med kan opdeles i kategorier. Dette er med til at skabe et overblik over klassernes ‘placering’ i systemet samt skabe associationer mellem koncepter og potentielle klasser.
@@ -158,7 +161,7 @@ Kategorilisten kan ses nedenunder:
 \end{table}
 
 \subsubsection{Beskrivelse af klasser}
- I nedenstående tabeller er der givet et eksempel på, hvordan hver klasse kan komme til at se ud:
+I nedenstående tabel er der givet et eksempel på, hvordan hver klasse kan komme til at se ud. De resterende kan findes i bilagene.
  
 % ------------------------- Bruger --------------------------------
 \begin{table}[H]
@@ -181,94 +184,14 @@ Kategorilisten kan ses nedenunder:
     \label{tab:user_class_description}
 \end{table}
 
-% ------------------------- Produktion ----------------------------
-\begin{table}[H]
-    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
-        \hline
-        \textbf{Navn} & Produktion\\
-        \hline
-        \textbf{Definition} &  En produktion har et UUID, en titel og et \texttt{kanal\_id}\\
-        \hline
-        \textbf{Eksempel} & En produktion kan se ud som følgende:\\
-                          & \texttt{UUID}: fbf20f43-9f1c-41e1-abce-cca32b836ef0 \\
-                          & Titel: Peter pedal \\
-                          & \texttt{kanal\_id}: TV2 \\
-        \hline
-        \textbf{Andet} & Nej\\
-        \hline
-    \end{tabularx}
-    \caption{Beskrivelse af Produktion-klassen}
-    \label{tab:production_class_description}
-\end{table}
-
-% ------------------------- Kreditering ----------------------------
-\begin{table}[H]
-    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
-        \hline
-        \textbf{Navn} & Kreditering\\
-        \hline
-        \textbf{Definition} & En kreditering indeholder \texttt{person\_id} og \texttt{job} for de personer der skal krediteres og et \texttt{produktion\_id} for den produktion de tilhører \\
-        \hline
-        \textbf{Eksempel} & En kreditering kan se ud som følgende: \\
-                          & \\
-                          & Hans Hansen \quad \quad \quad \quad Lydmand\\
-                          & \\
-                          & \texttt{produktion\_id}: 21004623541527 \\
-        \hline
-        \textbf{Andet} & Nej\\
-        \hline
-    \end{tabularx}
-    \caption{Beskrivelse af Kreditering-klassen}
-    \label{tab:credit_class_description}
-\end{table}
-
-% ------------------------- Kanal ---------------------------------
-\begin{table}[H]
-    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
-        \hline
-        \textbf{Navn} &  Kanal\\
-        \hline
-        \textbf{Definition} & En kanal har et \texttt{ID} og et \texttt{navn}\\
-        \hline
-        \textbf{Eksempel} & En kanal kan se ud som følgende: \\
-                          & \texttt{ID}: 840215538\\
-                          & \texttt{navn}: TV2\\
-        \hline
-        \textbf{Andet} & Nej\\
-        \hline
-    \end{tabularx}
-    \caption{Beskrivelse af Kanal-klassen}
-    \label{tab:channel_class_description}
-\end{table}
-
-% ------------------------- Person --------------------------------
-\begin{table}[H]
-    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
-        \hline
-        \textbf{Navn} &  Person\\
-        \hline
-        \textbf{Definition} &  En person har personinformationer (navn, beskæftigelse, e-mail, tlf.nr. osv)\\
-        \hline
-        \textbf{Eksempel} & En person kan se ud som følgende: \\
-                          & Navn: Hans Hansen\\
-                          & E-mail: hans@hansen.pm\\
-                          & Telefonnummer: + 42 42 06 96 66\\
-                          & Beskæftigelse: Lydmand\\
-        \hline
-        \textbf{Andet} & Nej\\
-        \hline
-    \end{tabularx}
-    \caption{Beskrivelse af Person-klassen}
-    \label{tab:person_class_description}
-\end{table}
-
 \subsubsection{Analysemodel}
-Ud fra navneordsanalysen er de potentielle klasser og deres attributter fundet. Dette vises i analysemodellen, som kan ses på figur \ref{fig:analysemodel} , med tilhørende relationer mellem klasserne. Modellen har til formål at danne et overblik over klasserne, deres attributter og deres relationer i systemet, samt at fungere som en model der kan bruges til videreudvikling af systemet. \\
 
+\noindent
+Ud fra navneordsanalysen er de potentielle klasser og deres attributter fundet. Dette vises i analysemodellen, som kan ses på figur \ref{fig:analysemodel} , med tilhørende relationer mellem klasserne. Modellen har til formål at danne et overblik over klasserne, deres attributter og deres relationer i systemet, samt at fungere som en model der kan bruges til videreudvikling af systemet. \\
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.43]{figures/analysemodel.png}
+\includegraphics[scale=0.45]{figures/analysemodel.png}
 \caption{Analysemodel}
 \label{fig:analysemodel}
 \end{figure}

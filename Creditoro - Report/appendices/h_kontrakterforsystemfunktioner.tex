@@ -1,0 +1,89 @@
+\subsection{Kontrakter for systemfunktioner}{\label{section: systemfunktionskontrakter}}
+
+
+%------------------------ Læs krediteringer -------------------------------
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{|p{4cm}|X|}
+        \hline
+        \multicolumn{2}{|X|}{\textbf{Læs Kreditering}}\\ 
+        \hline
+        \textbf{System operation}       & \textbf{læsKreditering} \\ \hline
+        \textbf{Krydshenvisning}        & Use case: Læs kreditering \\ \hline
+        \textbf{Ansvar}                 & At vise eksisterende krediteringer, hvis følgende betingelser er sande \\ 
+                                        & \\
+                                        & \quad 1. Den søgte kreditering findes i systemet\\
+                                        & \\
+                                        & Hvis ikke overstående er sande, skal det sendes en besked til brugeren at den søgte kreditering ikke findes i systemet\\\hline
+        \textbf{Output}                 & 1. Krediteringen vises\\ 
+                                        & Alternativt: Besked sendt ud til brugeren\\ \hline
+        \textbf{Prækonditioner}         & Ingen \\ \hline
+        \textbf{Postkonditioner}        & En kreditering vil blive vist \\ \hline
+    \end{tabularx}
+    \caption{Systemfunktionskontrakt 'læsKreditering'}
+    \label{tab:kontrakter_læs_kreditering}
+\end{table}
+
+%------------------------ Opret producer -------------------------------
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{|p{4cm}|X|}
+        \hline
+        \multicolumn{2}{|X|}{\textbf{Opret producer}}\\
+        \hline
+        \textbf{System operation}       & \textbf{opretProducer} \\ \hline
+        \textbf{Krydshenvisning}        & Use case: Opret producer \\ \hline\textbf{}
+        \textbf{Ansvar}                 & At oprette en producer, hvis prækonditionen er opfyldt og følgende betingelser er sande: \\ 
+                                        & \\ 
+                                        & \quad 1. Produceren eksisterer ikke i systemet i forvejen \\
+                                        & \quad 2. Alle oplysninger er indtastet korrekt \\
+                                        & \\
+                                        & Derefter give brugeren besked om det lykkedes at oprette en producer eller ej \\\hline
+        \textbf{Output}                 & Besked om der er blevet oprettet en producer eller ej \\ \hline
+        \textbf{Prækonditioner}         & Vedkommende der prøver at oprette en producer skal være logget ind som 'Kanal- eller                                                  Systemadministrator' \\ \hline
+        \textbf{Postkonditioner}        & En ny producer er oprettet i systemet \\ \hline
+    \end{tabularx}
+    \caption{Systemfunktionskontrakt 'Opret producer'}
+    \label{tab:kontrakter_opret_producer}
+\end{table}
+
+
+%------------------------ Se Personinformationer -------------------------
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{|p{4cm}|X|}
+        \hline
+        \multicolumn{2}{|X|}{\textbf{Se Personinformationer}}\\
+        \hline
+        \textbf{System operation}       & \textbf{sePersonInfo} \\ \hline
+        \textbf{Krydshenvisning}        & Use case: Se personinformation \\ \hline
+        \textbf{Ansvar}                 & At vise respektive persondata om den søgte person, hvis prækonditionen og betingelsen er opfyldt:\\
+                                        & \\
+                                        & \quad 1. Personen er logget ind som enten producer, kanal- eller systemadministrator\\
+                                        & \\
+                                        & Hvis ikke overstående er opfyldt, vises ikke personfølsomme informationer, som navn, roller i film/serier som personen har medvirket i\\ \hline
+        \textbf{Output}                 & Viser en information om en person \\ \hline
+        \textbf{Prækonditioner}         & Person er fundet i systemet \\ \hline
+        \textbf{Postkonditioner}        & Alt efter ens rolle i systemet vil forskelligt data blive vist. Begrænset hvis man er besøgende, alt hvis man er producer, royalty bruger, kanal- og systemadministrator \\ \hline
+    \end{tabularx}
+    \caption{Systemfunktionskontrakt 'se personinformationer'}
+    \label{tab:kontrakter_se_personinformationer}
+\end{table}
+
+%------------------------ Godkend nye krediteringer -------------------------
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{|p{4cm}|X|}
+        \hline
+        \multicolumn{2}{|x|}{\textbf{Godkend ny kreditering}}\\
+        \hline
+        \textbf{System operation}       & \textbf{godkendKreditering} \\ \hline
+        \textbf{Krydshenvisning}        & Use case: Godkend Kredtiteringer \\ \hline
+        \textbf{Ansvar}                 & At godkende eller afvise nye krediteringer hvis prædonditionerne er sande og betingelsen opfyldt:  \\ 
+                                        & \\
+                                        & \quad 1. En kreditering er oprettet af en producer \\
+                                        & \\
+                                        & Hvis ikke ovenstående er opfyldt, vil der ikke blive vist nye krediteringer til godkendelse. \\ \hline
+        \textbf{Output}                 & Besked om krediteringen er godkendt \\ \hline
+        \textbf{Prækonditioner}         & 1. Er logget ind som system- eller kanaladministrator \\ \hline
+        \textbf{Postkonditioner}        & Krediteringen er enten godkendt eller afvist og den ansvarlige producer er bliver informeret herom \\ \hline
+    \end{tabularx}
+    \caption{Systemfunktionskontrakt 'Godkend nye krediteringer'}
+    \label{tab:kontrakter_Godkend_nye_krediteringer}
+\end{table}
