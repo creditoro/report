@@ -2,7 +2,7 @@
 Der vil i dette afsnit blive lavet en brugsmønsteranalyse på de detaljerede brugsmønstre fra afsnit \ref{section: detailed_usemodels}, der har til formål at finde klasse, finde struktur og finde adfærd i et system. Det første der gøres er at finde klasser:
 
 \subsubsection{Klassekandidater}
-Når man skal finde potentielle klasser, kan der tages brug af en navneordsanalyse, hvor man finder potentielle klasserkandidater. Nedenfor kan listen af potentielle klasser fra navneordsanalysen af brugsmønstrene ses:
+Når man skal finde potentielle klasser, kan der tages brug af en navneordsanalyse, hvor man finder potentielle klasserkandidater. Nedenfor kan listen af potentielle klasser fra navneordsanalysen af brugsmønstrene ses i tabel \ref{table:class_candidates}.
 
 \begin{table}[ht]
     \begin{tabularx}{\textwidth}{|p{4cm}|p{4cm}|X|}
@@ -10,17 +10,17 @@ Når man skal finde potentielle klasser, kan der tages brug af en navneordsanaly
         \textbf{Klassekandidat} & \textbf{Attributter} & \textbf{Kommentar} \\
         \hline
         % Læs kreditering -----------------------------------------------------------
-        Bruger      & \texttt{uuid}, \texttt{e-mail}, \texttt{password}, \texttt{rolle} & Indebærer alle aktørerne (Systemadmin, kanaladmin, producer og royalty bruger).\\
+        \multirow{2}{*}{Bruger}      & \texttt{uuid}, \texttt{e-mail}, \texttt{password}, \texttt{rolle} & Indebærer alle aktørerne (Systemadmin, kanaladmin, producer og royalty bruger).\\
         \hline
-        Produktion  & \texttt{uuid}, \texttt{titel}, \texttt{kanal\_id} & Et program indebærer alt hvad der bliver vist på TV. (Film, serier osv) \\
+        \multirow{2}{*}{Produktion}  & \texttt{uuid}, \texttt{titel}, \texttt{kanal\_id} & Et program indebærer alt hvad der bliver vist på TV. (Film, serier osv) \\
         \hline
-        Kreditering & \texttt{person\_id}, \texttt{job}, \texttt{produktion\_id} & En kreditering er et job udført af en person til en produktion (hvor job kan være lydmand) \\
+        \multirow{3}{*}{Kreditering} & \texttt{person\_id}, \texttt{job}, \texttt{produktion\_id} & En kreditering er et job udført af en person til en produktion (hvor job  kan være lydmand) \\
         \hline
         % Opret Kreditering ---------------------------------------------------------
-        Kanal & \texttt{ID}, \texttt{navn} & Angiver hvilken TV-kanal et program bliver afspillet på \\
+        \multirow{2}{*}{Kanal} & \multirow{2}{*}{\texttt{ID}, \texttt{navn}} & Angiver hvilken TV-kanal et program bliver afspillet på \\
         \hline
         % Opret Person --------------------------------------------------------------
-        Person & Personinformation (navn, beskæftigelse, e-mail, tlf.nr. osv)  & De der medvirker til produceringen af en produktion (kameramand, lydmand, etc.)\\
+        \multirow{3}{*}{Person} & Personinformation (navn, beskæftigelse, e-mail, tlf.nr. osv)  & De der medvirker til produceringen af en produktion (kameramand, lydmand, etc.)\\
         \hline
         % Log ud --------------------------------------------------------------------
             % Nur duplications
@@ -36,11 +36,12 @@ Når man skal finde potentielle klasser, kan der tages brug af en navneordsanaly
     \label{table:class_candidates}
 \end{table}
 
-\noindent
+% vi behøver ikke at bruge  mere :)
+
 Her er der tildelt nogle attributter, blandt andet fra kasserede klassekandidater, som klasserne bør indeholde.
 
 \subsubsection{Kasserede klassekandidater}
-De resterende potentielle klasser der blev fundet under navneordsanalysen er enten synonymer, operationer eller egner sig bedre som attributter til de valgte potentielle klasser. Disse kan ses i nedenstående tabel: 
+De resterende potentielle klasser der blev fundet under navneordsanalysen er enten synonymer, operationer eller egner sig bedre som attributter til de valgte potentielle klasser. Disse kan ses i tabel \ref{table:deleted_class_candidates}
 
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{|X|X|}
@@ -110,13 +111,13 @@ De resterende potentielle klasser der blev fundet under navneordsanalysen er ent
     \label{table:deleted_class_candidates}
 \end{table}
 
-\noindent
+
 Her er det besluttet, at kandidaterne 'Brugernavn' og 'Password' begge er attributter til brugerklassen, og kandidaten 'Gæst' ikke skal være en klasse for sig, da denne klassekandidat kun kan se krediteringerne. Gæster skal ikke have specielle rettigheder eller login-oplysninger, som brugernavn og password.
 
 
 \subsubsection{Klassekategori koncept}
 De potentielle klasser der arbejdes videre med kan opdeles i kategorier. Dette er med til at skabe et overblik over klassernes ‘placering’ i systemet samt skabe associationer mellem koncepter og potentielle klasser.
-Kategorilisten kan ses nedenunder:
+Kategorilisten kan ses i tabel \ref{table:class_categories}.
 
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{|X|X|}
@@ -149,7 +150,7 @@ Kategorilisten kan ses nedenunder:
         \hline
         Andre samarbejdssystemer & Ingen\\
         \hline
-        Optagelser af finans, arbejde, kontrakter og juridiske sager &  Ingen \\
+        Optagelser af finans, arbejde, kontrakter og juridiske sager & Ingen \\
         \hline
         Finansielle instrumenter & Ingen\\
         \hline
@@ -161,7 +162,7 @@ Kategorilisten kan ses nedenunder:
 \end{table}
 
 \subsubsection{Beskrivelse af klasser}
-I nedenstående tabel er der givet et eksempel på, hvordan hver klasse kan komme til at se ud. De resterende kan findes i bilagene.
+I tabel \ref{tab:user_class_description} er der givet et eksempel på, hvordan hver klasse kan komme til at se ud. De resterende kan findes i bilagene.
  
 % ------------------------- Bruger --------------------------------
 \begin{table}[H]
@@ -186,7 +187,7 @@ I nedenstående tabel er der givet et eksempel på, hvordan hver klasse kan komm
 
 \subsubsection{Analysemodel}
 
-\noindent
+
 Ud fra navneordsanalysen er de potentielle klasser og deres attributter fundet. Dette vises i analysemodellen, som kan ses på figur \ref{fig:analysemodel} , med tilhørende relationer mellem klasserne. Modellen har til formål at danne et overblik over klasserne, deres attributter og deres relationer i systemet, samt at fungere som en model der kan bruges til videreudvikling af systemet. \\
 
 \begin{figure}[h]

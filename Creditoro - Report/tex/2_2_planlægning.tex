@@ -1,34 +1,44 @@
 \section{Planlægning}
-Dette afsnit har til formål at fremvise gruppen planlægning af eleborationsfasen sammenlignet med det faktiske arbejde, samt komme nærmere ind på hvordan gruppen har planlagt arbejdet i de enkelte sprints og iterationer.
-
-\subsection{Plan for Elaborationsfasen og Det Faktiske Udviklingsarbejde}
-\begin{itemize}
-    \item Plan For elaborationsfasen og de enkelte iterationer. Brug af prioritering af krav i planlægningen.
-    \item Det faktiske udviklingsarbejde. Faserne, iterationerne og det faktiske  arbejde i dem? \\
-\end{itemize}
-
-\noindent
-Semesterprojektet er delt op i 2 iterationer. Til første iteration er planen at få sat REST API'et og databasen op. Disse skal indeholde vores brugere, kanaler, produktioner, personer og krediteringer så det kan hentes via API'et, som skrives i python og databasen er en relationel database i PostgreSQL. For alle API'ets moduler skal metoderne POST, GET, PATCH, PUT, DELTE og UPDATE implementeres. Disse metoder skal kunne tilgås via koden, så vi nemt og hurtigt kan hente dataet.\\
-Til desktop-klienten skal vi i første iteration lave design mockup, til en del af programmet, så vi har en ide til hvordan programmet skal se ud. Her skal vi lave fxml dokumenterne for login-siden, gennemse kanaler og gennemse produktioner. Vi skal også implementere login, så brugerne kan logge ind via API'et. På siden for "gennemse kanaler"  skal vi hente data fra TVtid.dk via en EPG Poller. Derved kan vi se hvilke kanaler vi skal vise i vores program. \\
-\myworries{Browse Channels Datamodel} 
-
-\noindent
-I anden iteration implementere roller i vores system. Indtil videre har målet være at vise programmet fra systemadministratorens synspunkt, men i anden iteration er planen at brugere nu skal have forskellige roller. Dette indebærer at ikke alle brugere ser samme knapper og information som f.eks. systemadministratoren. \myworries{Systemadministratoren skal bl.a. have mulighed for at oprette nye kanaler, hvor kanaladministratoren ikke skal.}
-% Skal vi overhoved oprette nye kanaler? Vi henter dem jo bare fra vore API?
-Vi skal lave design mockup til resten af programmet, bl.a. Produktions-siden og kanal siden. Derudover skal vi, til anden iteration, kunne trykke på kanalerne og se hvilke produktioner der hører til. Vi skal dertil også kunne importere nye produktioner fra TVtid via vores EPG Poller, samt oprette nye produktioner og nye krediteringer hertil.\\
-\myworries{Channel Model \& Channel ViewModel}
-
-\subsection{Backlogs}
-Her kommer vores backlogs fra Zenhub til at blive præsenteret.
+Dette afsnit har til formål at fremvise gruppen planlægning af eleborationsfasen sammenlignet med det faktiske arbejde, samt komme nærmere ind på hvordan gruppen har planlagt arbejdet i de enkelte sprints og iterationer, samt rollefordelingen i projektgruppen.
 
 \subsection{Rollefordeling i projektgruppen}
-Her kommer rollefordelingen i projektgruppen til at blive præsenteret.\\
+I projektets opstartsfase tog gruppemedlemmerne en Belbin-test. Resultatet af denne test kan ses i bilag \ref{inceptionsdokument} side 26. 
 
-\noindent
-Der bliver taget udgangspunkt i Belbins rolleprofil, hvor det bliver sammenlignet med den faktiske rollefordeling.
+\subsection{Plan for Elaborationsfasen og Det Faktiske Udviklingsarbejde}
+% \begin{itemize}
+%     \item Plan For elaborationsfasen og de enkelte iterationer. Brug af prioritering af krav i planlægningen.
+%     \item Det faktiske udviklingsarbejde. Faserne, iterationerne og det faktiske  arbejde i dem? \\
+% \end{itemize}
+
+Semesterprojektet er delt op i 2 iterationer. Til første iteration er planen at få sat REST API'et og databasen op. Disse skal indeholde vores brugere, kanaler, produktioner, personer og krediteringer så det kan hentes via API'et, som skrives i python og databasen er en relationel database i PostgreSQL. For alle API'ets moduler skal metoderne POST, GET, PATCH, PUT, DELTE og UPDATE implementeres. Disse metoder skal kunne tilgås via koden, så vi nemt og hurtigt kan hente dataet.\\
+
+Til desktop-klienten skal der i første iteration laves design mockup, til en del af programmet, så gruppen har en idé om hvordan programmet skal se ud. Her skal der laves fxml dokumenterne for login-siden, gennemse kanaler og gennemse produktioner. Der skal også implementeres login, så brugerne kan logge ind via API'et. På siden for "gennemse kanaler" skal kanalerne hentes fra API'et, som er hentet fra TVTid.dk via en EPG Poller. Derved kan det ses hvilke kanaler der skal vises i programmet. \\
+% \myworries{Browse Channels Datamodel} \\
+
+Det er valgt at fokusere på at implementere brugsmønstrene fra MoSCoW-modellen i API'et i første iteration, frem for desktop-klienten. Dette skyldes at metoderne i desktop-klienten skal kalde metoderne til API'et, så brugergrænsefladen nemt kan udskiftes. Dertil er det nået at implementere brugsmønstrene log in, log ud samt at gennemse kanaler i desktop-klienten. I API'et kan der oprettes, slettes, hentes og redigeres brugere, kanaler, produktioner, personer og krediteringer. \\
+
+I anden iteration implementeres der roller i systemet. Indtil videre har målet være at vise programmet fra systemadministratorens synspunkt, men i anden iteration er planen at brugere nu skal have forskellige roller. Dette indebærer at ikke alle brugere ser samme knapper og information som f.eks. systemadministratoren. Systemadministratoren skal bl.a. have mulighed for at oprette nye kanaler, hvor kanaladministratoren ikke skal.\\
+
+Der skal laves design mockup til resten af programmet, bl.a. Produktions-siden og kanal siden. Derudover skal der, til anden iteration, kunne trykke på kanalerne og se hvilke produktioner der hører til. Dertil skal der også kunne importeres nye produktioner fra TVtid via EPG Polleren, samt oprette nye produktioner og nye krediteringer hertil.\\
+% \myworries{Channel Model \& Channel ViewModel}
+
+\subsection{Backlogs}
+Gruppen bruger et værktøj der hedder ZenHub til at administrere Scrum Boardet, som nævnt i afsnit \ref{subsubsection: up_scrum}. Det er besluttet at dele hver iteration op i 2 sprints, så en sprint løber over 2 uger.
+
+\subsubsection{1. Iteration}
+Sprint 1, med startdato d. 24. marts, kommer til at bestå af rapportskrivning. Her laves der blandt andet domæneklassediagram, analysemodel og supplerende krav bliver beskrevet. Der lægges også vægt på brugsmønstrene, da disse har indflydelse på resten af projektets forløb.\\
+
+I sprint 2, med startdato d. 7. april, begynder implementeringen. Her bliver api'et og epg polleren blive implementeret, og dele af desktop-klienten, på baggrund af analyse- og designfasen, som fandt sted før/i første sprint. Der fokuseres på, at det skal være muligt at oprette, slette, hente og redigere brugere, kanaler, produktioner, personer og krediteringer i api'et. EPG polleren skal færdigimplementeres, så der kan hentes data fra TVTid.dk. Til sidst i sprinten bliver der lagt vægt på rapportskrivning, hvor der bliver skrevet på de afsnit der hører til hovedteksten.
+
+\subsubsection{2. Iteration}
+Sprint 3, med startdato d. 28. april,  kommer til at bestå af implementering af resterende brugsmønstre (funktioner), som ikke blev implementeret i første iteration. I api'et skal der implementeres brugerroller, så brugernes rettigheder stemmer overens med projektets brugsmønstre. I desktop-klienten skal resterende views, models, og modelviews implementeres, så funktionerne fra api'et kan tilgåes. Dette er blandt andet productionsview, så en bruger har mulighed for at se produktionerne. Slutteligt skal de resterende unittests implementeres.\\
+
+I sprint 4, med startdato d. 12. maj, skal rapporten skrives færdig. Her kommer der til at være fokus på afsnit som diskussion, konklusion, perspektivering og procesevaluering.
 
 \subsection{Ceremonier}
-Her bliver Sprintplanlægning og dagligt stand up præsenteret. Sprint review kommer ikke til at blive nævnt, da dette er en af vores scrum-buts.
+De ceremonier der bliver anvendt i dette projektforløb er sprintplanlægning og en alternativ version af de daglige stand-up møde, som bliver benævnt i afsnit \ref{subsection: scrum_buts}. Sprintplanlægningen kommer til at finde sted før hver sprint, og bruges til at skabe et overblik over hvad arbejdet i kommende sprint kommer til at bestå af. Man kan under dette møde aftale, hvordan man har tænkt sig at arbejde, for at nå tidsfristen for sprintet.
 
-\subsection{Scrum-buts}
-Sprint review bl.a.
+\subsection{Scrum-buts}{\label{subsection: scrum_buts}}
+Projektgruppen anvender Scrum, men det er besluttet at der ikke skal holdes et dagligt stand-up møde. I stedet afholdes der et stand-up møde hver tirsdag, da dette er projektdagen. Mødet kommer til at foregå som det ellers er ment.\\
+
+Det er besluttet at der ikke skal afholdes sprint review i slutningen af en sprint, men i stedet gøre det løbende, så gruppemedlemmerne er holdes opdateret gennem implementeringsprocessen. 

@@ -5,3 +5,12 @@ Denne sektion skal indeholde:
     \item Omfatter afsnittet overvejelser, beslutninger og resultater vedr.  konvertering fra design til kode illustreret gennem udvalgte centrale eksempler, samt andre vigtige implementeringsbeslutninger. 
     \item Implementering af database.
 \end{itemize}{}
+
+\myworries{Hvilke overvejeleser har vi haft under implementeringsfasen? - Har vi tænkt at det forskellige subsystemer skulle implementeres på en bestemt måde? - Er der nogle 'regler' vi har tænkt på at vi skal følge under implementeringen, det kan være specifikke koderegler eller f.eks. måder vi sætter constructers (alt+ins :-)) og metoder op på?}\\
+
+\myworries{Hvilke beslutninger har vi taget, på baggrund af vores overvejelser. Var der noget der ikke virkede som det burde og skulle laves om?}\\
+
+For at sikre en relativ høj kodekvalitet, var noget af det første vi gjorde i implementeringsfasen at sætte CI (continous integration) op. I praksis vil det sige at hver gang der blev commited kode, vil vores pipeline kører automatisk. CI pipelinen består i alle tre repositories af at eskekvere repositoriets Unit test, dernæst statisk analyse vha. Sonarcloud, som fortæller os om "code smells", evt. sikkerhedsproblemer, samt kode dupplikationer og kode kompleksitet. Ydermere er der et ekstra step i API repositoriet, der uploader en ny version af dets Docker image til DockerHub, hvis test steppet kørte med succes.\\
+
+
+\myworries{Ud fra vores beslutninger, hvordan er vores kode så kommet til at se ud? Hvordan er systemet blevet (brugergrænseflade, api'et, epg-polleren og vores database? - Vis specifikke eksempler = brug code snippets}

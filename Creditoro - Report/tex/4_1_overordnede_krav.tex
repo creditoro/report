@@ -1,33 +1,31 @@
-\section{Overordnede Krav}
-\noindent
+\section{Overordnede Krav}\label{overordnede_krav}
+
 Dette afsnit har til formål at uarbejde de overordnede kravspecificationer for systemet. Kravene er udformet udfra projektcasen, virksomhedsmøderne med TV2 samt gruppens egne tilføjelser.
 Afsnittet vil indeholde et resume af de overordnede krav, et overordnet brugsmønsterdiagram samt en række supplerende ikke-funktionelle krav.
 
 % ---------------------------- Overordnede krav ------------------------------------
-\subsection{Resume af Overordnede Krav} 
+\subsection{Resume af Overordnede Krav}
 
-\textit{(Taget fra inceptionsdokumentet (se bilag ? side ?))}\\ \\
-\noindent
+\textit{(Taget fra inceptionsdokumentet (se bilag \ref{inceptionsdokument} side 7))}\\
+
 Systemet afspejler det system TV2 har lagt op til i projektcasen. Der er tale om et system, hvor alle kan se - og nogle kan redigere krediteringer for programmer. Systemet skal kunne tilgås via en dansk brugergrænseflade. Det skal indeholde forskellige brugerroller; systemadministrator, kanaladministrator, producer, royalty bruger og gæst.\\
 
-\noindent
+
 Systemadministratoren skal have rettigheder til at gøre alt. Dette gælder f.eks. at oprette krediteringer, kanaladministratorer og producerer. Kanaladministratoren skal kunne redigere, oprette og slette krediteringer for egen kanal. En producer skal kunne tilføje og redigere i krediteringerne for egne produktioner, og en gæst skal kunne se krediteringer for alle programmer. 
 Det skal være muligt at kombinere personer som refererer til den samme person i den virkelige verden. Når to forskellige producere vil oprette en kreditering for et program, skal krediteringen være associeret med en person og vedkommendes rolle. Det betyder altså, at det skal være muligt at oprette personer der kan sammenflettes (f.eks. med UUID).\\
 
-\noindent
 TV2 har ikke lov til at lagre persondata, såsom et CPR-nummer eller et telefonnummer, så det skal være muligt at identificere personer i systemet og sikre at krediteringerne er korrekt forbundet til de rigtige personer.
 Databasen skal være søgbar, så det er nemt at finde personer, programmer og lignende. Det er vigtigt at systemet er nemt at bruge, så seerne nemt kan se krediteringerne for det program de lige har set.\\
 
-\noindent
 TV2 kunne være interesseret i at integrere systemet med andre systemer (YouSee Tv, Boxer Play osv.), og det er derfor vigtigt at systemet er kompatibelt med krediteringer i andre systemer. Det kunne også være interessant at have muligheden for at få notifikationer når noget nyt sker i systemet. Samrådet for Ophavsret og Producentforeningen kunne også være interesseret i at modtage en form for meddelelse hver gang der er blevet tilføjet noget nyt til systemet, hvor de kan godkende krediteringerne og ud fra disse udbetale royalties. Derudover kunne det også være interessant at brugergrænsefladen kunne undestøtte flere sprog.\\
 
-\noindent
+
 For at beskytte dele af systemet (tilføjelse/redigering/sletning af data osv.), skal der indføres en form for adgangskontrol. Der skal være en offentligt tilgængelig del af systemet, hvor det er muligt at se krediteringerne for et et program uden at skulle logge ind.\\
 
-\noindent
+
 Systemet skal både kunne importere og eksportere data. Importering skal være mulig vha. en EPG Poller, der trækker EPG data via TVTid.dk. Brugere af systemet skal kunne eksportere krediteringsdata til forskellige formater såsom XML og CSV.\\
 
-\noindent
+
 I tabel \ref{table:kravliste} ses kravene opsummeret i en tabel for bedre overblik.
 
 \begin{table}[ht]
@@ -39,32 +37,32 @@ I tabel \ref{table:kravliste} ses kravene opsummeret i en tabel for bedre overbl
         \hline
         K02 & Brugerroller & Systemet skal indeholde brugerroller \\
         \hline
-        \label{K03}K03 & Tildel roller & Kanaladministrator skal kunne tildele producer- og kanaladministrator roller \\
+        \multirow{2}{*}{\label{K03}K03} & \multirow{2}{*}{Tildel roller} & Kanaladministrator skal kunne tildele producer- og kanaladministrator roller\\
         \hline
         K04 & Slet bruger & Systemadministratoren skal kunne slette brugere \\
         \hline
         K05 & Se krediteringer & Alle skal kunne se krediteringer \\
         \hline
-        K06 & Søg efter krediteringer & Alle skal kunne søge efter og se krediteringer for alle programmer \\
+        \multirow{2}{*}{K06} & \multirow{2}{*}{Søg efter krediteringer} & Alle skal kunne søge efter og se krediteringer for alle programmer \\
         \hline
-        K07 & Opret krediteringer & Specielle brugere, kanaladministratore og systemadmin skal kunne oprette
+        \multirow{2}{*}{K07} & \multirow{2}{*}{Opret krediteringer} & Specielle brugere, kanaladministratore og systemadmin skal kunne oprette
         krediteringer for et givent program \\
         \hline
-        K08 & Rediger krediteringer & Specielle brugere, kanaladmin og systemadmin skal kunne redigere krediteringer for egne programmer \\
+        \multirow{2}{*}{K08} & \multirow{2}{*}{Rediger krediteringer} & Specielle brugere, kanaladmin og systemadmin skal kunne redigere krediteringer for egne programmer \\
         \hline
-        K09 & Slet kreditering & Kanaladmin og systemadmin skal kunne oprette/redigere/slette krediteringer under egen kanal \\
+        \multirow{2}{*}{K09} & \multirow{2}{*}{Slet kreditering} & Kanaladmin og systemadmin skal kunne oprette/redigere/slette krediteringer under egen kanal \\
         \hline
         K10 & Søg efter personer & Alle skal kunne søge efter personer \\
         \hline
-        K11 & Knyt personer til krediteringer & Personer skal kunne knyttes til krediteringer så man kan se hvilke programmer en person har deltaget i Systemadmin, kanaladmin og producer skal kunne se persondata som email og tlf. nr. \\
+        \multirow{4}{*}{K11} & Knyt personer til krediteringer & Personer skal kunne knyttes til krediteringer så man kan se hvilke programmer en person har deltaget i Systemadmin, kanaladmin og producer skal kunne se persondata som email og tlf. nr. \\
         \hline
-        K12 & Link personer i den virkelige verden & Det skal være muligt at linke personer i krediteringer til personer i den virkelige verden, så der krediteres korrekt \\
+        \multirow{2}{*}{K12} & Link personer i den virkelige verden & Det skal være muligt at linke personer i krediteringer til personer i den virkelige verden, så der krediteres korrekt \\
         \hline
-        K13 & Eksporter data & Brugere skal kunne eksportere data til forskellige formater såsom XML og CSV \\
+        \multirow{2}{*}{K13} & \multirow{2}{*}{Eksporter data} & Brugere skal kunne eksportere data til forskellige formater såsom XML og CSV \\
         \hline
         K14 & Importering af data & Systemet skal kunne importere EPG data via TVTid.dk \\
         \hline
-        K15 & Integration & Systemet skal kunne integreres med andre systemer (Yoursee Play, Boxer Play, osv.) \\
+        \multirow{2}{*}{K15} & \multirow{2}{*}{Integration} & Systemet skal kunne integreres med andre systemer (Yoursee Play, Boxer Play, osv.) \\
         \hline
         K16 & Notifikationer & Systemet skal sende notifikationer til relevante brugere \\
         \hline
@@ -75,14 +73,13 @@ I tabel \ref{table:kravliste} ses kravene opsummeret i en tabel for bedre overbl
     \label{table:kravliste}
 \end{table} 
 
+
 % ---------------------------- Overordnet brugsmønsterdiagram ----------------------
 \subsection{Overordnet Brugsmønsterdiagram}
-
-\noindent 
 I figur \ref{fig:usecasemodel} ses det overordnede brugsmønsterdiagram (use case model). Diagrammet giver et visuelt overblik over systemets overordnede brugsmønstre og hvilke aktører der kan benytte disse.\\
 
-\noindent
-I diagrammet ses systemets fem aktører (se aktørliste i bilag ? side ?) - System Administrator, Kanal Administrator, Royalty Bruger, Producer og Gæst. Diagrammet viser arvehierakiet mellem aktørerne, jo højere oppe på diagrammet aktøreren er placeret i diagrammet, jo flere rettigheder har den enkelte aktør. "System Administrator" har flest rettigheder og er derfor placeret øverst. Ligeledes har "Gæst" færrest rettigheder, og er derfor placeret nederst i brugsmønsterdiagrammet. 
+
+I diagrammet ses systemets fem aktører (se aktørliste i bilag \ref{inceptionsdokument} side 8) - System Administrator, Kanal Administrator, Royalty Bruger, Producer og Gæst. Diagrammet viser arvehierakiet mellem aktørerne, jo højere oppe på diagrammet aktøreren er placeret i diagrammet, jo flere rettigheder har den enkelte aktør. "System Administrator" har flest rettigheder og er derfor placeret øverst. Ligeledes har "Gæst" færrest rettigheder, og er placeret nederst i brugsmønsterdiagrammet. 
 
 \begin{figure}[H]
     \centering
@@ -99,38 +96,38 @@ I diagrammet ses systemets fem aktører (se aktørliste i bilag ? side ?) - Syst
 % ---------------------------- Supplerende krav ------------------------------------
 \subsection{Supplerende krav}\label{supplerende_krav}
 
-\noindent 
+ 
 På baggrund af den udlerede projektcase, samt de to virksomhedsmøder med TV2, er en række ikke-funktionelle supplerende krav blevet udformet. Systemet skal gøre det muligt for aktører med rettighederne dertil (se figur \ref{fig:usecasemodel}), at kunne kreditere produktionsroller som overholder DRs krediteringsregler samt databeskyttelsesloven (GDPR).\\
 
-\noindent 
+ 
 Systemet skal give brugeren, uanset rettighedsniveau, mulighed for at kunne skifte imellem forskellige sprog i brugergrænsefladen. Brugergrænsefladen skal derfor være responsiv, og kunne ændres dynamisk, alt afhængig af brugerens færden.\\
 
-\noindent
+
 tilfælde af systemets servere genstarter, starter del-systemerne igen automatisk. Altså genstartes systemets server, vil REST Api, database og EPG Poller automatisk starte op igen. Det vil derfor ikke være nødvendigt at lukke systemet ned, for at foretage back-up.\\
 
-\noindent 
+ 
 Systemet skal benytte sig af en database som skal kunne op til 10000 nye brugere, samt 15000 krediteringer årligt uden af de hyppigste kald til REST Api'et får nedsat funktionalitet. Hvilket vil sige med en responstid på mere end 300 ms. Databasen skal kunne overholde dette krav årligt i 25 år. Systemet skal derudover kunne håndtere 5000 brugere inden hvert minut.
 
-\noindent
+
 Systemet skal være installerbart vha. Docker cia Docker-compose. Det vil være muligt at konfiguere systems indstillinger via en \texttt{.env} fil. Det vil i kildekoden være muligt at finde en opsætningsguide.\\
 
-\noindent 
+ 
 I tabel \ref{tab:furps} ses en oversigt over de ovennævnte ikke-funktionelle krav. Tabellen benytter FURPS modellen. 
 
 \begin{table}[ht]
     \centering
-    \begin{tabularx}{\textwidth}{|p{4cm}|X|}
+    \begin{tabularx}{\textwidth}{|p{3.5cm}|X|}
         \hline
         \textbf{FURPS}                      & \textbf{Krav} \\ 
         \hline
-        \multirow{3}{0}{Functionality}      & Skal kunne kreditere produktionsroller som er angivet af DRs Krediteringsregler  \\ \cline{2-2} 
-                                            & Skal overholde GDPR \\ \hline
-        \multirow{2}{0}{Usability}          & Systemet skal kunne understøtte flere sprog \\ \cline{2-2}
-                                            & Systemet skal have en responsiv brugergrænseflade (UI) \\ \hline
-        \multirow{3}{0}{Reliability}        & Hvis serveren til systemet genstarter, startes del-systemerne igen automatisk. Der vil ikke være behov for at lægge systemet ned regelmæssigt for at kunne foretage backup. \\ \hline
-        \multirow{4}{0}{Performance}        & Databasen skal kunne håndtere 10000 nye brugere - samt 15000 krediteringerer årligt i 25 år, uden at ofte brugte kald til REST Api'et bliver sløvt (reponsetid på mere end 300 ms) \\ \cline{2-2}
-                                            & Systemet skal kunne håndtere 5000 brugere indenfor et minut\\ \hline
-        \multirow{4}{0}{Supportability}     & Systemet er installerbart vha. Docker via Docker-compose\\ \cline{2-2}
+        \multirow{3}{*}{Functionality}      & Skal kunne kreditere produktionsroller som er angivet af DRs Krediteringsregler.  \\ \cline{2-2} 
+                                            & Skal overholde GDPR. \\ \hline
+        \multirow{2}{*}{Usability}          & Systemet skal kunne understøtte flere sprog. \\ \cline{2-2}
+                                            & Systemet skal have en responsiv brugergrænseflade (UI). \\ \hline
+        \multirow{3}{*}{Reliability}        & Hvis serveren til systemet genstarter, startes del-systemerne igen automatisk. Der vil ikke være behov for at lægge systemet ned regelmæssigt for at kunne foretage backup. \\ \hline
+        \multirow{4}{*}{Performance}        & Databasen skal kunne håndtere 10000 nye brugere - samt 15000 krediteringerer årligt i 25 år, uden at ofte brugte kald til REST Api'et bliver sløvt (reponsetid på mere end 300 ms). \\ \cline{2-2}
+                                            & Systemet skal kunne håndtere 5000 brugere indenfor et minut.\\ \hline
+        \multirow{4}{*}{Supportability}     & Systemet er installerbart vha. Docker via Docker-compose.\\ \cline{2-2}
                                             & Det vil være muligt at konfigurere system indstillinger via en \texttt{.env} (miljø) fil. En opsætningsguide vil være at finde sammen med kildekoden. \\ \hline
     \end{tabularx}
     \caption{FURPS}

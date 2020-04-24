@@ -20,8 +20,34 @@
 \usepackage{pdfpages}
 \usepackage{xcolor}
 %\usepackage{minted}  <-- Fix me please :-)
+\usepackage{listings}
 
-% 
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+
+\lstnewenvironment{code}[1][]%
+{
+   \noindent
+   \minipage{\linewidth} 
+   \vspace{0.5\baselineskip}
+   \lstset{language=java, basicstyle=\ttfamily\footnotesize,frame=single,#1}}
+{\endminipage}
+
+\lstset{
+    frame=single,                           % adds a frame around the code
+    language=Java,                          % the language of the code
+    breaklines=true,                        % sets automatic line breaking
+    basicstyle=\small,                      % the size of the fonts that are used for the code
+    keywordstyle=\color{blue},              % keyword style
+    morekeywords={var, UUID, ROLE, EMAIL},  % if you want to add more keywords to the set
+    numbers=left,                           % % where to put the line-numbers; possible values are (none, left, right)
+    numberstyle=\small,                     % the style that is used for the line-numbers
+    commentstyle=\color{mygreen},           % comment style
+    captionpos=b                            % sets the caption-position to bottom
+}
+% Use for lstlisting formation caption
+% \captionsetup[lstlisting]{ format=listing, labelfont=white, textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
+
 % \usepackage[
 % backend=biber,
 % style=alphabetic,
@@ -65,6 +91,8 @@
 % Linjemellemrum
 % \linespread{1.4}
 \graphicspath{{./figures/}{../figures/}}
+
+\setlength\parindent{0pt} % Removes indent
 
 \begin{document}
     % Fjerner side tal
