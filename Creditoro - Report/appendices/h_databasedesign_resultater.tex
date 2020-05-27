@@ -1,0 +1,185 @@
+\section{Databasedesign - Resultater}\label{database_design}
+
+{\large\textbf{Tabeldesign}}
+
+% ------------------------------------- channels -------------------------------------
+\myparagraph{\texttt{channels}}
+
+% ------ code snippet --------
+\begin{lstlisting}[language=sql, caption=channels.sql]
+CREATE TABLE channels
+(
+    identifier  UUID NOT NULL,
+    name        VARCHAR(512),
+    icon_url    VARCHAR(512),
+    PRIMARY KEY (identifier)
+);
+
+CREATE INDEX channels_name_idx ON channels USING btree (name);
+\end{lstlisting}
+
+
+% ------ table ---------------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|>{\RaggedRight}X|>{\RaggedRight}X|>{\RaggedRight}X|}
+        \hline
+        \texttt{\textbf{identifer}} &  \texttt{\textbf{name}} & \texttt{\textbf{icon\_url}}\\
+        \hline
+        a4226ce8-e973-4de3-906b-ac4a696c7cdb & TV2 & https://epg-images.tv2.dk/channellogos /logo/3.png \\
+        \hline
+    \end{tabularx}
+    \caption{Tabeldesign: channels}
+    \label{tab:channel_table}
+\end{table}
+
+
+% ------------------------------------- users ----------------------------------------
+\myparagraph{\texttt{users}}
+
+
+% ------ code snippet --------
+\begin{lstlisting}[language=sql, caption=users.sql]
+CREATE TABLE users
+(
+    identifier  UUID NOT NULL,
+    name	VARCHAR(512),
+    email	email UNIQUE NOT NULL,
+    phone	VARCHAR(256),
+    password    VARCHAR(256),
+    role	role NOT NULL,
+    created_at  TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (identifier)
+);
+
+CREATE INDEX users_email_idx ON users USING btree (email);
+CREATE INDEX users_name_idx ON users USING btree (name);
+\end{lstlisting}
+
+
+% ------ table ---------------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|>{\RaggedRight}X|>{\RaggedRight}X|>{\RaggedRight}X|>{\RaggedRight}X|>{\RaggedRight}X|>{\RaggedRight}X|>{\RaggedRight}X|}
+        \hline
+        \texttt{\textbf{identifer}} &  \texttt{\textbf{name}} & \texttt{\textbf{email}} & \texttt{\textbf{phone}} & \texttt{\textbf{password}} & \texttt{\textbf{role}} & \texttt{\textbf{created\_at}}\\
+        \hline
+        2f477718-3351-4d97-95dd-12518675ed 52 & Simon & string@stri ng.dk & 78652397 & string & 3 & 2020-04-20\\
+        \hline
+    \end{tabularx}
+    \caption{Tabeldesign: users}
+    \label{tab:users_table}
+\end{table}
+
+
+% ------------------------------------- people ---------------------------------------
+\myparagraph{\texttt{people}}
+
+% ------ code snippet --------
+\begin{lstlisting}[language=sql, caption=people.sql]
+CREATE TABLE people
+(
+    identifier  UUID NOT NULL,
+    phone   VARCHAR(256),
+    email   email,
+    name    VARCHAR(256),
+    PRIMARY KEY (identifier)
+);
+
+CREATE INDEX people_name_idx ON people USING btree (name);
+\end{lstlisting}
+
+
+
+% ------ table ---------------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|>{\RaggedRight}X|>{\RaggedRight}X|>{\RaggedRight}X|>{\RaggedRight}X|}
+        \hline
+        \texttt{\textbf{identifer}} &  \texttt{\textbf{name}} & \texttt{\textbf{phone}} & \texttt{\textbf{email}}\\
+        \hline
+        7fae265e-84d7-4b65-b14e-4ec8819109a7 & Kristian & 42066669 & string2@string2.dk\\
+        \hline
+    \end{tabularx}
+    \caption{Tabeldesign: people}
+    \label{tab:people_table}
+\end{table}
+
+
+% ------------------------------------- productions ----------------------------------
+\myparagraph{\texttt{productions}}
+
+% ------ code snippet --------
+\begin{lstlisting}[language=sql, caption=productions.sql]
+CREATE TABLE productions
+(
+    identifier  UUID NOT NULL,
+    title       VARCHAR(256) NOT NULL,
+    created_at  TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    producer_id UUID REFERENCES users (identifier),
+    channel_id  UUID REFERENCES channels (identifier),
+    description TEXT,
+    PRIMARY KEY (identifier)
+);
+
+CREATE INDEX production_title_idx ON productions USING btree (title);
+CREATE INDEX production_identifier_idx ON productions USING btree (identifier);
+\end{lstlisting}
+
+% ------ table ---------------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|>{\RaggedRight}X|>{\RaggedRight}X|>{\RaggedRight}X|>{\RaggedRight}X|>{\RaggedRight}X|}
+        \hline
+        \texttt{\textbf{identifer}} &  \texttt{\textbf{title}} & \texttt{\textbf{created\_at}} & \texttt{\textbf{producer\_id}} & \texttt{\textbf{channel\_id}}\\
+        \hline
+        58cb7c91-ed0a-4bd3-80b8-606690441293 & Stuff & 2008-11-11 & 2f477718-3351-4d97-95dd-12518675ed52 &  a4226ce8-e973-4de3-906b-ac4a696c7cdb\\
+        \hline
+    \end{tabularx}
+    \caption{Tabeldesign: productions}
+    \label{tab:productions_table}
+\end{table}
+
+
+% ------------------------------------- credits ------------------------------------
+\myparagraph{\texttt{credits}}
+
+% ------ code snippet --------
+\begin{lstlisting}[language=sql, caption=credits.sql]
+CREATE TABLE credits
+(
+    identifier      UUID NOT NULL,
+    job             VARCHAR(256) NOT NULL,
+    production_id   UUID REFERENCES productions (identifier),
+    person_id       UUID REFERENCES people (identifier),
+    PRIMARY KEY (identifier)
+);
+
+CREATE INDEX credit_job_idx ON credits USING btree (job);
+CREATE INDEX credit_identifier_idx ON credits USING btree (identifier);
+\end{lstlisting}
+
+
+% ------ table ---------------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{|>{\RaggedRight}X|>{\RaggedRight}X|>{\RaggedRight}X|>{\RaggedRight}X|}
+        \hline
+        \texttt{\textbf{identifer}} &  \texttt{\textbf{job}} & \texttt{\textbf{production\_id}} & \texttt{\textbf{person\_id}}\\
+        \hline
+        04f699d1-52b6-4eb2-ad88-04f48f93b771 & Lydmand & 58cb7c91-ed0a-4bd3-80b8-606690441293 & 7fae265e-84d7-4b65-b14e-4ec8819109a7\\
+        \hline
+    \end{tabularx}
+    \caption{Tabeldesign: credits}
+    \label{tab:credits_table}
+\end{table}
+
+{\large\textbf{SQL forespørgelser}}
+\myparagraph{\texttt{channels}}
+
+
+\myparagraph{\texttt{users}}
+
+
+\myparagraph{\texttt{people}}
+
+
+\myparagraph{\texttt{productions}}
+
+
+\myparagraph{\texttt{credits}}

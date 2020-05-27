@@ -1,0 +1,92 @@
+\subsubsection{API Endpoints}
+\myparagraph{\texttt{channels}}
+\texttt{POST} \texttt{/channels/} der tager \texttt{name} og \texttt{icon\_url} som parametre, og opretter en kanal.\\
+
+
+\texttt{GET} \texttt{/channels/q} der søger efter alle kanaler, hvor '\texttt{q}' er det parameter der søges efter. Her er det muligt at søge efter navn.\\
+
+
+\texttt{PATCH} \texttt{/channels/\{channel\_id\}} der opdaterer \texttt{name} og \texttt{icon\_url} på den kanal der tilhører \texttt{channel\_id}\\
+
+
+\texttt{GET} \texttt{/channels/\{channel\_id\}} der henter den kanal der tilhører \texttt{channel\_id}\\
+
+
+\texttt{DELETE} \texttt{/channels/\{channel\_id\}} der sletter den kanal der tilhører \texttt{channel\_id}\\
+
+
+\myparagraph{\texttt{users}}
+\texttt{POST} \texttt{/users/} der tager \texttt{name}, \texttt{email}, \texttt{phone}, \texttt{password} og \texttt{repeated\_password} som parametre og opretter en bruger.\\
+
+
+\texttt{GET} \texttt{/users/q} der søger efter alle brugere, hvor '\texttt{q}' er det parameter der søges efter. Her er det muligt at søge efter navn, email og rolle.\\
+
+
+\texttt{POST} \texttt{/users/login} der tager \texttt{email} og \texttt{password} som paramtre, og sørger for at en gyldig bruger kan logge ind.\\
+
+
+\texttt{PATCH} \texttt{/users/\{user\_id\}} der opdaterer en bruger med det valgte \texttt{user\_id}. Det er muligt at opdatere \texttt{name}, \texttt{email}, \texttt{phone} og \texttt{password}.\\
+
+
+\texttt{GET} \texttt{/users/\{user\_id\}} der henter brugeren med det valgte \texttt{user\_id}.\\
+
+
+\texttt{DELETE} \texttt{/users/\{user\_id\}} der sletter brugeren med det valgte \texttt{user\_id}.\\
+
+
+\texttt{PUT} \texttt{/users/\{user\_id\}} tilføjer en bruger med det valgte \texttt{user\_id}. Hvis brugeren allerede eksisterer overskrivers brugeren ellers oprettes der en nu bruger.\\
+
+\myparagraph{\texttt{people}}
+\texttt{POST} \texttt{/people/} der tager \texttt{name}, \texttt{email} og \texttt{phone} som parametre og opretter en person.\\
+
+
+\texttt{GET} \texttt{/people/} der søger efter alle personer, hvor '\texttt{q}' er det parameter der søges efter. Her er det muligt at søge efter navn.\\
+
+
+\texttt{PATCH} \texttt{/people/\{person\_id\}} der opdaterer en person med det valgte \texttt{person\_id}. Det er muligt at opdatere \texttt{name}, \texttt{email} og \texttt{phone}.\\
+
+
+\texttt{GET} \texttt{/people/\{person\_id\}} der henter personen med det valgte \texttt{person\_id}.\\
+
+
+\texttt{DELETE} \texttt{/people/\{person\_id\}} der sletter personen med det valgte \texttt{person\_id}.\\
+
+
+\texttt{PUT} \texttt{/people/\{person\_id\}} der tilføjer en preson med det valgte \texttt{person\_id}. Hvis personen allerede eksisterer overskrivers personen ellers oprettes der en ny person.\\
+
+\myparagraph{\texttt{productions}}
+\texttt{POST} \texttt{/productions/} der tager \texttt{titel}, \texttt{producer\_id} og \texttt{channel\_id} som parametre og opretter en produktion.\\
+
+
+\texttt{GET} \texttt{/productions/} der søger efter alle produktioner, hvor '\texttt{q}' er det parameter der søges efter. Her er det muligt at søge efter titel og navn og email på producer.\\
+
+
+\texttt{PATCH} \texttt{/productions/\{production\_id\}} der opdaterer en person med det valgte \texttt{production\_id}. Det er muligt at opdatere \texttt{titel}, \texttt{producer\_id} og \texttt{channel\_id}.\\
+
+
+\texttt{GET} \texttt{/productions/\{production\_id\}} der henter produktionen med det valgte \texttt{produktion\_id}.\\
+
+
+\texttt{DELETE} \texttt{/productions/\{production\_id\}} der sletter produktionen med det valgte \texttt{produktion\_id}.\\
+
+
+\texttt{PUT} \texttt{/productions/\{production\_id\}} der tilføjer en produktion med det valgte \texttt{produktion\_id}. Hvis produktionen allerede eksisterer overskrivers produktionen ellers oprettes der en ny produktion.\\
+
+
+\myparagraph{\texttt{credits}}
+\texttt{POST} \texttt{/credits/} der tager \texttt{job}, \texttt{person\_id} og \texttt{production\_id} som parametre og opretter en kreditering.\\
+
+
+\texttt{GET} \texttt{/credits/} der søger efter alle krediteringer, hvor '\texttt{q}' er det parameter der søges efter. Her er det muligt at søge efter krediterede personer i det valgte \texttt{production\_id}, efter krediteringer for det valgte \texttt{person\_id} eller efter krediteringer efter det valgte \texttt{job}.\\
+
+
+\texttt{PATCH} \texttt{/credits/\{credit\_id\}} der opdaterer en person med det valgte \texttt{credit\_id}. Det er muligt at opdatere \texttt{job}, \texttt{person\_id} og \texttt{production\_id}.\\
+
+
+\texttt{GET} \texttt{/credits/\{credit\_id\}} der henter produktionen med det valgte \texttt{credit\_id}.\\
+
+
+\texttt{DELETE} \texttt{/credits/\{credit\_id\}} der sletter krediteringen med det valgte \texttt{credit\_id}.\\
+
+
+\texttt{PUT} \texttt{/credits/\{credit\_id\}} der tilføjer en kreditering med det valgte \texttt{credit\_id}. Hvis krediteringen allerede eksisterer overskrivers krediteringen ellers oprettes der en ny kreditering.\\

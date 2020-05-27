@@ -32,7 +32,7 @@ Det er valgt at lave operationskontrakter for de samme operationer som ved syste
 
 %------------------------ Opret kreditering -------------------------------
 \begin{table}[H]
-    \begin{tabularx}{\textwidth}{|p{4cm}|X|}
+    \begin{tabularx}{\textwidth}{|>{\RaggedRight}p{4cm}|>{\RaggedRight}X|}
         \hline
         \multicolumn{2}{|X|}{\textbf{Opret kreditering}}\\
         \hline
@@ -61,25 +61,10 @@ Operationssekvensdiagrammet viser systemet som en ”white box”, hvor man kan 
 
 \begin{figure}[H] % <--- HUSK AT ÆNDRE MIG :-)
 \centering
-\includegraphics[scale=1]{figures/Operationssekvensdiagrammer/læsKreditering.pdf}
+\includegraphics[scale=0.9]{figures/Operationssekvensdiagrammer/læsKreditering.pdf}
 \caption{Operationssekvensdiagram: Læs kreditering}
 \label{fig:op_read_credit}
 \end{figure}
 
 
 På figur \ref{fig:op_read_credit} ses det, hvad der finder sted i systemet når brugeren vil læse en kreditering. Brugeren starter ud med at kalde en metode i desktop-klienten, der kalder en \texttt{GET} metode i REST api'et, hvor id'et eller navnet på en produktion er med som parameter. Api'et udfører derefter SQL-forespørgelse i databasen, for at hente den specifikke kreditering. Databasen sender et resultatsæt tilbage, og api'et sender en HTTP kode sammen med et JSON object til desktop-klienten. JSON objektet er den produktion brugeren gerne vil læse krediteringerne til. Desktop-klienten håndterer derefter JSON objektet, så det pænt vises til brugeren. De resterende operationssekvensdiagrammer kan findes i bilag \ref{section: operationssekvensdiagrammer}.
-
-
-% -----------------------------------------------------------------------------------------------------------------
-% \subsubsection{Revurderet analysemodel}
-% Da der hverken er fundet nye metoder til de fundne klasser eller nye klasser under brugsmønster-realiseringen, opdateres modellen ikke yderligere. \\
-
-% \myworries{Generelt set er analysemodellen heller ikke fyldestgørende, da vi ikke viser api'et, desktop-klienten, og epg polleren}
-
-% \myworries{Så de systemsekvensdiagrammer indeholder metoder der ikke indgår i vores analysemodel, hvilket også er hvorfor den ikke er blevet opdateret i sektion 7.2.4}
-
-% \myworries{Men analysemodellen indeholder ikke api'et, desktop-klienten og epg polleren da vores brugsmønsteranalyse ikke indeholder dem}
-
-% \myworries{Og brugsmønsteranalysen indeholder dem ikke fordi vores detaljerede brugsmønstre ikke benævner dem}
-
-% \myworries{Hvilket de nok burde :-) - kechr}

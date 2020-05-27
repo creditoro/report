@@ -1,9 +1,11 @@
 \section{Test}
+\myworries{Vi skal bruge et eller flere brugsmønstre (som fungerer som krav) og ud fra det skrive om hvordan vi har testet funktionaliteten af løsningen på kravet - kechr}
+
 \subsection{1. Iteration af desktop-klient testning}
 \subsubsection{Test af Views enum}
 En af de test der bliver udført i core pakken er ViewsTest. Testen har ikke brug for nogen forberedelse da den kun skal checke om de værdier der er i Views (et enum) er en af dens værdier. Det gør den ved først at iterere igennem alle Views' værdier og for hver værdi kalder metoden isView.\\
 
-\begin{code}[caption=ViewsTest.jar, firstnumber=10]
+\begin{code}[caption=ViewsTest.java, firstnumber=10]
 @Test
 public void testEnumValues() {
     for (Views view : Views.values()) {
@@ -14,7 +16,7 @@ public void testEnumValues() {
 
 Denne metoder tager et view og tjekker alle Views' værdier og tjekker hvis værdien er lig den indsatte værdi. Hvis den findes returnere den true eller false.
 
-\begin{code}[caption=ViewsTest.jar, firstnumber=17]
+\begin{code}[caption=ViewsTest.java, firstnumber=17]
 public boolean isView(Views view) {
     for (Views vie : Views.values()) {
         if (vie.equals(view)) {
@@ -26,7 +28,7 @@ public boolean isView(Views view) {
 \end{code}
 
 \subsubsection{Test af endpoint klassen}
-\begin{code}[caption=UsersEndpointTest.jar, firstnumber=8]
+\begin{code}[caption=UsersEndpointTest.java, firstnumber=8]
 UsersEndpoint usersEndpoint;
 
 public UsersEndpointTest() {
@@ -38,7 +40,7 @@ UserEndpoint testen starter ved at den i dens constructer danner et nyt userEndp
 postLogin testen tester om en der kan logges ind i systemet. Det gør den ved at hente den token man får tilbage når man logger ind. Det token er en string der er null hvis brugeren ikke kunne logge ind eller en lang string som giver brugen adgang til applikationen i sat stykke tid. \\
     
 
-\begin{code}[caption=UsersEndpointTest.jar, firstnumber=34]
+\begin{code}[caption=UsersEndpointTest.java, firstnumber=34]
 @Test
 void postLogin() {
     var token = usersEndpoint.postLogin("string@string.dk", "string");
@@ -54,7 +56,7 @@ Herefter bliver der testet for det modsatte. Der bliver igen oprettet et token o
 
 \subsubsection{Test af loginViewModel}
 Testen af loginViewModel sker ved at der i constructeren bliver oprettet en loginViewModel\\
-\begin{code}[caption=LoginViewModel.jar, firstnumber=16]
+\begin{code}[caption=LoginViewModel.java, firstnumber=16]
 private final LoginViewModel loginViewModel;
 
 /**
@@ -70,7 +72,7 @@ public LoginViewModelTest() {
 
 Herefter bliver setUp metoden kørt før hver test.\\
 
-\begin{code}[caption=LoginViewModel.jar, firstnumber=28]
+\begin{code}[caption=LoginViewModel.java, firstnumber=28]
 @BeforeEach
 void setUp() {
     loginViewModel.emailProperty().setValue("string@string.dk");
@@ -84,7 +86,7 @@ Der er i alt fire test metoder, emailProperty, passwordProperty, loginResultProp
 \textbf{MailProperty} test metoden checker om den email fra setUp metoden er den samme som den forventede værdi.\\
 
 
-\begin{code}[caption=LoginViewModel.jar, firstnumber=34]
+\begin{code}[caption=LoginViewModel.java, firstnumber=34]
 @Test
 void emailProperty() {
     assertEquals("string@string.dk", loginViewModel.emailProperty().get());
@@ -94,7 +96,7 @@ void emailProperty() {
 Det sker ved at kalde assertEquals metoden der tjekker om den forventede værdi er lig den givende værdi. I dette tilfælde tjekker den om emailen er \textbf{string@string.dk} og hvis den ikke er fejler testen.\\
     
 \textbf{PasswordProperty} test metoden gør det samme som emailProperty test metoden, men i stedet for en email er det et password der bliver testet for.\\
-\begin{code}[caption=LoginViewModel.jar, firstnumber=39]
+\begin{code}[caption=LoginViewModel.java, firstnumber=39]
 @Test
 void passwordProperty() {
     assertEquals("string", loginViewModel.passwordProperty().get());
@@ -103,7 +105,7 @@ void passwordProperty() {
     
 \textbf{LoginResultProperty} test metoden bruger assertNull metoden, der fejler testen hvis det input den får er det samme som null. Her bliver loginViewModellens loginResponseProperty kaldt, for at se om den kan logge ind med de oplysninger som blev defineret ved setUp metoden. Så hvis den ikke kunne logge brugeren ind med de oplysninger den fik, returnerer den null og testen fejler.\\
 
-\begin{code}[caption=LoginViewModel.jar, firstnumber=44]
+\begin{code}[caption=LoginViewModel.java, firstnumber=44]
 @Test
 void loginResultProperty() {
     assertNull(loginViewModel.loginResponseProperty().get());
@@ -112,7 +114,7 @@ void loginResultProperty() {
     
 \textbf{ClearFields} test metoden kører først loginViewModel’s clearFields metode, der fjerner tekst i email og passwordProperty. Herefter tjekker den med assertEqueals om de to er tomme, ved at sammenligne dem med et empty string. Så hvis email og password felterne er tomme består testen.\\
 
-\begin{code}[caption=LoginViewModel.jar, firstnumber=49]
+\begin{code}[caption=LoginViewModel.java, firstnumber=49]
 @Test
 void clearFields() {
     loginViewModel.clearFields();
@@ -121,120 +123,8 @@ void clearFields() {
 }
 \end{code}
 
-\subsection{1. Iteration af api testning}
-\subsubsection{Test af Users klassen}
-UsersTest klassen importerer metoder fra klassen BestTestCase. Metoden test\_all er den der foretager testen på users ved at bruge metoderne i BestTestCase.\\
+\subsection{2. Iteration af desktop-klient testning}
+Der er vil ingen grund til at skrive flere tests?
+- Hvad tænker du, Simon?
 
-\begin{code}[language=python, caption=UsersTest.py, firstnumber=1]
-from http import HTTPStatus
-
-from tests.base_test import BaseTestCase
-
-class UsersTest(BaseTestCase):
-    path = "users"
-
-    def test_all(self):
-        self.get_list()
-
-        response = self.post(json=self.json())
-        identifier = response.json.get("identifier")
-        self.patch(identifier=identifier, json=self.patch_json())
-        self.get(identifier=identifier
-        self.put(identifier=identifier, json=self.json())
-        self.delete(identifier=identifier)
-\end{code}
-
-Der startes med at kalde get\_list på self, som er en metode importeret fra BestTestCase og ser således ud:\\
-
-\begin{code}[language=python, caption=BestTestCase.py, firstnumber=55]
-def get_list(self):
-    response = self._get(path=f"/{self.path}/")
-    self.assertTrue(response.status_code == HTTPStatus.OK)
-    return response
-\end{code}
-
-Herefter bliver der lavet et response objekt, som bliver instantieret ved at kalde post metoden i BestTestCase med en parameter der bliver dannet i json metoden fra UsersTest klassen. \\
-
-\begin{code}[language=python, caption=UsersTest.py, firstnumber=12]
-response = self.post(json=self.json())
-\end{code}
-
-\begin{code}[language=python, caption=UsersTest.py, firstnumber=19]
-def json(self, phone: str = None, email: str = None, name: str = None, password: str = None):
-    password = password or self.random_string()
-    return {
-        "phone": phone or "+45 12 12 12 12",
-        "email": email or f"{self.random_string()}@creditoro.nymann.dev",
-        "name": name or self.random_string(),
-        "password": password,
-        "repeated_password": password
-    }
-\end{code}
-
-Json har muligheden for at tage parametre, men behøver det ikke. Så hvis man ikke ønsker en specifik json får man en forudindstillet json. Det json der bliver oprettet har et telefonnummer, email, navn, password og repeated\_password.
-Efter json er sat op kan det blive videregivet til post metoden i BestTestCase:\\
-
-\begin{code}[language=python, caption=BestTestCase.py, firstnumber=65]
-def post(self, data: dict = None, json: dict = None):
-    response = self._post(path=f"/{self.path}/", data=data, json=json)
-    self.assertTrue(response.status_code == HTTPStatus.CREATED)
-    return response
-\end{code}
-
-Post metoden starter med at oprette et repsons objekt, ved at kalde metoden \_post med det json der blev videregivet. \\
-
-\begin{code}[language=python, caption=BestTestCase.py, firstnumber=40]
-def _post(self, path: str, data: dict = None, json: dict = None):
-    return self.client.post(path, headers=self.headers, json=json, data=data)
-\end{code}
-
-I \_post metoden der kaldt en post metode på klienten, der returnerer et respons objekt.\\
-I post metoden bliver respons objektet sat til det returnerede responsobjekt. Herefter bliver der testet om at HTTPStatus er CREATED ved brug af assertTrue der tjekker om response objektets status\_code er det samme som OK. Eller fejler testen. Og til sidst returnerer response objektet til test\_all metoden.\\
-
-Efter at have oprettet response objektet, bliver der oprettet et identifier objekt. Dette objekt bliver sat til response objektets identifier værdi. Identifier bliver herefter brugt til at kalde patch metoden, der tager en identifier og værdien som patch\_json metoden returnere som parametre. \\
-
-\begin{code}[language=python, caption=UsersTest.py, firstnumber=14]
-self.patch(identifier=identifier, json=self.patch_json())
-\end{code}
-
-\begin{code}[language=python, caption=UserTest.py, firstnumber=29]
-def patch_json(self, name: str = None):
-    return {
-        "name": name or self.random_string()
-    }
-\end{code}
-
-Patch\_json ændrer enten navnet til noget bestemt eller tilfældigt, og returnerer det reviderede json objekt. De to parametre, identifier og json, bliver så videre givet til patch metoden i base\_test.\\
-
-\begin{code}[language=python, caption=BestTestCase.py, firstnumber=70]
-def patch(self, identifier: str, data: dict = None, json: dict = None):
-    response = self._patch(path=f"/{self.path}/{identifier}", data=data, json=json)
-    self.assertTrue(response.status_code == HTTPStatus.OK)
-    return response
-\end{code}
-
-I patch metoden bliver der oprettet et nyt response objekt ved at kalde \_patch metoden. \_patch metoden returnere, ligeseom \_post metoden, et response objekt. Response objektet bliver igen testest igennem assertTrue metoden, så hvis responsens status\_code er OK, består testen.\\
-
-Efter patch metoden bliver kaldt, bilver get metoden kaldt. Get metoden tager identifier objektet som parameter. \\
-
-\begin{code}[language=python, caption=BestTestCase.py, firstnumber=60]
-def get(self, identifier):
-    response = self._get(path=f"/{self.path}/{identifier}")
-    self.assertTrue(response.status_code == HTTPStatus.OK)
-    return response
-\end{code}
-
-I get metoden bliver der, ligesom i patch metoden, oprettet et respons objekt. Her bliver det dog oprettet ved at kalde \_get metoden. Efter oprettelsen bliver den, ligesom de andre eksempler, testet for dens status\_code, der skal være \texttt{OK} for at testen lykkes.\\
-
-Delete metoden bliver kaldt som den sidste i TetstUser test\_all metoden, og tager identifier objektet som paramter. Først bliver response objektet oprettet ved at kalde \_delete metoden, der returnere et response objekt. Herefter tester assertTrue metoden om reponse status\_code er lig med no\_content. De pågældene metoder kan ses nedenfor: \\
-
-\begin{code}[language=python, caption=UsersTest.py, firstnumber=17]
-self.delete(identifier=identifier)
-\end{code}
-
-\begin{code}[language=python, caption=BestCaseTest.py, firstnumber=80]
-def delete(self, identifier: str):
-    response = self._delete(f"/{self.path}/{identifier}")
-    self.assertTrue(response.status_code == HTTPStatus.NO_CONTENT)
-    return response
-\end{code}
+Hello... it's me... I was wondering if after all these minutes you'd like to write 

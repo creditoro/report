@@ -1,11 +1,11 @@
 \subsection{Brugsmønsteranalyse}
-Der vil i dette afsnit blive lavet en brugsmønsteranalyse på de detaljerede brugsmønstre fra afsnit \ref{section: detailed_usemodels}, der har til formål at finde klasse, finde struktur og finde adfærd i et system. Det første der gøres er at finde klasser:
+Der vil i dette afsnit blive lavet en brugsmønsteranalyse på de detaljerede brugsmønstre fra afsnit \ref{section: detailed_usemodels}, der har til formål at finde klasse, struktur og adfærd i et system. Det første der gøres er at finde klasser:
 
 \subsubsection{Klassekandidater}
-Når man skal finde potentielle klasser, kan der tages brug af en navneordsanalyse, hvor man finder potentielle klasserkandidater. Nedenfor kan listen af potentielle klasser fra navneordsanalysen af brugsmønstrene ses i tabel \ref{table:class_candidates}.
+Når man skal finde potentielle klasser, kan der tages brug af en navneordsanalyse, hvor navneord i de detaljerede brugsmønster er potentielle klasserkandidater. Listen af potentielle klasser fra navneordsanalysen af brugsmønstrene ses i tabel \ref{table:class_candidates}.
 
 \begin{table}[ht]
-    \begin{tabularx}{\textwidth}{|p{4cm}|p{4cm}|X|}
+    \begin{tabularx}{\textwidth}{|>{\RaggedRight}p{4cm}|>{\RaggedRight}p{4cm}|>{\RaggedRight}X|}
         \hline
         \textbf{Klassekandidat} & \textbf{Attributter} & \textbf{Kommentar} \\
         \hline
@@ -44,7 +44,7 @@ Her er der tildelt nogle attributter, blandt andet fra kasserede klassekandidate
 De resterende potentielle klasser der blev fundet under navneordsanalysen er enten synonymer, operationer eller egner sig bedre som attributter til de valgte potentielle klasser. Disse kan ses i tabel \ref{table:deleted_class_candidates}
 
 \begin{table}[H]
-    \begin{tabularx}{\textwidth}{|X|X|}
+    \begin{tabularx}{\textwidth}{|>{\RaggedRight}X|>{\RaggedRight}X|}
         \hline
         \textbf{Kasserede klassekandidater} & \textbf{Kommentar} \\
         \hline
@@ -120,7 +120,7 @@ De potentielle klasser der arbejdes videre med kan opdeles i kategorier. Dette e
 Kategorilisten kan ses i tabel \ref{table:class_categories}.
 
 \begin{table}[H]
-    \begin{tabularx}{\textwidth}{|X|X|}
+    \begin{tabularx}{\textwidth}{|>{\RaggedRight}X|>{\RaggedRight}X|}
         \hline
         \textbf{Klassekategori koncept} & \textbf{Eksempel} \\
         \hline
@@ -166,7 +166,7 @@ I tabel \ref{tab:user_class_description} er der givet et eksempel på, hvordan h
  
 % ------------------------- Bruger --------------------------------
 \begin{table}[H]
-    \begin{tabularx}{\textwidth}{|p{3cm}|X|}
+    \begin{tabularx}{\textwidth}{|>{\RaggedRight}p{3cm}|>{\RaggedRight}X|}
         \hline
         \textbf{Navn} & Bruger\\
         \hline
@@ -192,7 +192,7 @@ Ud fra navneordsanalysen er de potentielle klasser og deres attributter fundet. 
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.45]{figures/analysemodel.png}
+\includegraphics[scale=0.4]{figures/analysemodel.png}
 \caption{Analysemodel}
 \label{fig:analysemodel}
 \end{figure}

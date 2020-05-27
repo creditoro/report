@@ -14,7 +14,7 @@ Brugsmønstrene nedenfor er blevet valgt på baggrund af MosCow analysen i incep
 
 % % ----------------------- Opret krediteringer -----------------------------------
  \subsubsection{Opret Krediteringer}
-\begin{longtable}[h] {|p{16cm}|}
+\begin{longtable}[h] {|>{\RaggedRight}p{16cm}|}
  \hline
        \textbf{Brugsmønster:} Opret kreditering \\
     \hline
@@ -57,7 +57,7 @@ Systemet vil blive unit testet, for at sikre en høj kvalitet af implementeret k
 Systemet skal kunne trække EPG data fra TVTid.dk via en EPG Poller og sende dataen til REST Api'et.
 
 \begin{center}
-    \begin{longtable}[h]{|p{4cm}|p{1cm}|p{11cm}|}
+    \begin{longtable}[h]{|>{\RaggedRight}p{4cm}|>{\RaggedRight}p{1cm}|>{\RaggedRight}p{11cm}|}
         \hline
         \textbf{FURPS+}                     & \textbf{\#}   & \textbf{Krav} \\ 
         \hline
@@ -66,7 +66,7 @@ Systemet skal kunne trække EPG data fra TVTid.dk via en EPG Poller og sende dat
         \multirow{2}{*}{Usability}          & S03           & Systemet skal kunne understøtte flere sprog. \\ \cline{2-3}
                                             & S04           & Systemet skal have en responsiv brugergrænseflade (UI). \\ \hline
         \multirow{3}{*}{Reliability}        & \multirow{3}{*}{S05}           & Hvis serveren til systemet genstarter, startes del-systemerne igen automatisk. Der vil ikke være behov for at ligge systemet ned regelmæssigt for at kunne foretage backup. \\ \hline
-        \multirow{4}{*}{Performance}        & \multirow{3}{*}{S06}           & Databasen skal kunne håndtere 10000 nye brugere - samt 15000 krediteringerer årligt i 25 år, uden at ofte brugte kald til REST Api'et bliver sløvt (reponsetid på mere end 300 ms). \\ \cline{2-3}
+        \multirow{6}{*}{Performance}        & \multirow{3}{*}{S06}           & Databasen skal kunne håndtere 10000 nye brugere - samt 15000 krediteringerer årligt i 25 år, uden at ofte brugte kald til REST Api'et bliver sløvt (reponsetid på mere end 300 ms). \\ \cline{2-3}
                                             & S07           & Systemet skal kunne håndtere 5000 brugere indenfor et minut.\\ \hline
         \multirow{4}{*}{Supportability}     & S08           & Systemet er installerbart vha. Docker via Docker-compose.\\ \cline{2-3}
                                             & \multirow{3}{*}{S09}           & Det vil være muligt at konfigurere system indstillinger via en \texttt{.env} (miljø) fil. En opsætningsguide vil være at finde sammen med kildekoden. \\ \hline

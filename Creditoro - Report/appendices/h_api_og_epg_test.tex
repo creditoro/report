@@ -1,0 +1,120 @@
+\section{Test - REST api \& EPG-Poller}\label{api_epg_test}
+
+{\large\textbf{1. Iteration af api testning}}
+
+\myparagraph{Test af Users klassen}
+UsersTest klassen importerer metoder fra klassen BestTestCase. Metoden test\_all er den der foretager testen på users ved at bruge metoderne i BestTestCase.\\
+
+\begin{code}[language=python, caption=UsersTest.py, firstnumber=1]
+from http import HTTPStatus
+
+from tests.base_test import BaseTestCase
+
+class UsersTest(BaseTestCase):
+    path = "users"
+
+    def test_all(self):
+        self.get_list()
+
+        response = self.post(json=self.json())
+        identifier = response.json.get("identifier")
+        self.patch(identifier=identifier, json=self.patch_json())
+        self.get(identifier=identifier
+        self.put(identifier=identifier, json=self.json())
+        self.delete(identifier=identifier)
+\end{code}
+
+Der startes med at kalde get\_list på self, som er en metode importeret fra BestTestCase og ser således ud:\\
+
+\begin{code}[language=python, caption=BestTestCase.py, firstnumber=55]
+def get_list(self):
+    response = self._get(path=f"/{self.path}/")
+    self.assertTrue(response.status_code == HTTPStatus.OK)
+    return response
+\end{code}
+
+Herefter bliver der lavet et response objekt, som bliver instantieret ved at kalde post metoden i BestTestCase med en parameter der bliver dannet i json metoden fra UsersTest klassen. \\
+
+\begin{code}[language=python, caption=UsersTest.py, firstnumber=12]
+response = self.post(json=self.json())
+\end{code}
+
+\begin{code}[language=python, caption=UsersTest.py, firstnumber=19]
+def json(self, phone: str = None, email: str = None, name: str = None, password: str = None):
+    password = password or self.random_string()
+    return {
+        "phone": phone or "+45 12 12 12 12",
+        "email": email or f"{self.random_string()}@creditoro.nymann.dev",
+        "name": name or self.random_string(),
+        "password": password,
+        "repeated_password": password
+    }
+\end{code}
+
+Json har muligheden for at tage parametre, men behøver det ikke. Så hvis man ikke ønsker en specifik json får man en forudindstillet json. Det json der bliver oprettet har et telefonnummer, email, navn, password og repeated\_password.
+Efter json er sat op kan det blive videregivet til post metoden i BestTestCase:\\
+
+\begin{code}[language=python, caption=BestTestCase.py, firstnumber=65]
+def post(self, data: dict = None, json: dict = None):
+    response = self._post(path=f"/{self.path}/", data=data, json=json)
+    self.assertTrue(response.status_code == HTTPStatus.CREATED)
+    return response
+\end{code}
+
+Post metoden starter med at oprette et repsons objekt, ved at kalde metoden \_post med det json der blev videregivet. \\
+
+\begin{code}[language=python, caption=BestTestCase.py, firstnumber=40]
+def _post(self, path: str, data: dict = None, json: dict = None):
+    return self.client.post(path, headers=self.headers, json=json, data=data)
+\end{code}
+
+I \_post metoden der kaldt en post metode på klienten, der returnerer et respons objekt.\\
+I post metoden bliver respons objektet sat til det returnerede responsobjekt. Herefter bliver der testet om at HTTPStatus er CREATED ved brug af assertTrue der tjekker om response objektets status\_code er det samme som OK. Eller fejler testen. Og til sidst returnerer response objektet til test\_all metoden.\\
+
+Efter at have oprettet response objektet, bliver der oprettet et identifier objekt. Dette objekt bliver sat til response objektets identifier værdi. Identifier bliver herefter brugt til at kalde patch metoden, der tager en identifier og værdien som patch\_json metoden returnere som parametre. \\
+
+\begin{code}[language=python, caption=UsersTest.py, firstnumber=14]
+self.patch(identifier=identifier, json=self.patch_json())
+\end{code}
+
+\begin{code}[language=python, caption=UserTest.py, firstnumber=29]
+def patch_json(self, name: str = None):
+    return {
+        "name": name or self.random_string()
+    }
+\end{code}
+
+Patch\_json ændrer enten navnet til noget bestemt eller tilfældigt, og returnerer det reviderede json objekt. De to parametre, identifier og json, bliver så videre givet til patch metoden i base\_test.\\
+
+\begin{code}[language=python, caption=BestTestCase.py, firstnumber=70]
+def patch(self, identifier: str, data: dict = None, json: dict = None):
+    response = self._patch(path=f"/{self.path}/{identifier}", data=data, json=json)
+    self.assertTrue(response.status_code == HTTPStatus.OK)
+    return response
+\end{code}
+
+I patch metoden bliver der oprettet et nyt response objekt ved at kalde \_patch metoden. \_patch metoden returnere, ligeseom \_post metoden, et response objekt. Response objektet bliver igen testest igennem assertTrue metoden, så hvis responsens status\_code er OK, består testen.\\
+
+Efter patch metoden bliver kaldt, bilver get metoden kaldt. Get metoden tager identifier objektet som parameter. \\
+
+\begin{code}[language=python, caption=BestTestCase.py, firstnumber=60]
+def get(self, identifier):
+    response = self._get(path=f"/{self.path}/{identifier}")
+    self.assertTrue(response.status_code == HTTPStatus.OK)
+    return response
+\end{code}
+
+I get metoden bliver der, ligesom i patch metoden, oprettet et respons objekt. Her bliver det dog oprettet ved at kalde \_get metoden. Efter oprettelsen bliver den, ligesom de andre eksempler, testet for dens status\_code, der skal være \texttt{OK} for at testen lykkes.\\
+
+Delete metoden bliver kaldt som den sidste i TetstUser test\_all metoden, og tager identifier objektet som paramter. Først bliver response objektet oprettet ved at kalde \_delete metoden, der returnere et response objekt. Herefter tester assertTrue metoden om reponse status\_code er lig med no\_content. De pågældene metoder kan ses nedenfor: \\
+
+\begin{code}[language=python, caption=UsersTest.py, firstnumber=17]
+self.delete(identifier=identifier)
+\end{code}
+
+\begin{code}[language=python, caption=BestCaseTest.py, firstnumber=80]
+def delete(self, identifier: str):
+    response = self._delete(f"/{self.path}/{identifier}")
+    self.assertTrue(response.status_code == HTTPStatus.NO_CONTENT)
+    return response
+\end{code}

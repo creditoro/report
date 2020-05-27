@@ -1,0 +1,24 @@
+\section{Subsystemdesign - REST api \& EPG-Poller}\label{api_epg_design}
+{\large\textbf{Rest API}}
+\myparagraph{Overvejelser}
+Processen for design og implementationen var ret klar, da en af vores gruppe medlemmer arbejder med dette. Dog var prioriteringen af rækkefølgen som API'et skulle implementeres i, noget der blev overvejet nøje. 
+
+\myparagraph{Beslutninger}
+For at undgå udviklings blockers for de andre systemer der skulle interagere med API'et (desktop klienten, og EPG Polleren) besluttede vi at lave alle endpointsne først, og senere implementere hvilke bruger roller det kræves for de forskellige operationer.
+
+\myparagraph{Resultater}
+Vi besluttede at udvide vores designklassediagram for API'et en smule ved at sætte labels på hvilke endpoint, de forskellige metoder for hver klasse hører til. På den måde var det let at se for de andre applikationer at se, hvad de kunne forvente af hvert endpoints.\\ \\
+
+
+{\large\textbf{EPG-Poller}}
+\myparagraph{Overvejelser}
+Da EPG-Polleren skulle designes, blev det overvejet om der skulle tages udgangspunkt i samme mappestruktur som i desktop-klienten, dog uden MVVM delen, da dette ikke ville være relevant i EPG-Polleren. Overvejelserne gik på at lave en mappestruktur, hvor hver modul fik sin egen pakke.
+
+\myparagraph{Beslutninger}
+Det blev besluttet at gå med samme mappestruktur som i desktop-klienten, for at holde det ens gennem projektet. Dette vil også have den fordel, at logikken for de forskellige moduler vil blive placeret i hver deres mappe.
+
+\myparagraph{Resultater}
+Overordnet har vi Creditoro, hvor der ligger 3 pakker, der hedder core, networking og models.
+I core mappen er der en klasse som indeholder al kernelogikken og lœser miljø variabler, som bestemmer hvilket password den kører med.
+I networking mappen, er der klassen HttpManager. Den har logikken for at hente og sœtte data.
+I models mappen er der de java datamodeller der bliver brugt til at hente og sœtte data, de skal kortlœgges en til en med json Objekterne.

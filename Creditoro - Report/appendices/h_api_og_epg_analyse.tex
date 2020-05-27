@@ -1,0 +1,33 @@
+\section{Analyse - REST api \& EPG-Poller} \label{api_epg_analysis}
+Dette afsnit har til formål at fremlægge analyseprocessen for REST api'et og EPG-Polleren. \\
+
+{\large\textbf{Rest API}}\\
+\myworries{ Kristian LIGE HER DO //TODO} \\
+Noget om hvad api'et skal bruges til. For at kunne opnå dette, skal api'et bestå af følgende:\\
+
+\textbf{api pakken} \\
+Api pakken Skal indeholde pakkerne: channels, credits, people, productions, users og models. \\
+
+\textbf{channels}, \textbf{credits}, \textbf{people}, \textbf{productions} og \textbf{users} \textbf{Pakkerne}.\\
+Disse pakker skal bestemme hvilken tabel der skal skal laves, hvordan tabellen skal sættes op, hvilke endpoints der skal være tilgængelige og hvilke forespørgsler der kan laves til databasen.\\
+
+\textbf{models pakken} \\
+Models pakken skal indeholde klasser der bestemmer måden hvorpå data bliver pakket på, inden det sendes ud til den der har lavet forespørgsler. \\
+
+\textbf{klassen auth.py} \\
+auth.py klassen skal håndtere verificeringen af brugere, altså hvem der har adgang til hvilke funktioner i systemet.\\
+
+
+%% EPG Poller ----------------- START HERE ----------------- %% EPG Poller ----------------- START HERE -----------------
+{\large\textbf{EPG Poller}}\\
+For at kunne hente EPG data fra TVTid.dk skal der benyttes en poller, der har til formål at holde databasen til projektet opdateret med den data der er tilgængelig på TVTid.dk. EPG Polleren skal sende en forespørgsel til det api der er koblet op til TVTid.dk, og bagefter håndtere det data der modtages. For at opnå dette, skal EPG polleren bestå af tre pakker:\\
+
+\textbf{core pakken} \\
+Core pakken skal indeholde de klasser der indeholder logikken til at forespørge og håndtere de JSON objeter der modtages fra TVTid.dk api'et, og derefter sende objekterne videre til det api der er blevet udviklet af projektgruppen, kaldet Creditoro api'et. \\
+
+\textbf{networking pakken} \\
+Netværkspakken skal indeholde logik for at kunne hente data fra det forskellige http services, TVtid.dk api'et og Creditoro api'et. Dette skal ske ved hjælp af modeller, som er placeret i en undermappe:\\
+
+\textbf{models pakken} \\
+Model pakken skal indeholde de modeller, der skal bruges til at hente og få data fra de førnævnte http services. Der skal laves to modeller, en get og en post. Get modellen skal bruges til at kortlægge det data der bliver modtaget fra TVTid.dk api'et 1 til 1, så det bliver en tro kopi af det data. Post modellen skal bruges til at videresende det data til Creditoro api'et.
+
