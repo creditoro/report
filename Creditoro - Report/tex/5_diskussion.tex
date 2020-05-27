@@ -1,56 +1,14 @@
 \section{Diskussion}
-Denne sektion skal indeholde:
-
-\begin{itemize}
-    \item Hvad er der opnået og hvad er der ikke opnået i projektet i forhold til det forventede som beskrevet i indledningen.
-    \item Hvad er styrkerne og svaghederne ved jeres resultater.
-    \item Kunne I have opnået bedre resultater.
-\end{itemize}{}
-\\
-Ved starten af projektet, har gruppen haft en forventning om at få konstrueret en prototype til et fuldt funktionelt krediteringssystem. Denne prototype indebærer desktop-klient, Rest API og EPG Poller og skal kunne indeholde offentligt tilgængelige krediteringer. Man skal som producer af en tv-produktion kunne oprette krediteringer. Derudover skal alle kunne søge efter krediteringer. 
-Generelt set er disse indlendende forventninger opnået. Gruppen har konstrueret en desktop-klient, der gør det muligt at oprette, søge efter og læse krediteringer for TV-produktioner listet på TVTID.dk. Denne data er hentet via en EPG Poller, og gemt i en database med Rest API som formidlingsstation.
-\myworries{Figur (x)} viser MoSCoW-modellen, som er en opdeling og prioritering af de forskellige brugsmønstre systemet, optimalt set, skulle indeholde. Da prototypen ikke er fuldendt, er ikke alle disse brugsmønstre opnået.
-Gruppen har i desktop-klienten ikke fået implementeret funktionalitet der bl.a. gør det muligt for brugeren at logge af, oprette brugere, se personinformationer og godkende/afvise nye krediteringer. Derimod er disse blevet implementeret i API'et, med undtagelse af 'log af' funktionalitet. Derudover er der lavere-prioriterede brugsmønstre der ikke er blevet implementeret, herunder bl.a. muligheden for at se personprofiler og oprette kanal- og systemadministrator. \\
-
-
 
 \\
-- Hvad forventede vi at opnå? \\ Vi forventede at konstruere en prototype til et fuldt funktionelt krediteringssystem, med Rest API, EPG Poller og desktop-klient. Denne prototype skulle kunne indeholde krediteringer så de var offentligt tilgængelige, oprette krediteringer og søge efter krediteringer. (SE MoSCoW)   - Hvad er opnået? \\ Vi opnåede det forventede i indledningen (ikke alt fra MoSCoW) \\
+Ved starten af projektet, har gruppen haft en forventning om at få konstrueret en prototype til et fuldt funktionelt krediteringssystem. Denne prototype indebærer desktop-klient, Rest API og EPG Poller, og skal kunne indeholde offentligt tilgængelige krediteringer. Man skal som producer af en tv-produktion kunne oprette krediteringer. Derudover skal alle kunne søge efter krediteringer. \\
+Generelt set er disse indledende forventninger opnået. Gruppen har konstrueret en desktop-klient, der gør det muligt at oprette, søge efter og læse krediteringer for TV-produktioner listet på TVTID.dk. Denne data er hentet via en EPG Poller, og gemt i en database med Rest API som formidlingsstation. Projekt beskrivelsen lægger op til at systemet, optimalt set, skal bygges som en webapplication, men grundet at tidligere undervisning har været fokuseret på JavaFX og Scene Builder, har gruppen valgt at konstruere en desktop-klient.\\
+Inceptionsdokumentets bilag \ref{inceptionsdokument} viser MoSCoW-modellen, som er en opdeling og prioritering af de forskellige brugs\-møn\-stre systemet, optimalt set, skulle indeholde. Da prototypen ikke er fuldendt, er ikke alle disse brugsmønstre opnået.
+Gruppen har i desktop-klienten ikke fået implementeret funktionalitet der bl.a. gør det muligt for brugeren at logge af, oprette brugere, se personinformationer og godkende/afvise nye krediteringer. Derimod er disse blevet implementeret i API'et, med undtagelse af 'log af' funktionalitet. De forskellige brugerroller (System- og kanaladministrator, royalty bruger og producer) er ligeledes kun implementeret i API'et. Disse brugerroller vil skulle validere hvorvidt visse knapper og funktionaliteter er tilgængelige i klienten, ud fra hvilke rettigheder den pågældende brugerrolle har.
+Derudover er der lavere-prioriterede brugsmønstre der ikke er blevet implementeret, herunder bl.a. muligheden for at se personprofiler og oprette kanal- og systemadministrator.\\ 
+EPG Polleren skal gerne køre én i døgnet, for at hente nye produktioner og de tilhørende krediteringer. Dette er dog ikke implementeret, og skal derimod køres manuelt. \myworries{Dertil er planen, at nye krediteringer skal oprettes direkte i klienten, hvilket gør at EPG Polleren kun skal bruges til at hente nye kanaler og produktioner. Ikke nye krediteringer}.\\
 
-
-
-
-- Hvad er ikke opnået? \\
-Det meste blev implementeret i API'et, men ikke i klienten.
-Brugerroller, se personinformation, godkend/afvis nye krediteringer, fjern kreditering, ændre sprog
-
-Ikke i desk: \\
-Must:   B03, B14, B15, B16
-Should: B01, B02, B05, B11, B17, B18, B19
-Could:  B20
-
-Ikke i EPG poller:
-Docker på timer (kør 1 gang i døgnet)
-
-Ikke i api: \\ TODO(I still plan on getting this done (((-:))) one day 2030.
-#80, #81, #83, #84 - se zenhub
-
-- Styrker ved resultaterne
-Nem at udvide - MVVM - Det meste er separeret, så der er ikke mange dependencies 
-Ikke låst på én type klient - læs nedenstående
-API - Hvis TV2 hellere vil have en anden klient fx en hjemmeside så kan de genanvende API'et.
-EPG Poller - Henter allerede eksisterende data, så det ikke skal "genskabes".
-
-- Svagheder ved resultaterne?
-At produktioner ikke er opdelt i sæsoner og episoder? - Alle produktioner er i én lang liste
-
-Det tager tid at sætte sig ind i strukturen - MVVM
-
-Til API'et er der implementere mange unittest men coverage rapporten fra sonarcloud reflekterer ikke dette (0\% coverage)
-JavaFX - Svært at teste, samt ikke ønsket fra TV2's side (en hjemmeside vil være en del af deres faktiske slutprodukt). #DesktopKlienterI2020
-
-
-- Bedre resultater?
-Slut produktet vil være bedre hvis vi i stedet havde lavet et website i stedet for en desktop klient. Selvom dette er et pilot projekt, vil TV2's løsning med garanti bruge et website som klient, da clearingsprocessen og udrulningen af desktop klienter til deres medarbejdere vil være en tung proces.
+Systemets lagdeling er modelleret ud fra et design mønstret, MVVM. Denne lagdeling gør at det meste af koden er separeret i forskellige pakker, og giver derved en lav afhængighed mellem disse. Dette gør dog også at det kan være besværligt at udvide programmet med ny funktionalitet, da der skal implementeres mange forskellige metoder og klasser. Samtidig kan MVVM strukturen være tidskrævende at sætte sig ind i. Systemets opdeling gør at man nemt kan udvide med en ny slags/form for klient, fx en webside eller en web app. Dette skyldes at pakkerne kommunikerer igennem interfaces og metodekaldene foregår til API'et, hvilket gør det muligt at udskifte klienten. \\
+Som produktionerne er inddelt nu, er hver episode i en serie tildelt sin egen produktion. Optimalt set vil hver produktion indeholde tilhørende sæsoner og episoder, som hver indeholder dertilhørende krediteringer. 
 
 

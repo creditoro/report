@@ -1,31 +1,9 @@
 \section{Perspektivering}
-Denne sektion skal indeholde:
 
-\begin{itemize}
-    \item Er den fundne løsning brugbar i anden sammenhæng.
-    \item Hvad bidrager løsningen og den opnåede viden til. 
-    \item Fremtidigt arbejde (næste skridt i projektet, hvis I havde mere tid).
-\end{itemize}{}
+Produktet gruppen har udviklet giver mulighed for at TV2 og andre kanaler kan flytte rullektekster fra TV og slutningen af programmer til en anden platform. Denne frigjorte plads kan derved udfyldes med reklamer og promoveringer for andre programmer. Eftersom systemet er bygget op omkring et Rest API, er det hurtigt og nemt at udskifte klienten til fx en website eller webapplikation. Derudover er systemet bygget op omkring muligheden for at tilføje flere kanaler end blot TV2, og er derfor en funktionel løsning på tværs af TV-stationer. Dette indebærer at oprette 'kanaler' til Boxer Play, Yousee, osv.\\
+Løsningen gruppen er fundet frem til, har givet indsigt i hvorfor og hvordan man kan benytte et Rest API og EPG Poller. Dertil har brugen af design mønstret MVVM vist sig fordelagtigt til brug i større projekter med flere bidragsydere, grundet den lave afhængighed mellem klasser. \\
 
+Til fremtidigt viderearbejdelse af projektet ville der først fokuseres på at færdiggøre prototypen, så den er fuldt funktionel, og indeholder alle brugsmønstre i MoSCoW analysen (se inceptionsdokumentet bilag \ref{inceptionsdokument}). Dette vil indebære at implementere brugerroller (system- og kanaladministrator, royal bruger, producer og gæst), så brugere tildelt en bestemt brugerrolle, vil have forskellige rettigheder i systemet, og derfor forskelligt indhold og muligheder. Derudover skal det være muligt at se personinformationer, godkende/afvise krediteringer og ændre sprog.
+Systemet vil skulle samle alle episoder for en produktion under én titel, og inddele disse i sæsoner.
+Det vil også give mening at lave en website/webapplikation til systemet. Fra denne website vil man også kunne finde og oprette krediteringer som i desktop-klienten. \\
 
-- Ja løsningen er brugbar, prototypen er ikke færdig, men godt på vej \\
-- Systemet er sat op til at indeholde flere kanaler \\
-    * Jeg syntes godt vi kan komme mere ind på at vores løsning kan supporte flere TV huse, YouSee leder b.la. efter samme løsning som TV2.
-
-\myworries{- Hvad bidrager løsningen og den opnåede viden til?????????} \\
-Opnåede vide:
-    API - Hvordan man med fordel kan benytte sådan en basse
-    EPG poller - 
-    Design pattern
-    
-
-Fremtidigt arbejde \\
-- Færdiggørelse af prototypen\\
-    - brugerroller \\
-        * API mangler bruger rettigheder til Users, Channel Admins og Credits (næsten done)
-        * Desktop klienten mangler at implementere roller overall.
-    - Se personinformation (personprofiler) \\
-    - Godkend/afvis nye krediteringer \\
-    - Ændre sprog \\
-    - Opdeling af produktioner i sæsoner og episoder - så alt bliver samlet ét sted for en titel
-- Website (eller anden klient)
