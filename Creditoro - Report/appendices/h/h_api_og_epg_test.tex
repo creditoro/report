@@ -118,3 +118,86 @@ def delete(self, identifier: str):
     self.assertTrue(response.status_code == HTTPStatus.NO_CONTENT)
     return response
 \end{code}
+
+
+\newpage
+{\large\textbf{Testning EPG-Poller}}
+
+\myparagraph{Test af HttpManger klassen}
+HttpMangerTest klassen importerer klasserne Test, LoadConfig, CreditoroChannel, CreditoroProduction, Assertions.*, LocalData, Arrays.
+Disse bliver brugt til at Checke om HttpManger Kan give de rigtige resultater.
+
+\begin{code}[language=java, caption=HttpManagerTest.java, firstnumber=1]
+package dk.creditoro.epg_poller.networking;
+
+import org.junit.jupiter.api.Test;
+
+import dk.creditoro.epg_poller.core.LoadConfig;
+import dk.creditoro.epg_poller.models.CreditoroChannel;
+import dk.creditoro.epg_poller.models.CreditoroProduction;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.time.LocalDate;
+import java.util.Arrays;
+
+class HttpManagerTest \{
+    private HttpManager httpManager;
+    private static String USER = LoadConfig.getLoadconfig().getUser();
+    private static String PASSWORD = LoadConfig.getLoadconfig()
+        .getPassword();
+    public HttpManagerTest() {
+        httpManager = new HttpManager();
+    }
+\end{code}
+
+Her bliver der sat USER og PASSWORD, som skal bruges til at logge ind på api'et. LoadConfig står for at hente miljø variablerne.
+Ved at gøre det denne måde kan, man altid skifte i hvordan den læser passwords.
+Der efter bliver httpManager initialiseret.
+
+
+\begin{lstlisting}[language=java, caption=HttpManagerTest.java, firstnumber=23]
+    @Test
+    void getTvTidChannels() {
+        var channels = httpManager.getTvTidChannels();
+        assertNotNull(channels);
+        var tvTidChannels = channels.getChannels();
+        assertNotNull(tvTidChannels);
+        assertTrue(tvTidChannels.length > 0);
+    }
+\end{lstlisting}
+Her bliver det testet om den kan få kandler ned fra tvtid.dk
+Der bliver testet om den ikke er null. 
+Checker om den kan give en liste tilbage på linje 28.
+Checker om længen er størrer end null på linje 29.
+Den ud pakker der bliver brugt, pakker null ud, hvis json object skifter. 
+Der ved man at hvis tvtids data skifter eller man laver en opdatering der gør det ikke virker mere ville denne her test gøre det synligt.
+
+
+\begin{lstlisting}[language=java, caption=HttpManagerTest.java, firstnumber=32]
+    @Test
+    void postChannel() {
+        httpManager.login(USER, PASSWORD);
+        //Create the channel that we are testing
+        var channel = new CreditoroChannel("testChannel", "testURL");
+        // Makes sure to delte the channel before we test if it can post.
+        var getRespone = httpManager.getChannels(channel.getName());
+        if (getRespone.length != 0){
+            httpManager.deleteChannel( getRespone[0].getIdentifier() );
+        }
+        // Post the first channel
+        var responeChannel = httpManager.postChannel(channel);
+        assertEquals(channel.getName(), responeChannel.getName(), "Makes sure it it gets the same channels as it posted");
+        // post the samme channel again
+        var dublicatedResponeChannel = httpManager.postChannel(channel);
+        assertNotEquals(channel, dublicatedResponeChannel, "Makes sure it can't post dublicate");
+        // Delte the channel 
+        getRespone = httpManager.getChannels(channel.getName());
+        var httpRespone = httpManager.deleteChannel( getRespone[0].getIdentifier() );
+        assertEquals(204, httpRespone, "Checks if we can delte channel");
+    }
+   
+\}
+Her bliver metoden postChannel på httpMangeren testet.
+
+\end{lstlisting}

@@ -169,17 +169,35 @@ CREATE INDEX credit_identifier_idx ON credits USING btree (identifier);
     \label{tab:credits_table}
 \end{table}
 
-{\large\textbf{SQL forespørgelser}}
-\myparagraph{\texttt{channels}}
+{\large\textbf{SQL forespørgelser}}\\
+
+\begin{code}[language=sql, caption=206 SQL.sql, firstnumber=87]
+-- SQL queries
+-- Insert data into tables
+INSERT INTO users (name, email, phone, password, role)
+VALUES ('Peter Leasy', 'en@mail.dk', '88888888', 'S0m3Pa55W0rD', 'system_admin'); 
+
+INSERT INTO channels (name, icon_url)
+VALUES ('TV2', 'https://epg-images.tv2.dk/channellogos/logo/3.png'); 
+
+INSERT INTO people (phone, email, name)
+VALUES ('12312312', 'enAnden@mail.dk', 'Jakob Jakobsen'); 
+
+INSERT INTO productions (title, producer_id, channel_id, description)
+VALUES ('Bonderøven', '6ed67a28-f288-492b-8947-d9d0e9539608', '3ee08c85-466f-4577-addc-825815ae8ad1', 'Frank har bygget en stor æblepresser – men æblerne skal lige samles, inden den kan tages i brug. Og så er der alle de andre opgaver, der presser sig på! Det når at blive snestorm, før der laves æblesaft. Til gengæld er den iskold!'); 
+
+INSERT INTO credits (job, production_id, person_id)
+VALUES ('Lydmand', '3ee08c85-466f-4577-addc-825815ae8ad1', '99bed7ec-8bf5-4be9-8514-fce0a37b028b'); 
 
 
-\myparagraph{\texttt{users}}
+-- Get specific production from productions table
+GET * FROM productions WHERE title='Bonderøven';
 
+-- Get name from email
+GET name FROM people WHERE email='enAnden@mail.dk';
 
-\myparagraph{\texttt{people}}
+UPDATE credits SET job='Producer' WHERE identifier='3e8a6e59-5e08-4f02-b752-276713771a8a';
 
-
-\myparagraph{\texttt{productions}}
-
-
-\myparagraph{\texttt{credits}}
+-- Delete a credit
+DELETE FROM people WHERE identifier='3e8a6e59-5e08-4f02-b752-276713771a8a';
+\end{code}

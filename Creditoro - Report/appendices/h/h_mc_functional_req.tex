@@ -1,0 +1,63 @@
+\section{Funktionelle Krav} \label{funktionelle_krav}
+
+% Funktionelle krav for Desktop klient og Rest-API-----------------------------------
+\begin{longtable}{|p{1cm}|p{3.5cm}|p{11cm}|} 
+    \hline
+    \multicolumn{3}{|c|}{ \textbf{Desktop-client \& REST API}}  \\ 
+    \hline
+    \textbf{ID} & \textbf{Name} & \textbf{Description} \\
+    \hline
+    D01 & Login/out & You should be able to login and out of the system with ease by providing username and password. \\
+    \hline
+    D02 & Search & You should be able to search for TV-show titles as well as persons \\
+    \hline
+    D03 & Channel Browse & You should be able to browse channels registered in the system, and see which TV-shows are streamed on these \\
+    \hline
+    D04 & Display credits associated with TV-program & You should be able to display all credits associated with a TV-program \\
+    \hline
+    D05 & Create Channnel & The system admin should be able to create new channels. \\
+    \hline
+    D06 & Add system admin & The system admin should be able to add other system admins. \\
+    \hline
+    D07 & Add Channel admin & The system admin and channel admin should be able to add channel administrators to a channel. (Channel admin only for own channel) \\
+    \hline
+    D08 & Add Producer & The system admin and channel admin should be able to add producers for a show (channel admin only for own channel) \\
+    \hline
+    D09 & Create credit & The system admin, channel admin and producer should be able to create a credit (channel admin and producer only for own channel) \\
+    \hline
+    D10 & Delete credit & The system admin and channel admin should be able to delete credits (channel admin only for own channel) \\
+    \hline
+    D11 & Update credit & The system admin, channel admin and producer should be able to update and change credit (channel admin and producer only for own channel) \\
+    \hline
+    D12 & Update person & System admin, channel admin and producer should be able to update a person, mainly which shows the person has helped produce \\
+    \hline
+    D13 & Approve or disapprove credit & The system admin and channel admin should be able to approve or disapprove created credits before they are publicly available (channel admin only for own channel) \\
+    \hline
+    D14 & Create royalty user & The system admin should be able to create a royalty user \\
+    \hline
+    D15 & Update royalty user & The system admin and royalty user should be able to update royalty users \\% Burde det ikke være CREATE? Og hvis ikke, hvorfor har vi så ikke en create?
+    \hline
+    D16 & Change language & You should be able to change the language of the user interface \\
+    \hline
+    
+    \caption{Desktop-client \& REST API: Functional Requirements}
+    \label{tab:desktop_client_rest_api_funreq}
+\end{longtable}
+
+% Funktionelle krav for EPG-Poller----------------------------------------------
+\begin{table}[h]
+    \begin{tabular}{|p{1cm}|p{3.5cm}|p{11cm}|}
+        \hline
+        \multicolumn{3}{|c|}{\textbf{EPG Poller}} \\
+        \hline
+        \textbf{ID} & \textbf{Name} & \textbf{Description} \\
+        \hline
+        E01 & Poll-data
+        &  The EPG Poller should be able to poll data from \href{www.tvtid.tv2.dk}{tvtid.dk} \\
+        \hline
+        E02 & Update Database & Update the database with credits \\
+        \hline
+    \end{tabular}
+    \caption{EPG Poller: Functional Requirements}
+    \label{tab:epg_poller_funreq}
+\end{table}

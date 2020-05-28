@@ -1,0 +1,92 @@
+\section{Ikke-funktionelle Krav} \label{ikke-funktionelle_krav}
+
+\begin{longtable}{|p{1cm}|p{3.5cm}|p{11cm}|} 
+    \hline
+    \multicolumn{3}{|c|}{\textbf{REST API}}  \\ 
+    \hline
+    \textbf{ID} & \textbf{Name} & \textbf{Description} \\
+    \hline
+    NR01 & Supportability &  Centralized error reporting should be available via a common interface (such as Sentry).\\
+    \hline
+    NR02 & Performance &  Commonly used API calls should respond within 300 milliseconds. \\
+    \hline
+    NR03 & Scalability &  The system should be able to handle 10K new users yearly for 25 years.\\
+    \hline
+    NR04 & Scalability &  The system should be able to handle 15K new credits yearly for 25 years.\\
+    \hline
+    NR05 & Configuration & Data persistence time should be configurable, to auto-cleanup data older than the configured value (defaults to 25 years).\\
+    \hline
+    NR06 & Availability &  The system should start automatically after server restarts. \\
+    \hline
+    NR07 & Usability &  API documentation should be available via Swagger UI. \\
+    \hline
+    NR08 & Security &  The server that the REST API is hosted on should only allow login via SSH. \\
+    \hline
+    NR09 & Security &  The server that the REST API is hosted on should only allow connections from the outside on port 443 (https), 80 (http) and 22222 (ssh). \\
+    \hline
+    NR10 & Installability & REST API should be deployable within a container (such as Docker). \\
+    \hline
+    NR11 & Configurability & REST API should be configurable using \textbf{environment} files. \\
+    \hline
+    NR12 & Authentication & REST API should handle authentication via token based authentication with it's clients. A token is valid for 2 hours, and is refreshed automatically after a request with the token when it's time to expire is less than an hour. \\ % When 
+    \hline
+    \caption{REST API: Non-functional Requirements}
+    \label{tab:rest_api_nfunreq}
+\end{longtable}
+
+\begin{table}
+    \centering
+    \begin{tabular}{|p{1cm}|p{3.5cm}|p{11cm}|} 
+        \hline
+        \multicolumn{3}{|c|}{\textbf{Desktop-client}}  \\ 
+        \hline
+        \textbf{ID} & \textbf{Name} & \textbf{Description} \\
+        \hline
+        ND01 & Supportability &  Error reporting should be available via pop-out box \\
+        \hline
+        ND02 & Performance &  Commonly used buttons should work within 300 milliseconds \\
+        \hline
+        ND03 & Scalability &  The system should have a nice overview of all credits \\
+        \hline
+        ND04 & Scalability &  The client should be able to query search results in 5 seconds \\
+        \hline
+        ND05 & Configuration & Configuration should be configurable using \textbf{environment} files and GUI \\
+        \hline
+        ND06 & Availability &  The system should start automatically after server restarts. \\
+        \hline
+        ND07 & Authentication & The system should redirect to the login page when receiving a HTTP 401 (unauthorized) response from the REST API. \\
+        \hline
+        ND08 & Inactivity & The desktop-client should automatically detect if the authentication token is expired and redirect to login page. \\ 
+        \hline
+    \end{tabular}
+    \caption{Desktop Client: Non-functional Requirements}
+    \label{tab:desktop_client_nfunreq}
+\end{table}
+
+\begin{table}
+    \begin{tabular}{|p{1cm}|p{3.5cm}|p{11cm}|} 
+        \hline
+        \multicolumn{3}{|c|}{\textbf{EPG Poller}} \\
+        \hline
+        \textbf{ID} & \textbf{Name} & \textbf{Description} \\
+        \hline
+        NE01 & Supportability &  Centralised error reporting should be available via a common interface (such as Sentry).\\
+        \hline
+        NE02 & Performance &  It should be able to poll data every hour and finish within 15 min to update the data \\
+        \hline
+        NE03 & Scalability &  The system should be able to poll 15K new shows every year yearly, for 25 years. \\
+        \hline
+        NE04 & configuration & How often the poller is run, where to poll data from and where to post data too should be configurable \\
+        \hline
+        NE05 & Availability &  The system should start automatically after server restarts. \\
+        \hline
+        NE06 & Usability & The system should warn about show's without credit \\
+        \hline
+        NE07 & Security & The server that the EPG poller is hosted on should only allow connections from the outside on port 22221(ssh). \\
+        \hline
+        NE08 & Configurability & The EPG Poller should be configurable using \textbf{environment} files. \\
+        \hline
+    \end{tabular}
+    \caption{EPG Poller: Non-functional Requirements}
+    \label{tab:epg_poller_nfunreq}
+\end{table}

@@ -1,33 +1,89 @@
 \section{Test}
-\myworries{Vi skal bruge et eller flere brugsmønstre (som fungerer som krav) og ud fra det skrive om hvordan vi har testet funktionaliteten af løsningen på kravet - kechr}
 
 \subsection{1. Iteration af desktop-klient testning}
-\subsubsection{Test af Views enum}
-En af de test der bliver udført i core pakken er ViewsTest. Testen har ikke brug for nogen forberedelse da den kun skal checke om de værdier der er i Views (et enum) er en af dens værdier. Det gør den ved først at iterere igennem alle Views' værdier og for hver værdi kalder metoden isView.\\
+Efter første iteration blev der implementeret en klient der håndterer efterspørgelser hos api'et. For at teste klientens metode blev der oprettet en klasse kaldet DummyClient, derudover dækker testen alle implementerede brugsmønstre idet det er klienten der i sidste ende håndtere dem. Ved at teste den klasse kan funktionaliteten af den reelle klient også afgøres. Denne test er den mest essentielle test af desktop-klienten i iteration 2 og er derfor den eneste medtaget. Resten kan findes i kilde-koden. \\
 
-\begin{code}[caption=ViewsTest.java, firstnumber=10]
+Testen starter med at oprette et dummyClient objekt i constructeren.
+
+\begin{code}[caption=DummyClientTest.java, firstnumber=14]
+DummyClient dummyClient;
+
+public DummyClientTest() {
+    dummyClient = new DummyClient();
+}
+\end{code}
+
+De første to test der bliver udført, er login og register. Login tester om et falsk login returnerer null og register tjekker om at register ikke kaster en exception når metoden bliver kaldt.
+
+\begin{code}[caption=DummyClientTest.java, firstnumber=20]
 @Test
-public void testEnumValues() {
-    for (Views view : Views.values()) {
-        assertTrue(isView(view));
-    }
+void login() {
+    assertNull(dummyClient.login("someUser", "somePassword"));
+}
+
+@Test
+void register() {
+    assertDoesNotThrow(() -> dummyClient.register(new User("10-10-10", "50505050", "string@string.dk",
+            "MyName", "My Admin Role")));
 }
 \end{code}
 
-Denne metoder tager et view og tjekker alle Views' værdier og tjekker hvis værdien er lig den indsatte værdi. Hvis den findes returnere den true eller false.
+De næste fire test tjekker om metoder givet en tom parameter ikke returnerer null. Så hvis testen skal bestås skal metoderne returnere et objekt og ikke null. SearchChannels returnerer en liste af kanaler, searchProductions en liste af produktioner, getPeople en liste af personer, getCredits en liste af krediteringer.
 
-\begin{code}[caption=ViewsTest.java, firstnumber=17]
-public boolean isView(Views view) {
-    for (Views vie : Views.values()) {
-        if (vie.equals(view)) {
-            return true;
-        }
-    }
-    return false;
+\begin{code}[caption=DummyClientTest.java, firstnumber=31]
+@Test
+void searchChannels() {
+    assertNotNull(dummyClient.searchChannels(""));
+}
+
+@Test
+void searchProductions() {
+    assertNotNull(dummyClient.searchProductions(""));
+}
+
+@Test
+void getPeople() {
+    assertNotNull(dummyClient.getPeople(""));
+}
+
+@Test
+void getCredits() {
+    assertNotNull(dummyClient.getCredits(""));
 }
 \end{code}
 
+De næste to test tjekker funktionaliteten af oprettelse og modificering af krediteringer. PatchCredits tjekker om metoden returnere et objekt efter at have sendt forespørgslen om modificering af det gældene kredit. PostCredit tjekker ligesom den anden test om det returnerede objekt er null denne forespørgsel er dog en oprettelse af en kreditering.
+
+\begin{code}[caption=DummyClientTest.java, firstnumber=51]
+@Test
+void patchCredits() {
+    assertNotNull(dummyClient.patchCredits("/helloID/", Map.of("jobtype", "MyMan", "User", new Object())));
+}
+
+@Test
+void postCredits() {
+    assertNotNull(dummyClient.postCredits(new Credit("ID-1-1-1-11",
+            new Production("ID-3-3-3", "title-10", "Description LONG",
+                    new User("ID-5-5-5", "30303030", "Mail@Mail2.gg", "ProducerName", "admin"),
+                    new Channel("id-4-4-4", "DR1", "https://api.creditoro.nymann.dev")),
+            new Person("ID-2-2-2", "505055050", "Mail@mail.gg", "MYNAMEISNOTHING"),
+            "jobtype")));
+}
+\end{code}
+
+Den sidste test er deleteCredit som tjekker om den boolean som returneres er false. Klienten bliver bedt om at slette en ikkeeksisterende kreditering hvilket skal returnere false.  
+
+\begin{code}[caption=DummyClientTest.java, firstnumber=66]
+@Test
+void deleteCredit() {
+    assertFalse(dummyClient.deleteCredit("test"));
+}
+\end{code}
+
+\subsection{2. Iteration af desktop-klient testning}
 \subsubsection{Test af endpoint klassen}
+En essentiel del af desktop-klient er at brugmønsteret login (se tabel \ref{table:login} i bilag) kan håndteres. For at teste implementeringen af dette brugsmønster bliver nedenstående test udført.
+
 \begin{code}[caption=UsersEndpointTest.java, firstnumber=8]
 UsersEndpoint usersEndpoint;
 
@@ -120,85 +176,5 @@ void clearFields() {
     loginViewModel.clearFields();
     assertEquals("", loginViewModel.emailProperty().get());
     assertEquals("", loginViewModel.passwordProperty().get());
-}
-\end{code}
-
-\subsection{2. Iteration af desktop-klient testning}
-Efter første iteration blev der implementeret en klient der håndterer efterspørgsler hos api'et. For at teste klientens metoder blev der oprettet en klasse kaldet DummyClient. Ved at teste den klasse kan funktionaliteten af den reelle klient også afgøres. Denne test er den mest essentielle test af desktop-klienten i iteration 2 og er derfor den eneste medtaget. Resten kan findes i kilde-koden. \\
-
-Testen starter med at oprette et dummyClient objekt i constructeren.
-
-\begin{code}[caption=DummyClientTest.java, firstnumber=14]
-DummyClient dummyClient;
-
-public DummyClientTest() {
-    dummyClient = new DummyClient();
-}
-\end{code}
-
-De første to test der bliver udført, er login og register. Login tester om et falsk login returnerer null og register tjekker om at register ikke kaster en exception når metoden bliver kaldt.
-
-\begin{code}[caption=DummyClientTest.java, firstnumber=20]
-@Test
-void login() {
-    assertNull(dummyClient.login("someUser", "somePassword"));
-}
-
-@Test
-void register() {
-    assertDoesNotThrow(() -> dummyClient.register(new User("10-10-10", "50505050", "string@string.dk",
-            "MyName", "My Admin Role")));
-}
-\end{code}
-
-De næste fire test tjekker om metoder givet en tom parameter ikke returnerer null. Så hvis testen skal bestås skal metoderne returnere et objekt og ikke null. SearchChannels returnerer en liste af kanaler, searchProductions en liste af produktioner, getPeople en liste af personer, getCredits en liste af krediteringer.
-
-\begin{code}[caption=DummyClientTest.java, firstnumber=31]
-@Test
-void searchChannels() {
-    assertNotNull(dummyClient.searchChannels(""));
-}
-
-@Test
-void searchProductions() {
-    assertNotNull(dummyClient.searchProductions(""));
-}
-
-@Test
-void getPeople() {
-    assertNotNull(dummyClient.getPeople(""));
-}
-
-@Test
-void getCredits() {
-    assertNotNull(dummyClient.getCredits(""));
-}
-\end{code}
-
-De næste to test tjekker funktionaliteten af oprettelse og modificering af krediteringer. PatchCredits tjekker om metoden returnere et objekt efter at have sendt forespørgslen om modificering af det gældene kredit. PostCredit tjekker ligesom den anden test om det returnerede objekt er null denne forespørgsel er dog en oprettelse af en kreditering.
-
-\begin{code}[caption=DummyClientTest.java, firstnumber=51]
-@Test
-void patchCredits() {
-    assertNotNull(dummyClient.patchCredits("/helloID/", Map.of("jobtype", "MyMan", "User", new Object())));
-}
-
-@Test
-void postCredits() {
-    assertNotNull(dummyClient.postCredits(new Credit("ID-1-1-1-11",
-            new Production("ID-3-3-3", "title-10", "Description LONG",
-                    new User("ID-5-5-5", "30303030", "Mail@Mail2.gg", "ProducerName", "admin"),
-                    new Channel("id-4-4-4", "DR1", "https://api.creditoro.nymann.dev")),
-            new Person("ID-2-2-2", "505055050", "Mail@mail.gg", "MYNAMEISNOTHING"),
-            "jobtype")));
-}
-\end{code}
-
-Den sidste test er deleteCredit som tjekker om den boolean som returneres er false. Klienten bliver bedt om at slette en ikkeeksisterende kreditering hvilket skal returnere false.  
-
-\begin{code}[caption=DummyClientTest.java, firstnumber=66]
-@Test
-void deleteCredit() {
-    assertFalse(dummyClient.deleteCredit("test"));
 }
 \end{code}

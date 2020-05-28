@@ -1,6 +1,21 @@
 \section{Implementering}
 Denne sektion skal indeholde:
 // Kristian skriver :-)
+
+\subsubsection{Database implementering}
+% Database implementering, gennemgang af upgrade/downgrade scripts (naevn table 
+% partitioning overvejelser)
+Overgang fra design til implementering var forholdsvis smerteløs givet vores design dokument med oversigt over hvilke endpoints og hvad hvert endpoint skulle returne.
+
+% Migration scripts
+%% Hvorfor?
+Selve implementeringen blev foretaget via migration scripts, her er den primære fordel at gøre det let at tiføje evt. nye features uden manuelt at skulle eksekvere SQL commands på serveren hvor systemet kører. I takt med at vi implementerede et endpoint (fx. \texttt{\/users}.
+Lavede vi en migration for dette endpoint.
+%% Hvordan er migrationer implementeret (generelt)?
+Migrationer i projektet er implementeret vha. en Python fil der indeholder et revisions nummer, samt hvilken revision den peger på (hvilken revision der skal blive til den nuværende revision ved `downgrade`. Python scriptet består af to funktioner: \texttt{def downgrade} og \texttt{def upgrade}. 
+Der hver især peget på henholdsvis en \texttt{downgrade.sql} - og en \texttt{upgrade.sql} fil. Upgrade scriptet køres vha. \texttt{flask db upgrade}, databasen ved hvilken revision der er den nuværende ved at kigge i tabellen \texttt{alembic\_version} der indeholder den nuværende revision i kolonnen \texttt{version\_num}, tabellen inderholder (og vil altid kun indeholde en række). Når upgrade scriptet køres kigger det på den nuværende revision i databasen, derefter kigger den Python filerne igennem i mappen \texttt{migrations/versions} for at finde en fil der har \texttt{down\_revision} sat til den nuværende situation, hvis den finder sådan et, så opgradereres databasen ved at køre \texttt{upgrade} funktionen for den fil der blev fundet.
+
+
 \begin{itemize}
     \item Omfatter afsnittet overvejelser, beslutninger og resultater vedr.  konvertering fra design til kode illustreret gennem udvalgte centrale eksempler, samt andre vigtige implementeringsbeslutninger. 
     \item Implementering af database.
@@ -14,3 +29,44 @@ For at sikre en relativ høj kodekvalitet, var noget af det første vi gjorde i 
 
 
 \myworries{Ud fra vores beslutninger, hvordan er vores kode så kommet til at se ud? Hvordan er systemet blevet (brugergrænseflade, api'et, epg-polleren og vores database? - Vis specifikke eksempler = brug code snippets}
+
+\begin{code}[caption=Downgrade.sql, firstnumber=1]
+DROP INDEX users_email_idx;
+DROP INDEX users_name_idx;
+DROP TABLE users CASCADE;
+DROP DOMAIN IF EXISTS email;
+DROP EXTENSION IF EXISTS citext RESTRICT;
+DROP TYPE role;
+\end{code}
+
+
+\begin{lstlisting}[caption=users.sql, firstnumber=1]
+CREATE EXTENSION citext;
+CREATE DOMAIN email AS citext
+    CHECK ( value ~
+            '^[a-zA-Z0-9.!#$%&''+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)$' );
+CREATE TYPE role AS ENUM ('royalty_user', 'channel_admin', 'system_admin');
+CREATE TABLE users
+(
+    identifier UUID         NOT NULL,
+    name       VARCHAR(512),
+    email      email UNIQUE NOT NULL,
+    phone      varchar(254),
+    password   VARCHAR(256),
+    role       role         NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (identifier)
+);
+CREATE INDEX users_email_idx ON users USING btree (email);
+CREATE INDEX users_name_idx ON users USING btree (name);
+\end{lstlisting}
+
+
+
+For at give et konkret eksempel på en af vores migrationer, bruger vi \c{users} migrationen. Som det kan ses i figur <insert-txt>
+Update scriptet laver en tabel med \c{identifier} som primær nøgle, typen er `UUID` (universally unique identifer), som vi har valgt at bruge generelt frem for auto incrementing integer. Grunden til at vi har favoriseret UUID's er at man ellers kan udelade hvor mange brugerer der er i systemet, samt kan det foretage problemer hvis man forsøger at skrive to transaktioner til databasen på samme tid. 
+% password sha256 encrypted.
+Kolonnen password er ikke gemt i plain text, men i stedet SHA256 hashed og salted. Der er ikke nogen speciel grund til at vi har valgt denne hashing algoritme, og vi burde nok have valgt en algoritme der er ment til passwords i stedet som fx PBKDF2.
+
+% Skriv noget om ORM.
+I stedet for at skulle skrive plain SQL i vores high-level Python API, bruger vi istedet en ORM (object relational mapping), der via SQLAlchemy biblioteket, mapper vores PostgreSQL database's tabeller til Python klasser.

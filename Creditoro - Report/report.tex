@@ -39,7 +39,7 @@
 
 
 \lstset{
-    stringstyle=\color{mygreen},
+    stringstyle=\color{mygreen},            % changing string colour to green
     frame=single,                           % adds a frame around the code
     language=Java,                          % the language of the code
     breaklines=true,                        % sets automatic line breaking
@@ -49,8 +49,21 @@
     numbers=left,                           % % where to put the line-numbers; possible values are (none, left, right)
     numberstyle=\small,                     % the style that is used for the line-numbers
     commentstyle=\color{mygreen},           % comment style
-    captionpos=b                            % sets the caption-position to bottom
+    captionpos=b,                           % sets the caption-position to bottom
+    showstringspaces=false,                  % removes spaces in string
+    inputencoding=utf8,
+    extendedchars=true,
 }
+
+\lstset{literate=%
+{æ}{{\ae}}1
+{å}{{\aa}}1
+{ø}{{\o}}1
+{Æ}{{\AE}}1
+{Å}{{\AA}}1
+{Ø}{{\O}}1
+}
+
 % Use for lstlisting formation caption
 % \captionsetup[lstlisting]{ format=listing, labelfont=white, textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}
 

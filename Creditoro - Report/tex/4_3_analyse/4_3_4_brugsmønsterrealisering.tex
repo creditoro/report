@@ -7,7 +7,7 @@ Et systemsekvensdiagram er et sekvensdiagram der viser systemhændelserne for é
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.5]{figures/systemsekvensdiagrammer/opretKreditering.PNG}
+    \includegraphics[scale=0.45]{figures/systemsekvensdiagrammer/opretKreditering.PNG}
     \caption{Systemsekvensdiagram for "Opret Kreditering"}
     \label{fig:systemsekvensdiagram_opretKreditering}
 \end{figure}
@@ -70,4 +70,6 @@ Operationssekvensdiagrammet viser systemet som en ”white box”, hvor man kan 
 På figur \ref{fig:op_read_credit} ses det, hvad der finder sted i systemet når brugeren vil læse en kreditering. Brugeren starter ud med at kalde en metode i desktop-klienten, der kalder en \texttt{GET} metode i REST api'et, hvor id'et eller navnet på en produktion er med som parameter. Api'et udfører derefter SQL-forespørgelse i databasen, for at hente den specifikke kreditering. Databasen sender et resultatsæt tilbage, og api'et sender en HTTP kode sammen med et JSON object til desktop-klienten. JSON objektet er den produktion brugeren gerne vil læse krediteringerne til. Desktop-klienten håndterer derefter JSON objektet, så det pænt vises til brugeren. De resterende operationssekvensdiagrammer kan findes i bilag \ref{section: operationssekvensdiagrammer}.
 
 
-\subsection{Cyber-Physical systems}
+
+
+
